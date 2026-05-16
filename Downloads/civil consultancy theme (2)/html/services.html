@@ -1,0 +1,525 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Services | Civil Consultancy</title>
+
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    :root {
+      --navy:        #002d5b;
+      --navy-dark:   #001a38;
+      --navy-mid:    #0a3d73;
+      --orange:      #ff7e00;
+      --orange-lt:   #ff9a30;
+      --orange-pale: #fff4e6;
+      --white:       #ffffff;
+      --off-white:   #f8f7f4;
+      --gray-light:  #ebebeb;
+      --gray-mid:    #8a9ab5;
+      --text:        #1a2340;
+      --font-d:      'Playfair Display', Georgia, serif;
+      --font-b:      'DM Sans', sans-serif;
+      --ease:        all .35s cubic-bezier(.4,0,.2,1);
+      --shadow-sm:   0 4px 20px rgba(0,45,91,.08);
+      --shadow-md:   0 16px 48px rgba(0,45,91,.14);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html  { scroll-behavior: smooth; }
+    body  { font-family: var(--font-b); color: var(--text); background: var(--off-white); overflow-x: hidden; }
+    img   { max-width: 100%; display: block; }
+    a     { text-decoration: none; color: inherit; transition: var(--ease); }
+
+    /* ── HERO ── */
+    .page-hero {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-mid) 100%);
+      padding: 120px 0 90px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 55% at 85% 40%, rgba(255,126,0,.13), transparent),
+        radial-gradient(ellipse 35% 35% at 5%  85%, rgba(255,126,0,.07), transparent);
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--orange), transparent);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--orange);
+      font-size: .73rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .hero-label::before {
+      content: '';
+      width: 28px; height: 2px;
+      background: var(--orange);
+      border-radius: 2px;
+    }
+    .page-hero h1 {
+      font-family: var(--font-d);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 1.2rem;
+    }
+    .page-hero h1 span { color: var(--orange); }
+    .page-hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.6);
+      max-width: 540px;
+      line-height: 1.8;
+    }
+    .breadcrumb-nav {
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .85rem;
+      color: rgba(255,255,255,.4);
+    }
+    .breadcrumb-nav a { color: var(--orange); }
+    .breadcrumb-nav a:hover { text-decoration: underline; }
+
+    /* ── INTRO STRIP ── */
+    .intro-strip {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-light);
+      padding: 60px 2rem;
+      text-align: center;
+    }
+    .intro-strip .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .intro-strip h2 {
+      font-family: var(--font-d);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .9rem;
+    }
+    .intro-strip h2 span { color: var(--orange); }
+    .intro-strip p {
+      font-size: .97rem;
+      color: #666;
+      line-height: 1.85;
+    }
+
+    /* ── SERVICES GRID ── */
+    .services-section {
+      padding: 80px 2rem 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    /* ── SERVICE CARD ── */
+    .service-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1.5px solid var(--gray-light);
+      display: flex;
+      flex-direction: column;
+      transition: var(--ease);
+      position: relative;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(255,126,0,.25);
+    }
+
+    /* Top accent bar */
+    .card-accent {
+      height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-lt));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .4s ease;
+    }
+    .service-card:hover .card-accent { transform: scaleX(1); }
+
+    /* Image */
+    .card-img-wrap {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .55s ease;
+    }
+    .service-card:hover .card-img-wrap img { transform: scale(1.07); }
+
+    /* Category tag floating on image */
+    .card-tag {
+      position: absolute;
+      bottom: .9rem;
+      left: .9rem;
+      background: var(--navy);
+      color: var(--white);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .25rem .75rem;
+      border-radius: 100px;
+    }
+
+    /* Body */
+    .card-body {
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--orange-pale);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      transition: var(--ease);
+    }
+    .service-card:hover .card-icon {
+      background: var(--orange);
+      transform: rotate(-8deg) scale(1.1);
+    }
+    .card-body h3 {
+      font-family: var(--font-d);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .6rem;
+      line-height: 1.25;
+      transition: var(--ease);
+    }
+    .service-card:hover .card-body h3 { color: var(--orange); }
+    .card-body p {
+      font-size: .88rem;
+      color: #666;
+      line-height: 1.8;
+      flex: 1;
+      margin-bottom: 1.4rem;
+    }
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: var(--ease);
+    }
+    .card-link span {
+      display: inline-block;
+      transition: transform .3s ease;
+    }
+    .card-link:hover span { transform: translateX(4px); }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: linear-gradient(135deg, var(--navy-dark), var(--navy-mid));
+      padding: 80px 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 80% at 50% 50%, rgba(255,126,0,.1), transparent);
+    }
+    .cta-band-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .cta-band h2 {
+      font-family: var(--font-d);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .cta-band h2 span { color: var(--orange); }
+    .cta-band p {
+      font-size: .97rem;
+      color: rgba(255,255,255,.6);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .cta-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-cta-primary {
+      background: var(--orange);
+      color: var(--white);
+      padding: .9rem 2rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: .92rem;
+      transition: var(--ease);
+      border: 2px solid var(--orange);
+    }
+    .btn-cta-primary:hover {
+      background: var(--orange-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255,126,0,.35);
+      color: var(--white);
+    }
+    .btn-cta-outline {
+      background: transparent;
+      color: var(--white);
+      padding: .9rem 2rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: .92rem;
+      border: 2px solid rgba(255,255,255,.35);
+      transition: var(--ease);
+    }
+    .btn-cta-outline:hover {
+      background: rgba(255,255,255,.1);
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 992px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .services-section { padding: 50px 1.2rem 70px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .intro-strip { padding: 40px 1.2rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <!-- ── HERO ── -->
+  <section class="page-hero">
+    <div class="hero-inner">
+      <div class="hero-label">Civil Consultancy</div>
+      <h1>Expertise &amp; <span>Services</span></h1>
+      <p>End-to-end engineering consultancy tailored to modern infrastructure — from strategic planning to on-site delivery.</p>
+      <nav class="breadcrumb-nav">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span style="color:rgba(255,255,255,.6)">Services</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ── INTRO STRIP ── -->
+  <div class="intro-strip">
+    <div class="container">
+      <h2>Comprehensive <span>Engineering Solutions</span></h2>
+      <p>We provide specialized consultancy and technical services across six core disciplines — each delivered with precision, accountability, and a commitment to lasting results.</p>
+    </div>
+  </div>
+
+  <!-- ── SERVICES GRID ── -->
+  <section class="services-section">
+    <div class="services-grid">
+
+      <!-- Business Strategy -->
+      <div class="service-card">
+        <div class="card-accent"></div>
+        <div class="card-img-wrap">
+          <img src="assets/images/service/business strategy.jpg" alt="Business Strategy">
+          <span class="card-tag">Strategy</span>
+        </div>
+        <div class="card-body">
+          <div class="card-icon">📊</div>
+          <h3>Business Strategy</h3>
+          <p>Strategic planning and feasibility studies for large-scale construction and urban development projects — from concept to capital allocation.</p>
+          <a href="services-details.html" class="card-link">Learn More <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Industrial Consultancy -->
+      <div class="service-card">
+        <div class="card-accent"></div>
+        <div class="card-img-wrap">
+          <img src="assets/images/service/industry.jpg" alt="Industrial Consultancy">
+          <span class="card-tag">Industry</span>
+        </div>
+        <div class="card-body">
+          <div class="card-icon">🏭</div>
+          <h3>Industrial Consultancy</h3>
+          <p>Optimizing industrial plant layouts and ensuring structural integrity for manufacturing facilities and heavy-industry environments.</p>
+          <a href="services-details.html" class="card-link">Learn More <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- ICT Management -->
+      <div class="service-card">
+        <div class="card-accent"></div>
+        <div class="card-img-wrap">
+          <img src="assets/images/service/ICT management.jpg" alt="ICT Management">
+          <span class="card-tag">Technology</span>
+        </div>
+        <div class="card-body">
+          <div class="card-icon">💻</div>
+          <h3>ICT Management</h3>
+          <p>Integrating smart technology and digital infrastructure into modern civil engineering designs for connected, future-ready cities.</p>
+          <a href="services-details.html" class="card-link">Learn More <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Energy & Environment -->
+      <div class="service-card">
+        <div class="card-accent"></div>
+        <div class="card-img-wrap">
+          <img src="assets/images/service/energy and environment.jpg" alt="Energy & Environment">
+          <span class="card-tag">Sustainability</span>
+        </div>
+        <div class="card-body">
+          <div class="card-icon">🌱</div>
+          <h3>Energy &amp; Environment</h3>
+          <p>Specialized focus on sustainable building practices, carbon-neutral construction, and renewable energy infrastructure integration.</p>
+          <a href="services-details.html" class="card-link">Learn More <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Oil & Gas -->
+      <div class="service-card">
+        <div class="card-accent"></div>
+        <div class="card-img-wrap">
+          <img src="assets/images/service/oil and gas industry.jpg" alt="Oil & Gas Industry">
+          <span class="card-tag">Oil &amp; Gas</span>
+        </div>
+        <div class="card-body">
+          <div class="card-icon">⚙️</div>
+          <h3>Oil &amp; Gas Industry</h3>
+          <p>Engineering services for the extraction and processing sectors, following strict international safety protocols and compliance standards.</p>
+          <a href="services-details.html" class="card-link">Learn More <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Project Investment -->
+      <div class="service-card">
+        <div class="card-accent"></div>
+        <div class="card-img-wrap">
+          <img src="assets/images/service/project investment.jpg" alt="Project Investment">
+          <span class="card-tag">Finance</span>
+        </div>
+        <div class="card-body">
+          <div class="card-icon">💰</div>
+          <h3>Project Investment</h3>
+          <p>Financial risk assessment and capital planning for multi-phase engineering ventures — balancing ambition with fiscal responsibility.</p>
+          <a href="services-details.html" class="card-link">Learn More <span>→</span></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CTA BAND ── -->
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <h2>Ready to Start Your <span>Next Project?</span></h2>
+      <p>Our team of expert engineers and consultants is ready to bring your infrastructure vision to life. Let's build something remarkable together.</p>
+      <div class="cta-btns">
+        <a href="contact.html" class="btn-cta-primary">Get a Free Quote</a>
+        <a href="project.html" class="btn-cta-outline">View Our Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+<script>
+    $(window).on('load', function() {
+        $('#preloader').fadeOut('slow');
+    });
+
+    $(function(){
+        $("#navbar-placeholder").load("navbar.html", function(response, status, xhr) {
+            if(status == "error") {
+                $("#navbar-placeholder").html(`
+                    <nav class="navbar navbar-expand-lg fixed-top">
+                        <div class="container">
+                            <a class="navbar-brand fw-bold" href="index.html"><i class="fas fa-hard-hat me-2"></i>CIVIL MASTER</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="mainNav">
+                                <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="project.html">Projects</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div style="height: 76px;"></div>
+                `);
+            }
+            $('body').css('padding-top', '0px');
+        });
+    });
+</script>
+</body>
+</html>

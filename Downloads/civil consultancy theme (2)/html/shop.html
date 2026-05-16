@@ -1,0 +1,1260 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop | Civil Consultancy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    /* ── RESET & VARIABLES ──────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:       #1A3C6E;
+      --navy-dark:  #0d2244;
+      --orange:     #E8681A;
+      --orange-lt:  #f07c33;
+      --orange-pale:#fdf0e6;
+      --white:      #ffffff;
+      --off-white:  #f7f8fc;
+      --gray-light: #eef0f6;
+      --gray-mid:   #8a9ab5;
+      --gray-dark:  #4a5568;
+      --text:       #1a2340;
+      --font-d:     'Cormorant Garamond', Georgia, serif;
+      --font-b:     'Outfit', sans-serif;
+      --shadow-xs:  0 1px 6px rgba(26,60,110,.07);
+      --shadow-sm:  0 4px 16px rgba(26,60,110,.10);
+      --shadow-md:  0 12px 40px rgba(26,60,110,.15);
+      --shadow-lg:  0 28px 80px rgba(26,60,110,.22);
+      --r:          14px;
+      --r-sm:       8px;
+      --ease:       all .3s cubic-bezier(.4,0,.2,1);
+      --maxw:       1280px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); color: var(--text); background: var(--white); overflow-x: hidden; }
+    img  { max-width: 100%; display: block; }
+    a    { text-decoration: none; color: inherit; transition: var(--ease); }
+    ul   { list-style: none; }
+    button { cursor: pointer; font-family: var(--font-b); border: none; background: none; }
+
+    /* ── UTILITIES ──────────────────────────────────── */
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 2rem; }
+    .btn { display: inline-flex; align-items: center; gap: .45rem; padding: .8rem 1.9rem;
+           border-radius: var(--r-sm); font-weight: 600; font-size: .88rem;
+           letter-spacing: .03em; transition: var(--ease); border: 2px solid transparent; }
+    .btn-primary { background: var(--orange); color: var(--white); border-color: var(--orange); }
+    .btn-primary:hover { background: var(--orange-lt); transform: translateY(-2px);
+                         box-shadow: 0 8px 22px rgba(232,104,26,.35); }
+    .btn-outline  { background: transparent; color: var(--navy); border-color: var(--navy); }
+    .btn-outline:hover  { background: var(--navy); color: var(--white); }
+    .section-label { display: inline-flex; align-items: center; gap: .5rem; color: var(--orange);
+                     font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .section-label::before { content:''; width:28px; height:2px; background:var(--orange); border-radius:2px; }
+
+    /* ── TOPBAR ─────────────────────────────────────── */
+    .topbar { background: var(--navy-dark); padding: .6rem 0; border-bottom: 1px solid rgba(232,104,26,.25); }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+    .topbar-info { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .topbar-info span { font-size: .78rem; color: rgba(255,255,255,.7); display: flex; align-items: center; gap: .4rem; }
+    .topbar-info span em { color: var(--orange); font-style: normal; }
+    .topbar-right { display: flex; align-items: center; gap: 1.2rem; }
+    .topbar-right a { font-size: .78rem; color: rgba(255,255,255,.65); font-weight: 500; }
+    .topbar-right a:hover { color: var(--orange); }
+    .topbar-cart-badge { background: var(--orange); color: var(--white); border-radius: 50%;
+                         width: 18px; height: 18px; font-size: .65rem; font-weight: 700;
+                         display: inline-flex; align-items: center; justify-content: center; }
+
+    /* ── NAVBAR ─────────────────────────────────────── */
+    /* .navbar { background: var(--white); box-shadow: var(--shadow-sm); position: sticky; top: 0; z-index: 100;
+              border-top: 3px solid var(--orange); }
+    .nav-inner { height: 76px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: .75rem; }
+    .nav-logo-icon { width: 42px; height: 42px; background: var(--orange); border-radius: 10px;
+                     display: flex; align-items: center; justify-content: center; }
+    .nav-logo-icon svg { width: 24px; height: 24px; fill: white; }
+    .nav-logo-text { font-family: var(--font-d); font-size: 1.3rem; font-weight: 700; color: var(--navy); line-height: 1.1; }
+    .nav-logo-text span { display: block; font-size: .68rem; font-family: var(--font-b); font-weight: 500;
+                          color: var(--gray-mid); letter-spacing: .12em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 2.2rem; }
+    .nav-item { position: relative; }
+    .nav-link { font-weight: 500; font-size: .88rem; color: var(--gray-dark); letter-spacing: .03em;
+                padding: .4rem 0; position: relative; }
+    .nav-link::after { content:''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px;
+                       background: var(--orange); transform: scaleX(0); transform-origin: left; transition: var(--ease); }
+    .nav-link:hover, .nav-link.active { color: var(--orange); }
+    .nav-link.active::after, .nav-link:hover::after { transform: scaleX(1); }
+    .nav-actions { display: flex; align-items: center; gap: 1rem; }
+    .nav-icon-btn { width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--gray-light);
+                    display: flex; align-items: center; justify-content: center; color: var(--navy);
+                    font-size: .95rem; transition: var(--ease); position: relative; }
+    .nav-icon-btn:hover { border-color: var(--orange); color: var(--orange); }
+    .nav-icon-badge { position: absolute; top: -5px; right: -5px; background: var(--orange); color: var(--white);
+                      border-radius: 50%; width: 18px; height: 18px; font-size: .62rem; font-weight: 700;
+                      display: flex; align-items: center; justify-content: center; border: 2px solid var(--white); } */
+
+    /* ── PAGE HERO ───────────────────────────────────── */
+    .page-hero { background: var(--navy); padding: 64px 0 52px; position: relative; overflow: hidden; }
+    .page-hero::before { content:''; position: absolute; top: -80px; right: -80px; width: 380px; height: 380px;
+                         border-radius: 50%; background: radial-gradient(circle, rgba(232,104,26,.14), transparent 65%); }
+    .page-hero::after  { content:''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+                         background: linear-gradient(90deg, var(--orange), transparent); }
+    .page-hero-grid { display: flex; align-items: center; justify-content: space-between;
+                      flex-wrap: wrap; gap: 1.5rem; position: relative; z-index: 1; }
+    .page-hero h1 { font-family: var(--font-d); font-size: 2.8rem; font-weight: 700; color: var(--white); line-height: 1.1; }
+    .page-hero h1 span { color: var(--orange); }
+    .breadcrumb { display: flex; align-items: center; gap: .5rem; margin-top: .6rem; }
+    .breadcrumb a, .breadcrumb span { font-size: .85rem; color: rgba(255,255,255,.5); }
+    .breadcrumb a:hover { color: var(--orange); }
+    .breadcrumb .sep { color: rgba(255,255,255,.25); }
+    .breadcrumb .current { color: var(--orange); font-weight: 500; }
+    .hero-search { display: flex; gap: 0; }
+    .hero-search input { width: 280px; padding: .8rem 1.2rem; border: none; border-radius: var(--r-sm) 0 0 var(--r-sm);
+                         font-family: var(--font-b); font-size: .9rem; outline: none; }
+    .hero-search button { padding: .8rem 1.5rem; background: var(--orange); color: var(--white);
+                          border-radius: 0 var(--r-sm) var(--r-sm) 0; font-weight: 600; font-size: .88rem;
+                          border: none; cursor: pointer; transition: var(--ease); }
+    .hero-search button:hover { background: var(--orange-lt); }
+
+    /* ── SHOP LAYOUT ─────────────────────────────────── */
+    .shop-section { padding: 72px 0 100px; background: var(--off-white); }
+    .shop-layout  { display: grid; grid-template-columns: 268px 1fr; gap: 2.5rem; align-items: start; }
+
+    /* ── SIDEBAR ─────────────────────────────────────── */
+    .sidebar { position: sticky; top: 88px; display: flex; flex-direction: column; gap: 1.5rem; }
+    .sidebar-card { background: var(--white); border-radius: var(--r); padding: 1.8rem;
+                    box-shadow: var(--shadow-xs); }
+    .sidebar-title { font-family: var(--font-d); font-size: 1.1rem; color: var(--navy);
+                     padding-bottom: .75rem; margin-bottom: 1.2rem;
+                     border-bottom: 2px solid var(--orange); display: flex; align-items: center; gap: .5rem; }
+    .filter-list li { display: flex; align-items: center; justify-content: space-between;
+                      padding: .6rem 0; border-bottom: 1px solid var(--gray-light);
+                      font-size: .9rem; color: var(--gray-dark); cursor: pointer; transition: var(--ease); }
+    .filter-list li:last-child { border-bottom: none; }
+    .filter-list li:hover, .filter-list li.active { color: var(--orange); }
+    .filter-list li.active { font-weight: 600; }
+    .filter-count { background: var(--gray-light); color: var(--gray-mid); border-radius: 100px;
+                    padding: .1rem .55rem; font-size: .72rem; font-weight: 700; transition: var(--ease); }
+    .filter-list li.active .filter-count, .filter-list li:hover .filter-count {
+      background: var(--orange-pale); color: var(--orange); }
+
+    .price-slider-track { height: 4px; background: var(--gray-light); border-radius: 2px; margin: 1.2rem 0 .8rem; position: relative; }
+    .price-slider-fill  { height: 100%; background: var(--orange); border-radius: 2px; width: 70%; }
+    .price-inputs { display: flex; gap: .75rem; }
+    .price-inputs input { flex: 1; border: 1.5px solid var(--gray-light); border-radius: var(--r-sm);
+                          padding: .55rem .75rem; font-family: var(--font-b); font-size: .85rem;
+                          color: var(--text); outline: none; transition: var(--ease); }
+    .price-inputs input:focus { border-color: var(--orange); }
+
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .3rem; }
+    .tag { padding: .3rem .85rem; border-radius: 100px; border: 1.5px solid var(--gray-light);
+           font-size: .78rem; font-weight: 500; color: var(--gray-dark); cursor: pointer; transition: var(--ease); }
+    .tag:hover, .tag.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+    .promo-card { background: var(--navy); border-radius: var(--r); padding: 2rem; text-align: center; }
+    .promo-card h4 { font-family: var(--font-d); font-size: 1.3rem; color: var(--white); margin-bottom: .5rem; }
+    .promo-card p  { font-size: .85rem; color: rgba(255,255,255,.6); margin-bottom: 1.2rem; }
+    .promo-badge { display: inline-block; background: var(--orange); color: var(--white); font-family: var(--font-d);
+                   font-size: 2rem; font-weight: 700; padding: .3rem 1.2rem; border-radius: var(--r-sm); margin-bottom: 1rem; }
+    .promo-card .btn { background: var(--white); color: var(--orange); border-color: var(--white); width: 100%; justify-content: center; }
+    .promo-card .btn:hover { background: var(--orange); color: var(--white); border-color: var(--orange); }
+
+    /* ── SHOP MAIN ────────────────────────────────────── */
+    .shop-main {}
+    .shop-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+                gap: 1rem; margin-bottom: 2rem; padding: 1.1rem 1.6rem;
+                background: var(--white); border-radius: var(--r); box-shadow: var(--shadow-xs); }
+    .shop-bar-left { font-size: .9rem; color: var(--gray-mid); }
+    .shop-bar-left strong { color: var(--navy); font-weight: 600; }
+    .shop-bar-right { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+    .shop-bar-sort { display: flex; align-items: center; gap: .5rem; font-size: .88rem; color: var(--gray-dark); }
+    .shop-bar-sort select { border: 1.5px solid var(--gray-light); border-radius: var(--r-sm);
+                            padding: .45rem .9rem; font-family: var(--font-b); font-size: .85rem;
+                            color: var(--text); outline: none; cursor: pointer; background: var(--white);
+                            appearance: none; padding-right: 2rem;
+                            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%231A3C6E' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+                            background-repeat: no-repeat; background-position: right .6rem center; background-size: 14px; }
+    .shop-bar-sort select:focus { border-color: var(--orange); }
+    .view-toggle { display: flex; gap: .3rem; }
+    .view-btn { width: 34px; height: 34px; border-radius: 6px; border: 1.5px solid var(--gray-light);
+                display: flex; align-items: center; justify-content: center; color: var(--gray-mid);
+                font-size: .85rem; cursor: pointer; transition: var(--ease); background: var(--white); }
+    .view-btn.active, .view-btn:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-pale); }
+
+    /* ── ACTIVE FILTERS ──────────────────────────────── */
+    .active-filters { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .active-filter-label { font-size: .78rem; font-weight: 700; color: var(--gray-mid); letter-spacing: .06em; text-transform: uppercase; }
+    .active-filter-tag { display: flex; align-items: center; gap: .4rem; background: var(--navy);
+                         color: var(--white); border-radius: 100px; padding: .25rem .8rem;
+                         font-size: .78rem; font-weight: 500; }
+    .active-filter-tag button { color: rgba(255,255,255,.7); font-size: .8rem; width: 16px; height: 16px;
+                                 display: flex; align-items: center; justify-content: center; border-radius: 50%;
+                                 transition: var(--ease); }
+    .active-filter-tag button:hover { color: var(--white); background: rgba(255,255,255,.2); }
+    .clear-all { font-size: .78rem; font-weight: 600; color: var(--orange); margin-left: .3rem; }
+    .clear-all:hover { text-decoration: underline; }
+
+    /* ── PRODUCTS GRID ───────────────────────────────── */
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+
+    /* ── PRODUCT CARD ────────────────────────────────── */
+    .product-card { background: var(--white); border-radius: var(--r); overflow: hidden;
+                    box-shadow: var(--shadow-xs); transition: var(--ease);
+                    border: 1.5px solid var(--gray-light); display: flex; flex-direction: column; }
+    .product-card:hover { box-shadow: var(--shadow-md); transform: translateY(-6px); border-color: rgba(232,104,26,.2); }
+
+    .product-img-wrap { position: relative; aspect-ratio: 1 / 1; overflow: hidden; background: var(--off-white); }
+    .product-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .product-card:hover .product-img-wrap img { transform: scale(1.07); }
+
+    /* Badges */
+    .product-badges { position: absolute; top: .85rem; left: .85rem; display: flex; flex-direction: column; gap: .35rem; z-index: 2; }
+    .badge { display: inline-block; padding: .22rem .7rem; border-radius: 6px;
+             font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .badge-new  { background: var(--navy); color: var(--white); }
+    .badge-sale { background: var(--orange); color: var(--white); }
+    .badge-hot  { background: #c0392b; color: var(--white); }
+
+    /* Action overlay */
+    .product-actions { position: absolute; top: .85rem; right: .85rem;
+                       display: flex; flex-direction: column; gap: .4rem;
+                       opacity: 0; transform: translateX(10px); transition: var(--ease); z-index: 2; }
+    .product-card:hover .product-actions { opacity: 1; transform: translateX(0); }
+    .product-action-btn { width: 36px; height: 36px; border-radius: 50%; background: var(--white);
+                          box-shadow: var(--shadow-sm); display: flex; align-items: center; justify-content: center;
+                          color: var(--navy); font-size: .88rem; transition: var(--ease);
+                          border: 1.5px solid var(--gray-light); cursor: pointer; }
+    .product-action-btn:hover { background: var(--orange); color: var(--white); border-color: var(--orange); }
+
+    /* Quick add overlay */
+    .quick-add-overlay { position: absolute; bottom: 0; left: 0; right: 0;
+                         background: var(--navy); color: var(--white);
+                         padding: .75rem; text-align: center; font-size: .83rem; font-weight: 600;
+                         display: flex; align-items: center; justify-content: center; gap: .4rem;
+                         transform: translateY(100%); transition: var(--ease); cursor: pointer; }
+    .quick-add-overlay:hover { background: var(--orange); }
+    .product-card:hover .quick-add-overlay { transform: translateY(0); }
+
+    /* Body */
+    .product-body { padding: 1.3rem; flex: 1; display: flex; flex-direction: column; }
+    .product-category { font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+                        text-transform: uppercase; color: var(--orange); margin-bottom: .3rem; }
+    .product-name { font-size: 1rem; font-weight: 600; color: var(--navy); line-height: 1.35;
+                    margin-bottom: .6rem; flex: 1; transition: var(--ease); }
+    .product-card:hover .product-name { color: var(--orange); }
+    .product-rating { display: flex; align-items: center; gap: .3rem; margin-bottom: .7rem; }
+    .stars { display: flex; gap: 1px; }
+    .stars span { color: var(--orange); font-size: .82rem; line-height: 1; }
+    .stars span.empty { color: var(--gray-light); }
+    .rating-count { font-size: .75rem; color: var(--gray-mid); }
+    .product-price { display: flex; align-items: baseline; gap: .5rem; margin-bottom: 1rem; }
+    .price-current { font-family: var(--font-d); font-size: 1.4rem; font-weight: 700; color: var(--navy); line-height: 1; }
+    .price-old { font-size: .88rem; color: var(--gray-mid); text-decoration: line-through; }
+    .price-save { font-size: .72rem; font-weight: 700; color: var(--orange); background: var(--orange-pale);
+                  padding: .15rem .5rem; border-radius: 4px; }
+    .add-to-cart-btn { width: 100%; padding: .75rem; background: var(--navy); color: var(--white);
+                       border-radius: var(--r-sm); font-size: .88rem; font-weight: 600;
+                       display: flex; align-items: center; justify-content: center; gap: .45rem;
+                       transition: var(--ease); border: 2px solid transparent; }
+    .add-to-cart-btn:hover { background: var(--orange); }
+    .add-to-cart-btn.added { background: var(--navy-dark); }
+
+    /* ── PAGINATION ──────────────────────────────────── */
+    .pagination { display: flex; align-items: center; justify-content: center; gap: .5rem; margin-top: 3rem; }
+    .page-btn { width: 42px; height: 42px; border-radius: var(--r-sm); border: 1.5px solid var(--gray-light);
+                display: flex; align-items: center; justify-content: center; font-size: .9rem;
+                font-weight: 600; color: var(--gray-dark); cursor: pointer; transition: var(--ease);
+                background: var(--white); }
+    .page-btn:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-pale); }
+    .page-btn.active { background: var(--orange); border-color: var(--orange); color: var(--white); box-shadow: var(--shadow-sm); }
+    .page-btn.arrow { font-size: 1rem; }
+
+    /* ── PROMO BANNER ────────────────────────────────── */
+    .promo-banner { background: var(--navy); border-radius: var(--r); padding: 2rem 2.5rem;
+                    display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center;
+                    margin-bottom: 2.5rem; position: relative; overflow: hidden; }
+    .promo-banner::before { content:''; position: absolute; top: -60px; right: 200px; width: 220px; height: 220px;
+                            border-radius: 50%; background: radial-gradient(circle, rgba(232,104,26,.18), transparent 65%); }
+    .promo-banner-text h3 { font-family: var(--font-d); font-size: 1.5rem; color: var(--white); margin-bottom: .3rem; }
+    .promo-banner-text p  { font-size: .88rem; color: rgba(255,255,255,.6); }
+    .promo-banner-text em { color: var(--orange); font-style: normal; font-weight: 700; }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    .footer { background: var(--navy-dark); padding: 72px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 56px;
+                   border-bottom: 1px solid rgba(255,255,255,.07); }
+    .footer-logo { display: flex; align-items: center; gap: .7rem; margin-bottom: 1.1rem; }
+    .footer-logo-icon { width: 42px; height: 42px; background: var(--orange); border-radius: 10px;
+                        display: flex; align-items: center; justify-content: center; }
+    .footer-logo-icon svg { width: 24px; height: 24px; fill: white; }
+    .footer-logo-text { font-family: var(--font-d); font-size: 1.25rem; font-weight: 700; color: var(--white); line-height: 1.1; }
+    .footer-logo-text span { display: block; font-size: .68rem; font-family: var(--font-b); font-weight: 500;
+                             color: rgba(255,255,255,.4); letter-spacing: .12em; text-transform: uppercase; }
+    .footer-desc { color: rgba(255,255,255,.5); font-size: .88rem; line-height: 1.8; margin-bottom: 1.6rem; }
+    .footer-social { display: flex; gap: .55rem; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.08);
+                       border: 1px solid rgba(255,255,255,.12); display: flex; align-items: center;
+                       justify-content: center; color: rgba(255,255,255,.55); font-size: .82rem; transition: var(--ease); }
+    .footer-social a:hover { background: var(--orange); border-color: var(--orange); color: var(--white); }
+    .footer-col-title { font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+                        color: var(--white); margin-bottom: 1.4rem; padding-bottom: .7rem;
+                        border-bottom: 2px solid var(--orange); display: inline-block; }
+    .footer-links li { margin-bottom: .7rem; }
+    .footer-links a { color: rgba(255,255,255,.5); font-size: .88rem; display: flex; align-items: center;
+                      gap: .4rem; transition: var(--ease); }
+    .footer-links a::before { content:'→'; font-size: .68rem; color: var(--orange); opacity: 0;
+                              transform: translateX(-4px); transition: var(--ease); }
+    .footer-links a:hover { color: var(--white); padding-left: .3rem; }
+    .footer-links a:hover::before { opacity: 1; transform: translateX(0); }
+    .footer-contact-item { display: flex; gap: .85rem; margin-bottom: 1rem; }
+    .footer-contact-icon { width: 34px; height: 34px; background: rgba(232,104,26,.15); border-radius: 8px;
+                           display: flex; align-items: center; justify-content: center; color: var(--orange);
+                           flex-shrink: 0; font-size: .85rem; }
+    .footer-contact-label { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+                            color: rgba(255,255,255,.4); margin-bottom: .1rem; }
+    .footer-contact-value { font-size: .88rem; color: rgba(255,255,255,.7); }
+    .footer-bottom { padding: 1.4rem 0; }
+    .footer-bottom-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-size: .8rem; color: rgba(255,255,255,.3); }
+    .footer-copy span { color: var(--orange); }
+    .footer-bottom-links { display: flex; gap: 1.4rem; }
+    .footer-bottom-links a { font-size: .8rem; color: rgba(255,255,255,.3); transition: var(--ease); }
+    .footer-bottom-links a:hover { color: var(--orange); }
+
+    /* ── SCROLL TOP ──────────────────────────────────── */
+    .scroll-top { position: fixed; bottom: 2rem; right: 2rem; width: 44px; height: 44px;
+                  background: var(--orange); color: var(--white); border-radius: 50%; border: none;
+                  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+                  box-shadow: var(--shadow-md); cursor: pointer; opacity: 0; visibility: hidden;
+                  transition: var(--ease); z-index: 999; }
+    .scroll-top.show { opacity: 1; visibility: visible; }
+    .scroll-top:hover { background: var(--navy); transform: translateY(-3px); }
+
+    /* ── TOAST NOTIFICATION ──────────────────────────── */
+    .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px);
+             background: var(--navy); color: var(--white); padding: .85rem 2rem;
+             border-radius: var(--r); box-shadow: var(--shadow-lg);
+             display: flex; align-items: center; gap: .75rem; font-size: .9rem; font-weight: 500;
+             opacity: 0; transition: var(--ease); z-index: 9999; border-left: 4px solid var(--orange);
+             pointer-events: none; white-space: nowrap; }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .toast-icon { width: 28px; height: 28px; background: var(--orange); border-radius: 50%;
+                  display: flex; align-items: center; justify-content: center; font-size: .85rem; flex-shrink: 0; }
+
+    /* ── QUICK VIEW MODAL ────────────────────────────── */
+    .qv-modal { position: fixed; inset: 0; background: rgba(13,34,68,.65); backdrop-filter: blur(4px);
+                z-index: 2000; display: flex; align-items: center; justify-content: center;
+                padding: 1.5rem; opacity: 0; visibility: hidden; transition: var(--ease); }
+    .qv-modal.open { opacity: 1; visibility: visible; }
+    .qv-modal-inner { background: var(--white); border-radius: var(--r); max-width: 780px; width: 100%;
+                      display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;
+                      box-shadow: var(--shadow-lg); transform: scale(.94); transition: var(--ease);
+                      max-height: 90vh; position: relative; }
+    .qv-modal.open .qv-modal-inner { transform: scale(1); }
+    .qv-img-wrap { background: var(--off-white); aspect-ratio: 1; overflow: hidden; }
+    .qv-img { width: 100%; height: 100%; object-fit: cover; }
+    .qv-body { padding: 2.2rem; overflow-y: auto; display: flex; flex-direction: column; }
+    .qv-category { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+                   color: var(--orange); margin-bottom: .4rem; }
+    .qv-name { font-family: var(--font-d); font-size: 1.65rem; color: var(--navy);
+               line-height: 1.2; margin-bottom: .75rem; }
+    .qv-rating { display: flex; align-items: center; gap: .4rem; margin-bottom: 1.1rem; }
+    .qv-price { display: flex; align-items: baseline; gap: .55rem; margin-bottom: 1.4rem; flex-wrap: wrap; }
+    .qv-price-current { font-family: var(--font-d); font-size: 2rem; font-weight: 700; color: var(--navy); }
+    .qv-price-old  { font-size: .95rem; color: var(--gray-mid); text-decoration: line-through; }
+    .qv-price-save { font-size: .75rem; font-weight: 700; color: var(--orange); background: var(--orange-pale);
+                     padding: .2rem .6rem; border-radius: 4px; }
+    .qv-desc { font-size: .9rem; color: var(--gray-dark); line-height: 1.75; margin-bottom: 1.5rem; flex: 1;
+               border-top: 1px solid var(--gray-light); padding-top: 1rem; }
+    .qv-add-btn { width: 100%; padding: .9rem; background: var(--orange); color: var(--white);
+                  border-radius: var(--r-sm); font-size: .92rem; font-weight: 700; cursor: pointer;
+                  border: 2px solid var(--orange); transition: var(--ease);
+                  display: flex; align-items: center; justify-content: center; gap: .5rem; font-family: var(--font-b); }
+    .qv-add-btn:hover { background: var(--orange-lt); }
+    .qv-close { position: absolute; top: 1rem; right: 1rem; width: 36px; height: 36px;
+                border-radius: 50%; background: rgba(255,255,255,.9); box-shadow: var(--shadow-sm);
+                display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+                cursor: pointer; color: var(--navy); transition: var(--ease); z-index: 10; border: none; font-family: var(--font-b); }
+    .qv-close:hover { background: var(--orange); color: var(--white); }
+    @media (max-width: 600px) {
+      .qv-modal-inner { grid-template-columns: 1fr; }
+      .qv-img-wrap { aspect-ratio: 16/9; }
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid   { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 860px) {
+      .shop-layout   { grid-template-columns: 1fr; }
+      .sidebar       { position: static; }
+      .promo-banner  { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .container      { padding: 0 1.2rem; }
+      .products-grid  { grid-template-columns: 1fr 1fr; }
+      .page-hero h1   { font-size: 2rem; }
+      .hero-search input { width: 200px; }
+      .footer-grid    { grid-template-columns: 1fr; }
+      .nav-links      { display: none; }
+    }
+    @media (max-width: 440px) {
+      .products-grid  { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ TOPBAR ══════════════════════════════════════════ -->
+<!-- <div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <div class="topbar-info">
+        <span>📞 <em>+254 712 345 678</em></span>
+        <span>✉️ info@civilconsultancy.co.ke</span>
+        <span>🕐 Mon–Fri: 8am – 5:30pm</span>
+      </div>
+      <div class="topbar-right">
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="cart.html" style="display:flex;align-items:center;gap:.35rem;color:var(--orange);font-weight:600">
+          🛒 Cart <span class="topbar-cart-badge" id="cartBadge">3</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- ══ NAVBAR ══════════════════════════════════════════ -->
+<div id="navbar-placeholder"></div>
+
+<!-- ══ PAGE HERO ══════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-grid">
+      <div>
+        <div class="section-label" style="color:var(--orange);margin-bottom:.8rem">Engineering Resources</div>
+        <h1>Professional <span>Equipment</span> & Resources</h1>
+        <nav class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="sep">/</span>
+          <span class="current">Shop</span>
+        </nav>
+      </div>
+      <form class="hero-search" onsubmit="return false">
+        <input type="text" placeholder="Search products…" id="searchInput">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SHOP SECTION ════════════════════════════════════ -->
+<section class="shop-section">
+  <div class="container">
+
+    <!-- PROMO BANNER -->
+    <div class="promo-banner">
+      <div class="promo-banner-text">
+        <h3>🔥 Limited Time Offer — Up to <em>50% Off</em> Safety Equipment</h3>
+        <p>Stock up on essential PPE and engineering reference materials at unbeatable prices. Offer ends Friday.</p>
+      </div>
+      <a href="#" class="btn btn-primary" style="white-space:nowrap;flex-shrink:0">Shop the Sale →</a>
+    </div>
+
+    <div class="shop-layout">
+
+      <!-- ── SIDEBAR ──────────────────────────────────── -->
+      <aside class="sidebar">
+
+        <!-- Search -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">🔍 Search</div>
+          <div style="display:flex;gap:.5rem">
+            <input id="sidebarSearch" type="text" placeholder="Find a product…" style="flex:1;border:1.5px solid var(--gray-light);border-radius:var(--r-sm);padding:.55rem .85rem;font-family:var(--font-b);font-size:.88rem;outline:none;">
+          </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">📦 Categories</div>
+          <ul class="filter-list" id="categoryFilters">
+            <li class="active" data-cat="all" onclick="filterByCategory(this)">
+              All Products <span class="filter-count">11</span>
+            </li>
+            <li data-cat="books" onclick="filterByCategory(this)">
+              Books & Manuals <span class="filter-count">7</span>
+            </li>
+            <li data-cat="ppe" onclick="filterByCategory(this)">
+              PPE & Safety Gear <span class="filter-count">3</span>
+            </li>
+            <li data-cat="tools" onclick="filterByCategory(this)">
+              Engineering Tools <span class="filter-count">1</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Price Range -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">💰 Price Range</div>
+          <div class="price-slider-track"><div class="price-slider-fill" id="priceFill"></div></div>
+          <div class="price-inputs">
+            <input type="number" id="minPrice" value="0" placeholder="Min $">
+            <input type="number" id="maxPrice" value="600" placeholder="Max $">
+          </div>
+          <button onclick="applyPriceFilter()" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:1rem;padding:.65rem">Apply Filter</button>
+        </div>
+
+        <!-- Tags -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">🏷️ Tags</div>
+          <div class="tag-cloud">
+            <span class="tag active" onclick="this.classList.toggle('active')">Structural</span>
+            <span class="tag" onclick="this.classList.toggle('active')">Finance</span>
+            <span class="tag" onclick="this.classList.toggle('active')">Safety</span>
+            <span class="tag" onclick="this.classList.toggle('active')">Reference</span>
+            <span class="tag" onclick="this.classList.toggle('active')">Analysis</span>
+            <span class="tag" onclick="this.classList.toggle('active')">PPE</span>
+            <span class="tag" onclick="this.classList.toggle('active')">Training</span>
+            <span class="tag" onclick="this.classList.toggle('active')">Manual</span>
+          </div>
+        </div>
+
+        <!-- Promo CTA -->
+        <div class="promo-card">
+          <h4>Bulk Orders?</h4>
+          <p>Order 5+ items and get an additional 10% off your entire cart.</p>
+          <div class="promo-badge">-10%</div>
+          <a href="contact.html" class="btn">Contact Sales Team</a>
+        </div>
+
+      </aside>
+
+      <!-- ── SHOP MAIN ─────────────────────────────────── -->
+      <div class="shop-main">
+
+        <!-- Bar -->
+        <div class="shop-bar">
+          <div class="shop-bar-left">Showing <strong id="productCount">11</strong> products</div>
+          <div class="shop-bar-right">
+            <div class="shop-bar-sort">
+              Sort:
+              <select id="sortSelect" onchange="sortProducts(this.value)">
+                <option value="default">Featured</option>
+                <option value="price-asc">Price: Low → High</option>
+                <option value="price-desc">Price: High → Low</option>
+                <option value="name">Name A–Z</option>
+              </select>
+            </div>
+            <div class="view-toggle">
+              <button class="view-btn active" onclick="setView('grid', this)" title="Grid view">⊞</button>
+              <button class="view-btn" onclick="setView('list', this)" title="List view">☰</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Filters -->
+        <div class="active-filters" id="activeFilters">
+          <span class="active-filter-label">Filters:</span>
+          <span class="active-filter-tag">All Categories <button onclick="clearFilter('cat')">✕</button></span>
+          <a href="#" class="clear-all" onclick="clearAllFilters();return false">Clear all</a>
+        </div>
+
+        <!-- Products -->
+        <div class="products-grid" id="productsGrid">
+
+          <!-- PRODUCT 1 -->
+          <div class="product-card" data-cat="books" data-price="99" data-name="finance book">
+            <div class="product-img-wrap">
+              <img src="assets/images/shop/finance book.png" alt="Finance Book">
+              <div class="product-badges"><span class="badge badge-new">New</span></div>
+              <div class="product-actions">
+                <button class="product-action-btn" title="Add to Wishlist" onclick="showToast('Added to wishlist ♡')">♡</button>
+                <button class="product-action-btn" title="Quick View">👁</button>
+              </div>
+              <div class="quick-add-overlay" onclick="addToCart(this)">🛒 Quick Add</div>
+            </div>
+            <div class="product-body">
+              <div class="product-category">Books & Manuals</div>
+              <div class="product-name">Finance Book</div>
+              <div class="product-rating">
+                <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span class="empty">★</span></div>
+                <span class="rating-count">(24)</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">$99</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart(this)">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- PRODUCT 2 -->
+          <div class="product-card" data-cat="books" data-price="49" data-name="finance book 1">
+            <div class="product-img-wrap">
+              <img src="assets/images/shop/finance book1.png" alt="Finance Book">
+              <div class="product-badges"><span class="badge badge-sale">50% Off</span></div>
+              <div class="product-actions">
+                <button class="product-action-btn" title="Wishlist" onclick="showToast('Added to wishlist ♡')">♡</button>
+                <button class="product-action-btn" title="Quick View">👁</button>
+              </div>
+              <div class="quick-add-overlay" onclick="addToCart(this)">🛒 Quick Add</div>
+            </div>
+            <div class="product-body">
+              <div class="product-category">Books & Manuals</div>
+              <div class="product-name">Finance Book — Premium Edition</div>
+              <div class="product-rating">
+                <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <span class="rating-count">(18)</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">$49</span>
+                <span class="price-old">$98</span>
+                <span class="price-save">Save 50%</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart(this)">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- PRODUCT 3 -->
+          <div class="product-card" data-cat="books" data-price="29" data-name="finance book 2">
+            <div class="product-img-wrap">
+              <img src="assets/images/shop/finance book2.png" alt="Finance Book">
+              <div class="product-actions">
+                <button class="product-action-btn" onclick="showToast('Added to wishlist ♡')">♡</button>
+                <button class="product-action-btn">👁</button>
+              </div>
+              <div class="quick-add-overlay" onclick="addToCart(this)">🛒 Quick Add</div>
+            </div>
+            <div class="product-body">
+              <div class="product-category">Books & Manuals</div>
+              <div class="product-name">Finance Book — Compact Guide</div>
+              <div class="product-rating">
+                <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span class="empty">★</span></div>
+                <span class="rating-count">(9)</span>
+              </div>
+              <div class="product-price"><span class="price-current">$29</span></div>
+              <button class="add-to-cart-btn" onclick="addToCart(this)">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- PRODUCT 4 -->
+          <div class="product-card" data-cat="books" data-price="19" data-name="financial intelligence">
+            <div class="product-img-wrap">
+              <img src="assets/images/shop/financial intelligence book.png" alt="Financial Intelligence">
+              <div class="product-badges"><span class="badge badge-new">New</span></div>
+              <div class="product-actions">
+                <button class="product-action-btn" onclick="showToast('Added to wishlist ♡')">♡</button>
+                <button class="product-action-btn">👁</button>
+              </div>
+              <div class="quick-add-overlay" onclick="addToCart(this)">🛒 Quick Add</div>
+            </div>
+            <div class="product-body">
+              <div class="product-category">Books & Manuals</div>
+              <div class="product-name">Financial Intelligence Book</div>
+              <div class="product-rating">
+                <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <span class="rating-count">(41)</span>
+              </div>
+              <div class="product-price"><span class="price-current">$19</span></div>
+              <button class="add-to-cart-btn" onclick="addToCart(this)">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- PRODUCT 5 -->
+          <div class="product-card" data-cat="books" data-price="49.5" data-name="fundamentals structural analysis">
+            <div class="product-img-wrap">
+              <img src="assets/images/shop/Fundamentals of structural.png" alt="Structural Analysis">
+              <div class="product-badges"><span class="badge badge-sale">50% Off</span><span class="badge badge-hot">Bestseller</span></div>
+              <div class="product-actions">
+                <button class="product-action-btn" onclick="showToast('Added to wishlist ♡')">♡</button>
+                <button class="product-action-btn">👁</button>
+              </div>
+              <div class="quick-add-overlay" onclick="addToCart(this)">🛒 Quick Add</div>
+            </div>
+            <div class="product-body">
+              <div class="product-category">Books & Manuals</div>
+              <div class="product-name">Fundamentals of Structural Analysis</div>
+              <div class="product-rating">
+                <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <span class="rating-count">(67)</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">$49.50</span>
+                <span class="price-old">$99</span>
+                <span class="price-save">Save 50%</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart(this)">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- PRODUCT 6 -->
+          <div class="product-card" data-cat="books" data-price="599.99" data-name="psychology getting money">
+            <div class="product-img-wrap">
+              <img src="assets/images/shop/psychology of getting money.png" alt="Psychology of Money">
+              <div class="product-badges"><span class="badge badge-hot">Premium</span></div>
+              <div class="product-actions">
+                <button class="product-action-btn" onclick="showToast('Added to wishlist ♡')">♡</button>
+                <button class="product-action-btn">👁</button>
+              </div>
+              <div class="quick-add-overlay" onclick="addToCart(this)">🛒 Quick Add</div>
+            </div>
+            <div class="product-body">
+              <div class="product-category">Books & Manuals</div>
+              <div class="product-name">Psychology of Getting Money</div>
+              <div class="product-rating">
+                <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span class="empty">★</span></div>
+                <span class="rating-count">(12)</span>
+              </div>
+              <div class="product-price"><span class="price-current">$599.99</span></div>
+              <button class="add-to-cart-btn" onclick="addToCart(this)">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- PRODUCT 7 -->
+          <div class="product-card" data-cat="books" data-price="14.59" data-name="structural integrity manual">
+            <div class="product-img-wrap">
+              <img src="assets/images/shop/structural integrity manual v4.0.png" alt="Structural Manual">
+              <div class="product-actions">
+                <button class="product-action-btn" onclick="showToast('Added to wishlist ♡')">♡</button>
+                <button class="product-action-btn">👁</button>
+              </div>
+              <div class="quick-add-overlay" onclick="addToCart(this)">🛒 Quick Add</div>
+            </div>
+            <div class="product-body">
+              <div class="product-category">Books & Manuals</div>
+              <div class="product-name">Structural Integrity Manual v4.0</div>
+              <div class="product-rating">
+                <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <span class="rating-count">(33)</span>
+              </div>
+              <div class="product-price"><span class="price-current">$14.59</span></div>
+              <button class="add-to-cart-btn" onclick="addToCart(this)">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- PRODUCT 8 -->
+          <div class="product-card" data-cat="books" data-price="12.49" data-name="multipurpose books">
+            <div class="product-img-wrap">
+              <img src="assets/images/shop/multipurpose books.png" alt="Multipurpose Books">
+              <div class="product-badges"><span class="badge badge-sale">50% Off</span></div>
+              <div class="product-actions">
+                <button class="product-action-btn" onclick="showToast('Added to wishlist ♡')">♡</button>
+                <button class="product-action-btn">👁</button>
+              </div>
+              <div class="quick-add-overlay" onclick="addToCart(this)">🛒 Quick Add</div>
+            </div>
+            <div class="product-body">
+              <div class="product-category">Books & Manuals</div>
+              <div class="product-name">Multipurpose Reference Books</div>
+              <div class="product-rating">
+                <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span class="empty">★</span></div>
+                <span class="rating-count">(15)</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">$12.49</span>
+                <span class="price-old">$25</span>
+                <span class="price-save">Save 50%</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart(this)">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- PRODUCT 9 -->
+          <div class="product-card" data-cat="ppe" data-price="39.49" data-name="helmet">
+            <div class="product-img-wrap">
+              <img src="assets/images/shop/helmet.png" alt="Safety Helmet">
+              <div class="product-badges"><span class="badge badge-new">In Stock</span></div>
+              <div class="product-actions">
+                <button class="product-action-btn" onclick="showToast('Added to wishlist ♡')">♡</button>
+                <button class="product-action-btn">👁</button>
+              </div>
+              <div class="quick-add-overlay" onclick="addToCart(this)">🛒 Quick Add</div>
+            </div>
+            <div class="product-body">
+              <div class="product-category">PPE & Safety Gear</div>
+              <div class="product-name">Construction Safety Helmet</div>
+              <div class="product-rating">
+                <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <span class="rating-count">(58)</span>
+              </div>
+              <div class="product-price"><span class="price-current">$39.49</span></div>
+              <button class="add-to-cart-btn" onclick="addToCart(this)">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- PRODUCT 10 -->
+          <div class="product-card" data-cat="ppe" data-price="24.99" data-name="reflective vest">
+            <div class="product-img-wrap">
+              <img src="assets/images/shop/reflective vest.png" alt="Reflective Vest">
+              <div class="product-actions">
+                <button class="product-action-btn" onclick="showToast('Added to wishlist ♡')">♡</button>
+                <button class="product-action-btn">👁</button>
+              </div>
+              <div class="quick-add-overlay" onclick="addToCart(this)">🛒 Quick Add</div>
+            </div>
+            <div class="product-body">
+              <div class="product-category">PPE & Safety Gear</div>
+              <div class="product-name">Hi-Vis Reflective Safety Vest</div>
+              <div class="product-rating">
+                <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <span class="rating-count">(89)</span>
+              </div>
+              <div class="product-price"><span class="price-current">$24.99</span></div>
+              <button class="add-to-cart-btn" onclick="addToCart(this)">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- PRODUCT 11 -->
+          <div class="product-card" data-cat="ppe" data-price="19.99" data-name="safety boots">
+            <div class="product-img-wrap">
+              <img src="assets/images/shop/safety boots.png" alt="Safety Boots">
+              <div class="product-badges"><span class="badge badge-sale">50% Off</span></div>
+              <div class="product-actions">
+                <button class="product-action-btn" onclick="showToast('Added to wishlist ♡')">♡</button>
+                <button class="product-action-btn">👁</button>
+              </div>
+              <div class="quick-add-overlay" onclick="addToCart(this)">🛒 Quick Add</div>
+            </div>
+            <div class="product-body">
+              <div class="product-category">PPE & Safety Gear</div>
+              <div class="product-name">Steel-Toe Safety Boots</div>
+              <div class="product-rating">
+                <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span class="empty">★</span></div>
+                <span class="rating-count">(44)</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">$19.99</span>
+                <span class="price-old">$39.99</span>
+                <span class="price-save">Save 50%</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart(this)">🛒 Add to Cart</button>
+            </div>
+          </div>
+
+        </div><!-- /products-grid -->
+
+        <!-- PAGINATION -->
+        <div class="pagination">
+          <button class="page-btn arrow">←</button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <span style="color:var(--gray-mid);padding:0 .3rem">…</span>
+          <button class="page-btn">8</button>
+          <button class="page-btn arrow">→</button>
+        </div>
+
+      </div><!-- /shop-main -->
+    </div><!-- /shop-layout -->
+  </div><!-- /container -->
+</section>
+
+<!-- ══ QUICK VIEW MODAL ════════════════════════════════ -->
+<div class="qv-modal" id="quickViewModal">
+  <div class="qv-modal-inner">
+    <button class="qv-close" onclick="closeQuickView()">✕</button>
+    <div class="qv-img-wrap">
+      <img class="qv-img" src="" alt="">
+    </div>
+    <div class="qv-body">
+      <div class="qv-category"></div>
+      <div class="qv-name"></div>
+      <div class="qv-rating">
+        <div class="stars qv-stars"></div>
+        <span class="rating-count qv-rating-count"></span>
+      </div>
+      <div class="qv-price">
+        <span class="qv-price-current"></span>
+        <span class="qv-price-old"></span>
+        <span class="qv-price-save"></span>
+      </div>
+      <div class="qv-desc">
+        High-quality engineering resource. Suitable for professionals and students.
+        All digital products include lifetime access. Physical items ship within 3–5 business days.
+      </div>
+      <button class="qv-add-btn">🛒 Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-logo-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18v-2H3v2zm0-4h18v-2H3v2zm2-4h14v-2H5v2zM3 9l9-6 9 6v2H3V9z"/></svg></div>
+          <div class="footer-logo-text">Civil Consultancy<span>Engineering Excellence</span></div>
+        </div>
+        <p class="footer-desc">East Africa's premier civil and structural engineering consultancy. Delivering sustainable infrastructure solutions since 1989.</p>
+        <div class="footer-social">
+          <a href="#">in</a><a href="#">𝕏</a><a href="#">f</a><a href="#">▶</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Shop</div>
+        <ul class="footer-links">
+          <li><a href="#">Books & Manuals</a></li>
+          <li><a href="#">PPE & Safety Gear</a></li>
+          <li><a href="#">Engineering Tools</a></li>
+          <li><a href="cart.html">View Cart</a></li>
+          <li><a href="checkout.html">Checkout</a></li>
+          <li><a href="#">Track Order</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">📍</div>
+          <div><div class="footer-contact-label">Address</div><div class="footer-contact-value">Upper Hill, Nairobi 00100</div></div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">📞</div>
+          <div><div class="footer-contact-label">Phone</div><div class="footer-contact-value">+254 712 345 678</div></div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">✉️</div>
+          <div><div class="footer-contact-label">Email</div><div class="footer-contact-value">info@civilconsultancy.co.ke</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <p class="footer-copy">&copy; 2025 <span>Civil Consultancy Ltd.</span> All rights reserved.</p>
+        <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Back to top">↑</button>
+<div class="toast" id="toast"><div class="toast-icon">✓</div><span id="toastMsg">Added to cart!</span></div>
+
+<script>
+  /* ══════════════════════════════════════════════════════
+     CIVIL CONSULTANCY SHOP — MERGED JS
+     Combines: localStorage cart + real-time search +
+     quick-view modal + all filters, sort, view toggle
+  ══════════════════════════════════════════════════════ */
+
+  /* ── LOCALSTORAGE CART ──────────────────────────────── */
+  let cart = [];
+  try { cart = JSON.parse(localStorage.getItem('cc_cart')) || []; } catch(e) { cart = []; }
+
+  function saveCart() {
+    try { localStorage.setItem('cc_cart', JSON.stringify(cart)); } catch(e) {}
+  }
+
+  function getCartTotal() {
+    return cart.reduce((sum, item) => sum + item.qty, 0);
+  }
+
+  function updateCartBadges() {
+    const total = getCartTotal();
+    document.querySelectorAll('#cartBadge, .nav-icon-badge').forEach(el => {
+      el.textContent = total;
+    });
+  }
+
+  /* ── TOAST ──────────────────────────────────────────── */
+  function showToast(msg) {
+    const toast   = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMsg');
+    toastMsg.textContent = msg || 'Added to cart!';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2800);
+  }
+
+  /* ── ADD TO CART ────────────────────────────────────── */
+  function addToCart(el) {
+    const card  = el.closest('.product-card');
+    const name  = card.querySelector('.product-name').textContent.trim();
+    const price = parseFloat(card.dataset.price) || 0;
+    const img   = card.querySelector('img') ? card.querySelector('img').src : '';
+    const btn   = card.querySelector('.add-to-cart-btn');
+
+    // Update localStorage cart
+    const existing = cart.find(item => item.name === name);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ id: Date.now(), name, price, qty: 1, img, cat: card.querySelector('.product-category')?.textContent.trim() || 'Product' });
+    }
+    saveCart();
+    updateCartBadges();
+
+    // Button feedback
+    if (btn) {
+      const original = btn.innerHTML;
+      btn.innerHTML  = '✓ Added!';
+      btn.classList.add('added');
+      setTimeout(() => { btn.innerHTML = original; btn.classList.remove('added'); }, 2000);
+    }
+
+    showToast(`"${name.slice(0, 32)}${name.length > 32 ? '…' : ''}" added to cart`);
+  }
+
+  /* ── QUICK VIEW MODAL ───────────────────────────────── */
+  function openQuickView(card) {
+    const name  = card.querySelector('.product-name').textContent.trim();
+    const price = card.querySelector('.price-current') ? card.querySelector('.price-current').textContent : '';
+    const img   = card.querySelector('img') ? card.querySelector('img').src : '';
+    const cat   = card.querySelector('.product-category') ? card.querySelector('.product-category').textContent.trim() : '';
+    const stars = card.querySelector('.stars') ? card.querySelector('.stars').innerHTML : '';
+    const count = card.querySelector('.rating-count') ? card.querySelector('.rating-count').textContent : '';
+    const oldP  = card.querySelector('.price-old')  ? card.querySelector('.price-old').textContent  : '';
+    const saveP = card.querySelector('.price-save') ? card.querySelector('.price-save').textContent : '';
+
+    // Build modal HTML
+    const modal = document.getElementById('quickViewModal');
+    modal.querySelector('.qv-img').src = img;
+    modal.querySelector('.qv-img').alt = name;
+    modal.querySelector('.qv-category').textContent = cat;
+    modal.querySelector('.qv-name').textContent = name;
+    modal.querySelector('.qv-stars').innerHTML = stars;
+    modal.querySelector('.qv-rating-count').textContent = count;
+    modal.querySelector('.qv-price-current').textContent = price;
+    modal.querySelector('.qv-price-old').textContent  = oldP;
+    modal.querySelector('.qv-price-save').textContent = saveP;
+    modal.querySelector('.qv-price-old').style.display  = oldP  ? '' : 'none';
+    modal.querySelector('.qv-price-save').style.display = saveP ? '' : 'none';
+
+    // Wire up the modal Add to Cart button
+    modal.querySelector('.qv-add-btn').onclick = () => {
+      addToCart(card);
+      closeQuickView();
+    };
+
+    // Show modal
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeQuickView() {
+    document.getElementById('quickViewModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── REAL-TIME SEARCH (hero input + sidebar input) ─── */
+  function attachSearchListeners() {
+    ['searchInput', 'sidebarSearch'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('input', function () {
+        const term = this.value.toLowerCase().trim();
+        let count = 0;
+        document.querySelectorAll('.product-card').forEach(card => {
+          const name = (card.dataset.name || '').toLowerCase();
+          const cat  = (card.dataset.cat  || '').toLowerCase();
+          const show = name.includes(term) || cat.includes(term);
+          card.style.display = show ? '' : 'none';
+          if (show) count++;
+        });
+        document.getElementById('productCount').textContent = count;
+        // Sync both search inputs
+        ['searchInput', 'sidebarSearch'].forEach(sid => {
+          const s = document.getElementById(sid);
+          if (s && s !== this) s.value = this.value;
+        });
+      });
+    });
+  }
+
+  /* ── CATEGORY FILTER ────────────────────────────────── */
+  function filterByCategory(el) {
+    document.querySelectorAll('#categoryFilters li').forEach(l => l.classList.remove('active'));
+    el.classList.add('active');
+    const cat = el.dataset.cat;
+    let count = 0;
+    document.querySelectorAll('.product-card').forEach(card => {
+      const match = cat === 'all' || card.dataset.cat === cat;
+      card.style.display = match ? '' : 'none';
+      if (match) count++;
+    });
+    document.getElementById('productCount').textContent = count;
+    const label = cat === 'all' ? 'All Categories' : el.childNodes[0].textContent.trim();
+    updateActiveFilterTag(label);
+  }
+
+  /* ── PRICE FILTER ───────────────────────────────────── */
+  function applyPriceFilter() {
+    const min = parseFloat(document.getElementById('minPrice').value) || 0;
+    const max = parseFloat(document.getElementById('maxPrice').value) || Infinity;
+    let count = 0;
+    document.querySelectorAll('.product-card').forEach(card => {
+      const price = parseFloat(card.dataset.price);
+      const show  = price >= min && price <= max;
+      card.style.display = show ? '' : 'none';
+      if (show) count++;
+    });
+    document.getElementById('productCount').textContent = count;
+    updateActiveFilterTag(`$${min} – $${max === Infinity ? '∞' : max}`);
+  }
+
+  /* ── SORT ───────────────────────────────────────────── */
+  function sortProducts(val) {
+    const grid  = document.getElementById('productsGrid');
+    const cards = [...grid.querySelectorAll('.product-card')];
+    cards.sort((a, b) => {
+      if (val === 'price-asc')  return parseFloat(a.dataset.price) - parseFloat(b.dataset.price);
+      if (val === 'price-desc') return parseFloat(b.dataset.price) - parseFloat(a.dataset.price);
+      if (val === 'name')       return (a.dataset.name || '').localeCompare(b.dataset.name || '');
+      return 0;
+    });
+    cards.forEach(c => grid.appendChild(c));
+  }
+
+  /* ── VIEW TOGGLE ────────────────────────────────────── */
+  function setView(mode, btn) {
+    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const grid = document.getElementById('productsGrid');
+    if (mode === 'list') {
+      grid.style.gridTemplateColumns = '1fr';
+      grid.querySelectorAll('.product-card').forEach(card => {
+        card.style.cssText += 'flex-direction:row;max-height:170px;';
+        const imgWrap = card.querySelector('.product-img-wrap');
+        if (imgWrap) imgWrap.style.cssText = 'width:170px;min-width:170px;aspect-ratio:1/1;';
+      });
+    } else {
+      grid.style.gridTemplateColumns = '';
+      grid.querySelectorAll('.product-card').forEach(card => {
+        card.style.flexDirection = '';
+        card.style.maxHeight     = '';
+        const imgWrap = card.querySelector('.product-img-wrap');
+        if (imgWrap) imgWrap.style.cssText = '';
+      });
+    }
+  }
+
+  /* ── ACTIVE FILTER TAGS ─────────────────────────────── */
+  function updateActiveFilterTag(label) {
+    const container = document.getElementById('activeFilters');
+    const tag = container.querySelector('.active-filter-tag');
+    if (tag) {
+      // Replace text node (first child) without removing the button
+      tag.childNodes[0].textContent = label + ' ';
+    }
+  }
+  function clearFilter(type) {
+    if (type === 'cat') document.querySelector('[data-cat="all"]').click();
+  }
+  function clearAllFilters() {
+    document.querySelector('[data-cat="all"]').click();
+    document.getElementById('minPrice').value = 0;
+    document.getElementById('maxPrice').value = 600;
+    ['searchInput', 'sidebarSearch'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+    document.querySelectorAll('.product-card').forEach(c => c.style.display = '');
+    document.getElementById('productCount').textContent =
+      document.querySelectorAll('.product-card').length;
+  }
+
+  /* ── SCROLL TOP ─────────────────────────────────────── */
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('show', window.scrollY > 400);
+  });
+  scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ── PAGINATION ─────────────────────────────────────── */
+  document.querySelectorAll('.page-btn:not(.arrow)').forEach(btn => {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.page-btn:not(.arrow)').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  /* ── INIT ON DOM READY ──────────────────────────────── */
+  document.addEventListener('DOMContentLoaded', () => {
+    // Restore cart count from localStorage
+    updateCartBadges();
+
+    // Attach real-time search
+    attachSearchListeners();
+
+    // Wire up all Quick View 👁 buttons
+    document.querySelectorAll('.product-actions button').forEach(btn => {
+      if (btn.textContent.trim() === '👁') {
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          openQuickView(this.closest('.product-card'));
+        });
+      }
+    });
+
+    // Close modal on backdrop click
+    const modal = document.getElementById('quickViewModal');
+    if (modal) {
+      modal.addEventListener('click', function (e) {
+        if (e.target === this) closeQuickView();
+      });
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeQuickView();
+    });
+  });
+</script>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+<script>
+    $(window).on('load', function() {
+        $('#preloader').fadeOut('slow');
+    });
+
+    $(function(){
+        $("#navbar-placeholder").load("navbar.html", function(response, status, xhr) {
+            if(status == "error") {
+                $("#navbar-placeholder").html(`
+                    <nav class="navbar navbar-expand-lg fixed-top">
+                        <div class="container">
+                            <a class="navbar-brand fw-bold" href="index.html"><i class="fas fa-hard-hat me-2"></i>CIVIL MASTER</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="mainNav">
+                                <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="project.html">Projects</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div style="height: 76px;"></div>
+                `);
+            }
+            $('body').css('padding-top', '0px');
+        });
+    });
+</script>
+
+</body>
+</html>

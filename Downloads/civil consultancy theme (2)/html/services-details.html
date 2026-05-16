@@ -1,0 +1,464 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Service Details | Civil Consultancy | Strategic Engineering</title>
+    
+    <!-- Bootstrap 5 + Icons + Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* ---------- MASTER COLOR SYSTEM : Navy + Orange ---------- */
+        :root {
+            --navy-dark: #001a38;
+            --navy-mid: #0a3d73;
+            --orange: #ff7e00;
+            --orange-lt: #ff9a30;
+            --orange-pale: #fff4e6;
+            --white: #ffffff;
+            --off-white: #f8f7f4;
+            --gray-light: #ebebeb;
+            --gray-mid: #8a9ab5;
+            --text: #1a2340;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.03), 0 2px 6px rgba(0,0,0,0.05);
+            --shadow-md: 0 15px 30px -12px rgba(0,0,0,0.1);
+            --transition: all 0.25s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--text);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--navy-dark);
+        }
+        
+        a {
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        /* Navbar (fallback + external friendly) */
+        /* .navbar {
+            background: var(--navy-dark) !important;
+            box-shadow: var(--shadow-sm);
+            padding: 0.9rem 1rem;
+        }
+        .navbar .nav-link, .navbar-brand {
+            color: var(--white) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .navbar .nav-link:hover {
+            color: var(--orange) !important;
+        }
+        .navbar-brand i {
+            color: var(--orange);
+            margin-right: 6px;
+        } */
+        
+        /* Hero Section */
+        .inner-intro {
+            background: linear-gradient(115deg, var(--navy-dark) 0%, var(--navy-mid) 100%);
+            padding: 90px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .inner-intro:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: linear-gradient(to top, var(--off-white), transparent);
+        }
+        .inner-intro h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+        .inner-intro h1 span {
+            color: var(--orange);
+            border-bottom: 3px solid var(--orange);
+            padding-bottom: 5px;
+        }
+        .inner-intro p {
+            color: rgba(255,255,255,0.85);
+            font-size: 1rem;
+        }
+        .inner-intro p a {
+            color: var(--white);
+            font-weight: 500;
+        }
+        .inner-intro p a:hover {
+            color: var(--orange-lt);
+        }
+        
+        /* Sidebar Styling */
+        .service-sidebar {
+            position: sticky;
+            top: 30px;
+        }
+        .service-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--white);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-light);
+        }
+        .service-list li a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 24px;
+            color: var(--navy-dark);
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-light);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .service-list li a i {
+            width: 24px;
+            color: var(--orange);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        .service-list li a:hover, .service-list li a.active {
+            background: var(--orange-pale);
+            color: var(--navy-dark);
+            padding-left: 32px;
+        }
+        .service-list li a.active i {
+            color: var(--orange);
+        }
+        .service-list li:last-child a {
+            border-bottom: none;
+        }
+        
+        /* Brochure Box */
+        .brochure-box {
+            background: linear-gradient(135deg, var(--navy-dark), var(--navy-mid));
+            border-radius: 24px;
+            padding: 28px 24px;
+            color: var(--white);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.2s;
+        }
+        .brochure-box:hover {
+            transform: translateY(-3px);
+        }
+        .brochure-box h4 {
+            color: var(--white);
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+        .btn-download {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(2px);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 18px;
+            border-radius: 50px;
+            color: var(--white);
+            font-weight: 500;
+            margin-top: 12px;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .btn-download:hover {
+            background: var(--orange);
+            color: var(--navy-dark);
+            border-color: var(--orange);
+            transform: translateX(4px);
+        }
+        
+        /* Main Content */
+        .main-content img {
+            border-radius: 28px;
+            width: 100%;
+            object-fit: cover;
+            box-shadow: var(--shadow-md);
+        }
+        .section-title {
+            color: var(--navy-dark);
+            font-weight: 700;
+            border-left: 5px solid var(--orange);
+            padding-left: 18px;
+            margin: 25px 0 20px;
+        }
+        .check-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .check-list li i {
+            color: var(--orange);
+            font-size: 1rem;
+        }
+        
+        /* Accordion Custom (Bootstrap 5 style but we adapt with modern) */
+        .accordion-item {
+            border: none;
+            margin-bottom: 12px;
+            border-radius: 20px !important;
+            overflow: hidden;
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-light);
+        }
+        .accordion-button {
+            background: var(--white);
+            color: var(--navy-dark);
+            font-weight: 700;
+            padding: 1.2rem 1.5rem;
+            font-size: 1rem;
+            transition: none;
+            box-shadow: none;
+        }
+        .accordion-button:not(.collapsed) {
+            background: var(--orange-pale);
+            color: var(--navy-dark);
+            border-bottom: 1px solid var(--orange-lt);
+        }
+        .accordion-button:focus {
+            border-color: transparent;
+            box-shadow: none;
+        }
+        .accordion-button:not(.collapsed)::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ff7e00'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+        }
+        .accordion-body {
+            background: var(--white);
+            color: var(--gray-mid);
+            padding: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        /* utilities */
+        .py-5 { padding: 60px 0; }
+        .mt-4 { margin-top: 1.5rem; }
+        .mb-4 { margin-bottom: 1.5rem; }
+        .shadow-sm { box-shadow: var(--shadow-sm); }
+        .rounded-4 { border-radius: 20px; }
+        .bg-offwhite { background-color: var(--off-white); }
+        hr.orange-line {
+            width: 60px;
+            height: 3px;
+            background: var(--orange);
+            opacity: 0.8;
+            margin: 15px 0 20px;
+            border: 0;
+        }
+        @media (max-width: 768px) {
+            .inner-intro h1 { font-size: 2rem; }
+            .service-sidebar { position: relative; top: 0; margin-bottom: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<!-- Hero Section -->
+<section class="inner-intro">
+    <div class="container">
+        <h1>Business <span>Consulting</span></h1>
+        <p><a href="#">Home</a> / <a href="#">Services</a> / <span style="color: var(--orange); font-weight: 500;">Strategy & Engineering</span></p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-5">
+            
+            <!-- Sidebar Left -->
+            <div class="col-lg-4">
+                <div class="service-sidebar">
+                    <ul class="service-list">
+                        <li><a href="#" class="active"><i class="fas fa-chart-line"></i> Business Strategy</a></li>
+                        <li><a href="#"><i class="fas fa-industry"></i> Factory Consultancy</a></li>
+                        <li><a href="#"><i class="fas fa-microchip"></i> ICT Management</a></li>
+                        <li><a href="#"><i class="fas fa-solar-panel"></i> Energy & Environment</a></li>
+                        <li><a href="#"><i class="fas fa-oil-can"></i> Oil & Gas Industry</a></li>
+                        <li><a href="#"><i class="fas fa-chart-pie"></i> Financial Investment</a></li>
+                    </ul>
+                    
+                    <div class="brochure-box mt-4">
+                        <h4><i class="fas fa-file-alt me-2"></i> Technical Assets</h4>
+                        <p class="small opacity-75 mb-3">Download our capability statement & project case studies.</p>
+                        <a href="#" class="btn-download"><i class="fas fa-file-pdf"></i> Service Brochure</a>
+                        <a href="#" class="btn-download"><i class="fas fa-file-powerpoint"></i> Case Study (PDF)</a>
+                        <a href="#" class="btn-download"><i class="fas fa-envelope"></i> Request a Quote</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content Right -->
+            <div class="col-lg-8">
+                <div class="main-content">
+                    <!-- Hero image (civil engineering concept) -->
+                    <img src="https://placehold.co/1200x600/0a3d73/white?text=Strategic+Infrastructure+Consultancy" alt="Consulting Strategy" class="img-fluid mb-4">
+                    
+                    <h2 class="fw-bold" style="color: var(--navy-dark);">Comprehensive Business Strategy</h2>
+                    <hr class="orange-line">
+                    <p class="text-muted" style="font-size: 1.05rem;">Our consultancy approach combines deep engineering insight with data-driven frameworks to help organizations navigate complex infrastructure projects. We deliver sustainable, high-impact strategies that align with global standards and regulatory excellence.</p>
+                    
+                    <!-- Strategic Analysis Row -->
+                    <div class="row my-5 align-items-center">
+                        <div class="col-md-5">
+                            <img src="https://placehold.co/600x500/001a38/white?text=Site+Analysis+%26+Risk" alt="Site Analysis" class="img-fluid rounded-4 shadow-sm">
+                        </div>
+                        <div class="col-md-7">
+                            <h3 class="fw-bold" style="color: var(--navy-mid);">Strategic Site Analysis</h3>
+                            <p class="small text-muted mt-2">We provide detailed site evaluations, environmental impact assessments, and geotechnical coordination. Every project begins with a solid foundation—both geological and financial.</p>
+                            <ul class="list-unstyled check-list mt-3">
+                                <li><i class="fas fa-check-circle" style="color: var(--orange);"></i> Risk Mitigation & Safety Compliance</li>
+                                <li><i class="fas fa-check-circle" style="color: var(--orange);"></i> Resource Allocation & Lean Efficiency</li>
+                                <li><i class="fas fa-check-circle" style="color: var(--orange);"></i> Regulatory Liaison & Permitting</li>
+                                <li><i class="fas fa-check-circle" style="color: var(--orange);"></i> 3D Terrain Modelling & BIM Integration</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3 class="fw-bold mt-4" style="color: var(--navy-dark);">Operational Excellence & Control</h3>
+                    <p class="text-muted">Managing costs and maintaining schedule integrity are pillars of successful civil consultancy. We implement advanced reporting systems that provide real-time data to stakeholders, ensuring complete transparency from inception to commissioning.</p>
+                    
+                    <!-- Accordion (modern bootstrap) -->
+                    <div class="accordion mt-4" id="serviceAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true">
+                                    <i class="fas fa-chart-simple me-3" style="color: var(--orange);"></i> Cost Control & Project Auditing
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#serviceAccordion">
+                                <div class="accordion-body">
+                                    We utilize industry-leading ERP and cost-tracking software to monitor every expenditure. Our auditing process ensures procurement follows strict budgetary constraints set during feasibility, preventing mid-cycle delays and cost overruns. Independent third-party reviews are available on demand.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    <i class="fas fa-people-arrows me-3" style="color: var(--orange);"></i> Stakeholder Communications
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#serviceAccordion">
+                                <div class="accordion-body">
+                                    Clear communication is vital. We deliver weekly status reports, risk dashboards, and integrated meeting schedules. Our client portal ensures real-time collaboration between engineering teams and executive boards, reducing friction and accelerating decision-making.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    <i class="fas fa-cubes me-3" style="color: var(--orange);"></i> Lifecycle Asset Management
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#serviceAccordion">
+                                <div class="accordion-body">
+                                    Beyond delivery, we support clients with long-term asset management strategies: predictive maintenance, structural health monitoring, and lifecycle cost analysis — ensuring your infrastructure remains resilient for decades.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional value block -->
+                    <div class="mt-5 p-4 rounded-4" style="background: var(--orange-pale); border-left: 5px solid var(--orange);">
+                        <div class="d-flex gap-3 flex-wrap align-items-center">
+                            <div><i class="fas fa-chalkboard-user fa-2x" style="color: var(--orange);"></i></div>
+                            <div>
+                                <h5 class="mb-1" style="color: var(--navy-dark);">Tailored Advisory & Training</h5>
+                                <p class="mb-0 small text-muted">Workshops, technical training, and knowledge transfer sessions for your internal teams — empowering your workforce with civil engineering best practices.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Simple Footer -->
+<footer style="background: var(--navy-dark); color: #b9c7d9; padding: 45px 0 30px; margin-top: 20px;">
+    <div class="container text-center">
+        <p class="mb-2"><i class="fas fa-hard-hat me-2" style="color: var(--orange);"></i> Civil Consultancy — Precision. Integrity. Innovation.</p>
+        <small>© 2026 — Strategic Engineering & Infrastructure Advisory. All rights reserved.</small>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(function(){
+        // load navbar component (with external navbar.html if exists)
+        $("#navbar-placeholder").load("navbar.html", function(response, status, xhr) {
+            if(status == "error") {
+                // create a professional fallback navbar (navy + orange)
+                $("#navbar-placeholder").html(`
+                    <nav class="navbar navbar-expand-lg sticky-top">
+                        <div class="container">
+                            <a class="navbar-brand fw-bold" href="#"><i class="fas fa-drafting-compass"></i> CIVIL MASTER</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" style="border: 1px solid rgba(255,255,255,0.3);">
+                                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarMain">
+                                <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Projects</a></li>
+                                    <li class="nav-item"><a class="nav-link active" href="#">Services</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Expertise</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div style="height: 72px;"></div>
+                `);
+            } else {
+                $('body').css('padding-top', '0px');
+                if($('.navbar').length) $('body').css('padding-top', '10px');
+            }
+        });
+        
+        // Smooth active class for sidebar (optional)
+        $('.service-list li a').on('click', function(e){
+            e.preventDefault();
+            $('.service-list li a').removeClass('active');
+            $(this).addClass('active');
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

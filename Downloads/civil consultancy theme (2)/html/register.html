@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register | Civil Consultancy</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/ionicons.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+
+    <style>
+        /* Unified Career Server Decoration */
+        :root {
+            --primary-blue: #002d5b;  
+            --accent-orange: #ff7e00;
+			/* background-color: turquoise;  */
+        }
+        
+        .top-bar-bg-color { background-color: var(--primary-blue) !important; }
+        .btn-signup { 
+            background-color: var(--accent-orange); 
+            color: white; 
+            padding: 10px 25px; 
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border: none;
+        }
+        .btn-signup:hover { background-color: var(--primary-blue); color: white; }
+        
+        .inner-intro { 
+            height: 300px; 
+            background: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        .logo img { height: 60px; width: auto; object-fit: contain; }
+        .custom-check:checked { background-color: var(--accent-orange); }
+        a { color: var(--accent-orange); }
+    </style>
+</head>
+
+<body class="bg-blue">
+    <header id="header" class="header">
+        <div id="top-bar" class="top-bar-section top-bar-bg-color">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-white">
+                        <!-- <div class="top-contact"> 
+                            <a href="tel:+560123456789" class="text-white"><i class="fa fa-phone"></i> +56 012 345 6789</a>
+                            <a href="mailto:consultancy@support.com" class="text-white"><i class="fa fa-envelope"></i> consultancy@support.com</a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-wrap py-2">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="logo"> <a href="index.html"><img src="assets/images/logo.png" alt="Civil Consultancy"></a> </div>
+                    </div>
+                    <div class="col-md-9">
+                        <nav class="navigation text-right">
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item px-3"><a href="index.html">Home</a></li>
+                                <li class="list-inline-item px-3"><a href="about.html">About</a></li>
+                                <li class="list-inline-item px-3"><a href="services.html">Services</a></li>
+                                <li class="list-inline-item px-3"><a href="project.html">Projects</a></li>
+                                <li class="list-inline-item px-3"><a href="contact.html">Contact</a></li>
+                                <li class="list-inline-item px-3"><a href="login.html">Login</a></li>
+                                <li class="list-inline-item px-3"><a href="register.html" style="color: var(--accent-orange)">Register</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- <section class="inner-intro">
+        <div class="container text-center">
+            <h1 class="text-white">Create Account</h1>
+            <p>Home / Register</p>
+        </div>
+    </section> -->
+
+    <div id="register" class="pb-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-body p-5">
+                            <h2 class="text-center mb-4" style="color: var(--primary-blue)">Register</h2>
+                            <form>
+                                <div class="form-group mb-3">
+                                    <label>Username</label>
+                                    <input type="text" required class="form-control" placeholder="Enter username">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label>Email Address</label>
+                                    <input type="email" required class="form-control" placeholder="Enter email">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label>Password</label>
+                                    <input type="password" required class="form-control" placeholder="Enter password">
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label>Confirm Password</label>
+                                    <input type="password" required class="form-control" placeholder="Repeat password">
+                                </div>
+                                <div class="form-group checkbox-field mb-4">
+                                    <label class="small text-muted">
+                                        <input type="checkbox" required> I agree to the <i>terms</i> and <i>privacy policy</i>.
+                                    </label>
+                                </div>
+                                <div class="text-center">
+                                  <button type="submit" class="btn-text" onclick="window.location.href='index.html'; return false;">Register Now</button>
+                                </div>
+                            </form>
+                            <div class="mt-4 text-center">
+                                <p class="small text-muted">Already have an account? <a href="login.html">Login here</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4 class="mb-4">About Us</h4>
+                    <p class="text-muted">Civil Consultancy delivers high-end engineering services with a focus on safety, innovation, and structural integrity.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="mb-4">Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="services.html" class="text-muted">Our Services</a></li>
+                        <li><a href="project.html" class="text-muted">Latest Projects</a></li>
+                        <li><a href="about.html" class="text-muted">Company History</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="mb-4">Contact Info</h4>
+                    <p class="text-muted"><i class="fa fa-map-marker" style="color: var(--accent-orange)"></i> 123 Main Street, Washington, DC</p>
+                    <p class="text-muted"><i class="fa fa-envelope" style="color: var(--accent-orange)"></i> consultancy@support.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,809 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Master Portfolio | Civil Consultancy</title>
+    
+    <!-- External Libs -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Recreate critical assets/style to avoid missing files (integrated, professional) -->
+    <style>
+        /* ----- RESET & GLOBAL THEME (Blue & Orange) ----- */
+        :root {
+            --primary-blue: #0A2647;    /* deep navy, professional */
+            --secondary-blue: #1B4A7A;  /* medium blue */
+            --accent-orange: #E97C2B;   /* vibrant but warm orange */
+            --accent-orange-dark: #C95A0E;
+            --light-bg: #F8F9FC;
+            --gray-soft: #F0F2F5;
+            --text-dark: #1E2A3E;
+            --text-muted: #4A5B6E;
+            --white: #ffffff;
+            --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.08);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+        
+        /* Headings & Links */
+        h1, h2, h3, h4, h5, .heading-box h2 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        
+        a {
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+        
+        /* ----- Navigation (blue/orange) mimic style, navbar placeholder expects external but we override color when present) ----- */
+        /* .navbar {
+            background-color: var(--primary-blue) !important;
+            box-shadow: var(--shadow-sm);
+        }
+        .navbar .nav-link, .navbar-brand {
+            color: white !important;
+            font-weight: 500;
+        }
+        .navbar .nav-link:hover {
+            color: var(--accent-orange) !important;
+        } */
+        
+        /* inner intro header (hero background) */
+        .inner-intro {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            padding: 100px 0;
+            position: relative;
+            text-align: center;
+        }
+        .inner-intro:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,64L80,58.7C160,53,320,43,480,48C640,53,800,75,960,80C1120,85,1280,75,1360,69.3L1440,64L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z" fill="white" opacity="0.1"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        .inner-intro .title_row h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .inner-intro .title_row h1 span {
+            color: var(--accent-orange);
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        .page-breadcrumb {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+        .page-breadcrumb a, .page-breadcrumb span {
+            color: white;
+        }
+        .page-breadcrumb a:hover {
+            color: var(--accent-orange);
+        }
+        
+        /* Heading boxes */
+        .heading-box {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .heading-box h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            color: var(--primary-blue);
+        }
+        .heading-box h2 span {
+            color: var(--accent-orange);
+            border-bottom: 3px solid var(--accent-orange);
+            padding-bottom: 5px;
+        }
+        .b-line {
+            display: block;
+            width: 70px;
+            height: 3px;
+            background: var(--accent-orange);
+            margin: 15px auto 0;
+            border-radius: 3px;
+        }
+        
+        /* History timeline block */
+        .history-timeline {
+            list-style: none;
+            padding: 0;
+        }
+        .history-timeline li {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        .icon-dot {
+            width: 18px;
+            height: 18px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            border: 3px solid var(--secondary-blue);
+            position: absolute;
+            left: -9px;
+            top: 25px;
+            z-index: 2;
+        }
+        .history-timeline .date {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-orange);
+            margin-left: 30px;
+            letter-spacing: -0.2px;
+        }
+        .abt-block__wrap {
+            display: flex;
+            flex-wrap: wrap;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            margin-top: 15px;
+        }
+        .abt-block__left {
+            flex: 1;
+            padding: 40px 30px;
+            background-color: var(--white);
+        }
+        .abt-block__left h2 {
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        .abt-block_link {
+            color: var(--accent-orange);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .abt-block_link:hover {
+            color: var(--accent-orange-dark);
+        }
+        .abt-block__right {
+            flex: 1;
+            min-height: 280px;
+            background-size: cover !important;
+            background-position: center !important;
+        }
+        
+        /* Filter category buttons */
+        .categories-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+            padding-left: 0;
+        }
+        .categories-filter li {
+            list-style: none;
+        }
+        .categories {
+            padding: 8px 24px;
+            background: var(--gray-soft);
+            border-radius: 40px;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: 0.2s;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .categories.active, .categories:hover {
+            background: var(--accent-orange);
+            color: white;
+            box-shadow: 0 4px 8px rgba(233,124,43,0.25);
+        }
+        
+        /* Project grid */
+        .container-grid {
+            margin-top: 20px;
+        }
+        .item-box {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: white;
+        }
+        .item-box:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .item-box img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .item-box:hover img {
+            transform: scale(1.03);
+        }
+        .link-zoom {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 8px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .item-box:hover .link-zoom {
+            opacity: 1;
+        }
+        .link-zoom a {
+            background: rgba(10,38,71,0.85);
+            color: white;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        .link-zoom a:hover {
+            background: var(--accent-orange);
+            color: white;
+        }
+        .gallery-heading {
+            padding: 16px 20px 20px;
+        }
+        .gallery-heading h4 a {
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .gallery-heading p {
+            color: var(--text-muted);
+            margin: 0;
+            font-size: 0.85rem;
+        }
+        
+        /* Team section */
+        .box-hover {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-sm);
+        }
+        .box-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+        .box-hover figure {
+            margin: 0;
+            overflow: hidden;
+        }
+        .box-hover figure img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+        .box-hover:hover figure img {
+            transform: scale(1.04);
+        }
+        .team-block {
+            padding: 20px 16px;
+            text-align: center;
+        }
+        .team-block strong {
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            display: block;
+        }
+        .team-block span {
+            color: var(--accent-orange);
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+        .small-divider {
+            width: 40px;
+            height: 2px;
+            background: var(--accent-orange);
+            margin: 12px auto;
+            opacity: 0.5;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            padding: 0;
+            margin-top: 12px;
+        }
+        .social-icons li {
+            list-style: none;
+        }
+        .social-icons li a {
+            background: var(--gray-soft);
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--primary-blue);
+            transition: 0.2s;
+        }
+        .social-icons li a:hover {
+            background: var(--accent-orange);
+            color: white;
+        }
+        
+        /* Testimonials */
+        .about-block {
+            border-radius: 28px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background-color: white;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 25px;
+        }
+        .gray-bg {
+            background: white;
+            border-left: 5px solid var(--accent-orange);
+        }
+        .dark-gray-bg {
+            background: var(--primary-blue);
+            border-left: 5px solid var(--accent-orange);
+            color: white;
+        }
+        .dark-gray-bg .text-content p, .dark-gray-bg .member_say {
+            color: #f0f0f0;
+        }
+        .dark-gray-bg .member_say span {
+            color: var(--accent-orange);
+        }
+        .client-avtar {
+            flex-shrink: 0;
+        }
+        .client-avtar img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-orange);
+            padding: 3px;
+            background: white;
+        }
+        .text-box {
+            flex: 1;
+        }
+        .text-content p {
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        .member_say {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+        .member_say span {
+            color: var(--accent-orange);
+            font-weight: 500;
+        }
+        .padding-40 {
+            padding: 28px !important;
+        }
+        
+        /* footer mock */
+        .main_footer__block {
+            background: var(--primary-blue);
+            color: #ccc;
+            padding: 40px 0 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        /* utilities */
+        .bg-light {
+            background-color: var(--light-bg) !important;
+        }
+        .pt-60 { padding-top: 60px; }
+        .pb-30 { padding-bottom: 30px; }
+        .pt-xs-40 { padding-top: 40px; }
+        .ptb-xs-40 { padding: 40px 0; }
+        .mt-30 { margin-top: 30px; }
+        .mt-60 { margin-top: 60px; }
+        .mb-30 { margin-bottom: 30px; }
+        .mb-xs-30 { margin-bottom: 30px; }
+        .text-center { text-align: center; }
+        .row.title { margin: 0; }
+        
+        @media (max-width: 768px) {
+            .abt-block__wrap { flex-direction: column; }
+            .abt-block__right { min-height: 220px; }
+            .inner-intro .title_row h1 { font-size: 2.2rem; }
+            .categories-filter { gap: 6px; }
+            .categories { padding: 5px 18px; font-size: 0.75rem; }
+            .about-block { flex-direction: column; align-items: center; text-align: center; }
+        }
+        
+        /* add style for fancybox missing but we just use simple link fallback */
+        .fancylight { cursor: pointer; }
+        /* no external library for isotope - custom minimal but we used Isotope? Actually we added isotope cdn later, but will load external js in proper order */
+        /* fixing possible missing images: placeholder images from unsplash/demo? but existing assets might be missing, we add fallback background but it's fine */
+        /* ensure all internal images have fallback if 404, but we leave original src, but we added global style safe */
+        
+        .btn-orange {
+            background: var(--accent-orange);
+            border: none;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+        }
+        
+        /* Pro touches: overlay */
+        .overlay-before {
+            position: relative;
+        }
+        .bg-img {
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<!-- Hero Section -->
+<section class="inner-intro bg-img light-color overlay-before parallax-background">
+    <div class="container">
+        <div class="row title">
+            <div class="title_row">
+                <h1 data-title="Portfolio"><span>Our Journey & Expertise</span></h1>
+                <div class="page-breadcrumb"><a href="#">Home</a> / <span>Master Project</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- History Section (Blue & Orange prominent) -->
+<section class="padding pt-xs-40 bg-light">
+    <div class="container">
+        <div class="row text-center mb-30">
+            <div class="col-sm-12">
+                <div class="heading-box">
+                    <h2><span>Our</span> History</h2>
+                    <span class="b-line"></span>
+                </div>
+            </div>
+        </div>
+        <div class="history-timeline__block">
+            <ul class="history-timeline">
+                <li>
+                    <div class="icon-dot"></div>
+                    <p class="date text-block text-bold m-b-30">2012 - The Foundation</p>
+                    <div class="abt-block__wrap">
+                        <div class="abt-block__left abt-block__bg">
+                            <h2>Meet our partners</h2>
+                            <p>Our journey began with a commitment to structural excellence. We built our reputation on precision and reliable civil consultancy.</p>
+                            <a href="#" class="abt-block_link"> Read More <i class="fa fa-chevron-circle-right"></i></a>
+                        </div>
+                        <div class="abt-block__right" style="background: url('https://placehold.co/800x600/1B4A7A/white?text=Engineering+Legacy') no-repeat center; background-size: cover;"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section with Filter (Blue/Orange) -->
+<section id="work" class="padding ptb-xs-40">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-6 offset-lg-3 mb-30">
+                <div class="heading-box">
+                    <h2><span>Our</span> Projects</h2>
+                    <p>Precision engineering meets visionary design — delivering structural excellence that defines modern infrastructure.</p>
+                </div>
+            </div>
+        </div>
+        <!-- work Filter -->
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <ul class="container-filter categories-filter" id="filters-list">
+                    <li><a class="categories active" data-filter="*">All</a></li>
+                    <li><a class="categories" data-filter=".branding">Residential</a></li>
+                    <li><a class="categories" data-filter=".design">Consultancy</a></li>
+                    <li><a class="categories" data-filter=".photo">Bridges</a></li>
+                    <li><a class="categories" data-filter=".coffee">Commercial</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Grid projects updated with relevant civil imagery -->
+        <div class="row container-grid nf-col-3" id="project-grid">
+            <div class="col-md-4 col-sm-6 mb-30 nf-item branding coffee">
+                <div class="item-box">
+                    <img alt="project" src="https://placehold.co/600x400/2C5F8A/white?text=Highrise+Structure" class="item-container">
+                    <div class="link-zoom">
+                        <a href="#" class="project_links"> <i class="fa fa-link"></i> </a>
+                        <a href="#" class="fancylight"> <i class="fa fa-search-plus"></i> </a>
+                    </div>
+                    <div class="gallery-heading">
+                        <h4><a href="#">Urban Tower</a></h4>
+                        <p>Structural consultancy & seismic design</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-30 nf-item photo">
+                <div class="item-box">
+                    <img alt="bridge" src="https://placehold.co/600x400/1B4A7A/white?text=Cable+Stayed+Bridge" class="item-container">
+                    <div class="link-zoom">
+                        <a href="#" class="project_links"><i class="fa fa-link"></i></a>
+                        <a href="#" class="fancylight"><i class="fa fa-search-plus"></i></a>
+                    </div>
+                    <div class="gallery-heading">
+                        <h4><a href="#">Infinity Bridge</a></h4>
+                        <p>Long-span bridge engineering</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-30 nf-item branding coffee">
+                <div class="item-box">
+                    <img alt="commercial" src="https://placehold.co/600x400/E97C2B/white?text=Mixed+Use+Complex" class="item-container">
+                    <div class="link-zoom">
+                        <a href="#" class="project_links"><i class="fa fa-link"></i></a>
+                        <a href="#" class="fancylight"><i class="fa fa-search-plus"></i></a>
+                    </div>
+                    <div class="gallery-heading">
+                        <h4><a href="#">Sky Plaza</a></h4>
+                        <p>Sustainable design & energy optimization</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-30 nf-item design">
+                <div class="item-box">
+                    <img alt="consultancy" src="https://placehold.co/600x400/0A2647/white?text=Masterplan+Consultancy" class="item-container">
+                    <div class="link-zoom">
+                        <a href="#" class="project_links"><i class="fa fa-link"></i></a>
+                        <a href="#" class="fancylight"><i class="fa fa-search-plus"></i></a>
+                    </div>
+                    <div class="gallery-heading">
+                        <h4><a href="#">Smart City Planning</a></h4>
+                        <p>Urban infrastructure advisory</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-30 nf-item branding">
+                <div class="item-box">
+                    <img alt="residential" src="https://placehold.co/600x400/2B5D8F/white?text=Luxury+Residential" class="item-container">
+                    <div class="link-zoom">
+                        <a href="#" class="project_links"><i class="fa fa-link"></i></a>
+                        <a href="#" class="fancylight"><i class="fa fa-search-plus"></i></a>
+                    </div>
+                    <div class="gallery-heading">
+                        <h4><a href="#">Oceanic Villas</a></h4>
+                        <p>High-end coastal development</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-30 nf-item photo">
+                <div class="item-box">
+                    <img alt="transport" src="https://placehold.co/600x400/1F6390/white?text=Metro+Infrastructure" class="item-container">
+                    <div class="link-zoom">
+                        <a href="#" class="project_links"><i class="fa fa-link"></i></a>
+                        <a href="#" class="fancylight"><i class="fa fa-search-plus"></i></a>
+                    </div>
+                    <div class="gallery-heading">
+                        <h4><a href="#">City Metro Corridor</a></h4>
+                        <p>Structural analysis & geotechnical review</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Expert Team (Updated to show full team representation) -->
+<section class="padding pt-xs-40 bg-light">
+    <div class="container">
+        <div class="row text-center pb-30">
+            <div class="col-sm-12">
+                <div class="heading-box">
+                    <h2><span>Our</span> Expert Team</h2>
+                    <span class="b-line"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-30 text-center justify-content-center">
+            <div class="col-sm-3 mb-xs-30">
+                <div class="box-hover img-scale">
+                    <figure><img src="assets/images/team/alex.png" alt="team"></figure>
+                    <div class="team-block">
+                        <strong>Tommy Woodhouse</strong>
+                        <span>Lead Structural Engineer</span>
+                        <hr class="small-divider">
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mb-xs-30">
+                <div class="box-hover img-scale">
+                    <figure><img src="assets/images/team/sarah senkins.png" alt="team"></figure>
+                    <div class="team-block">
+                        <strong>Sarah Chen</strong>
+                        <span>Project Director</span>
+                        <hr class="small-divider">
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mb-xs-30">
+                <div class="box-hover img-scale">
+                    <figure><img src="assets/images/team/alex.png" alt="team"></figure>
+                    <div class="team-block">
+                        <strong>Michael Okonkwo</strong>
+                        <span>Geotechnical Expert</span>
+                        <hr class="small-divider">
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mb-xs-30">
+                <div class="box-hover img-scale">
+                    <figure><img src="assets/images/team/sarah senkins.png" alt="team"></figure>
+                    <div class="team-block">
+                        <strong>Emma Rodriguez</strong>
+                        <span>Sustainability Lead</span>
+                        <hr class="small-divider">
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section (Blue/Orange accents) -->
+<section class="padding ptb-xs-40">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <div class="heading-box pb-30">
+                    <h2><span>Client</span> Testimonials</h2>
+                    <span class="b-line"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-30">
+            <div class="col-md-6">
+                <div class="about-block gray-bg padding-40 clearfix">
+                    <div class="client-avtar">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="client">
+                    </div>
+                    <div class="text-box">
+                        <div class="text-content">
+                            <p>"The civil consultancy provided was beyond our expectations. Structural integrity and design were top-notch."</p>
+                        </div>
+                        <div class="box-title">
+                            <h4 class="member_say"><span>By</span> Gary Jack</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="about-block dark-gray-bg padding-40 clearfix">
+                    <div class="client-avtar left-pos">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="client">
+                    </div>
+                    <div class="text-box">
+                        <div class="text-content">
+                            <p>"Highly professional team with a deep history of success. Our project was completed on time and with precision."</p>
+                        </div>
+                        <div class="box-title">
+                            <h4 class="member_say"><span>By</span> Sarah Jenkins</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="main_footer__block pb-0 pt-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p style="color: #adb7c2;">&copy; 2025 Master Portfolio — Civil Consultancy.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script>
+    $(function(){
+        // load navbar if exists else hide console
+        $("#navbar-placeholder").load("navbar.html", function(response, status, xhr) {
+            if(status == "error") {
+                // inject a fallback nav bar to maintain theme
+                $("#navbar-placeholder").html(`
+                    <nav class="navbar navbar-expand-lg">
+                        <div class="container"><a class="navbar-brand fw-bold" href="#">CIVIL MASTER</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto"><li class="nav-item"><a class="nav-link" href="#">Home</a></li><li class="nav-item"><a class="nav-link" href="#">Projects</a></li><li class="nav-item"><a class="nav-link" href="#">Contact</a></li></ul></div></div>
+                    </nav>
+                `);
+            }
+        });
+        
+        // Isotope filtering
+        var $grid = $('#project-grid').isotope({
+            itemSelector: '.nf-item',
+            layoutMode: 'fitRows',
+            percentPosition: true,
+            transitionDuration: '0.4s'
+        });
+        
+        $('#filters-list').on('click', '.categories', function(e) {
+            e.preventDefault();
+            var filterValue = $(this).attr('data-filter');
+            $('#filters-list .categories').removeClass('active');
+            $(this).addClass('active');
+            $grid.isotope({ filter: filterValue });
+        });
+        
+        // fancybox light effect (lightbox)
+        $('.fancylight').fancybox({
+            buttons: ['zoom','close'],
+            animationEffect: "fade"
+        });
+        
+        // fallback for missing images, but placeholder fine
+    });
+</script>
+
+
+</body>
+</html>

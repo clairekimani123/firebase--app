@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home | Civil Consultancy | Engineering Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* ═══════════════════════════════════════════════════════════════
+           ROOT VARIABLES & RESET (Navy + Orange Theme)
+           ═══════════════════════════════════════════════════════════════ */
+        :root {
+            --navy-dark: #001a38;
+            --navy-mid: #0a3d73;
+            --orange: #ff7e00;
+            --orange-lt: #ff9a30;
+            --orange-pale: #fff4e6;
+            --white: #ffffff;
+            --off-white: #f8f7f4;
+            --gray-light: #ebebeb;
+            --gray-mid: #8a9ab5;
+            --text: #1a2340;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.03), 0 2px 6px rgba(0,0,0,0.05);
+            --shadow-md: 0 15px 30px -12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 25px 35px -15px rgba(0,0,0,0.15);
+            --transition: all 0.25s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--off-white);
+            color: var(--text);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--navy-dark);
+        }
+
+        a {
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        /* ══ PRELOADER ═══════════════════════════════════════════════ */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--navy-dark);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s;
+        }
+        .sk-circle {
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+        .sk-circle .sk-child {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            animation: sk-circle 1.2s infinite ease-in-out;
+            background: var(--orange);
+            border-radius: 50%;
+        }
+        @keyframes sk-circle {
+            0%, 100% { transform: scale(0); opacity: 0.5; }
+            50% { transform: scale(1); opacity: 1; }
+        }
+        .sk-circle1 { transform: rotate(0deg); animation-delay: -1.1s; }
+        .sk-circle2 { transform: rotate(30deg); animation-delay: -1s; }
+        .sk-circle3 { transform: rotate(60deg); animation-delay: -0.9s; }
+        .sk-circle4 { transform: rotate(90deg); animation-delay: -0.8s; }
+        .sk-circle5 { transform: rotate(120deg); animation-delay: -0.7s; }
+        .sk-circle6 { transform: rotate(150deg); animation-delay: -0.6s; }
+        .sk-circle7 { transform: rotate(180deg); animation-delay: -0.5s; }
+        .sk-circle8 { transform: rotate(210deg); animation-delay: -0.4s; }
+        .sk-circle9 { transform: rotate(240deg); animation-delay: -0.3s; }
+        .sk-circle10 { transform: rotate(270deg); animation-delay: -0.2s; }
+        .sk-circle11 { transform: rotate(300deg); animation-delay: -0.1s; }
+        .sk-circle12 { transform: rotate(330deg); animation-delay: 0s; }
+
+        /* ══ NAVBAR (fallback) ═══════════════════════════════════════ */
+        /* .navbar {
+            background: var(--navy-dark) !important;
+            box-shadow: var(--shadow-sm);
+            padding: 0.9rem 1rem;
+        }
+        .navbar .nav-link, .navbar-brand {
+            color: var(--white) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .navbar .nav-link:hover {
+            color: var(--orange) !important;
+        }
+        .navbar-brand i {
+            color: var(--orange);
+            margin-right: 8px;
+        } */
+
+        /* ══ HERO SECTION ═══════════════════════════════════════════ */
+        .hero-section {
+            min-height: 85vh;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-mid) 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,126,0,0.12), transparent 70%);
+            pointer-events: none;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to top, var(--off-white), transparent);
+        }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .hero-content h1 span {
+            color: var(--orange);
+            border-bottom: 3px solid var(--orange);
+        }
+        .hero-content p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 30px;
+            max-width: 550px;
+        }
+        .btn-orange {
+            background: var(--orange);
+            color: var(--white);
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+        .btn-orange:hover {
+            background: var(--white);
+            color: var(--navy-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .btn-outline-light {
+            border: 2px solid rgba(255,255,255,0.3);
+            background: transparent;
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        .btn-outline-light:hover {
+            background: var(--orange);
+            border-color: var(--orange);
+            transform: translateY(-3px);
+        }
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .stat-item h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--orange);
+            margin-bottom: 5px;
+        }
+        .stat-item p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* ══ SECTION COMMON ════════════════════════════════════════ */
+        .section-padding {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--navy-dark);
+        }
+        .section-title span {
+            color: var(--orange);
+            border-bottom: 3px solid var(--orange);
+            padding-bottom: 5px;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray-mid);
+            margin-bottom: 50px;
+            font-size: 1rem;
+        }
+        .bg-light-custom {
+            background: var(--off-white);
+        }
+        .bg-white {
+            background: var(--white);
+        }
+
+        /* ══ ABOUT CARDS ═══════════════════════════════════════════ */
+        .about-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-light);
+            height: 100%;
+        }
+        .about-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+        .about-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--orange-pale);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--orange);
+            font-size: 1.8rem;
+        }
+        .about-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        .about-card p {
+            color: var(--gray-mid);
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        /* ══ PROJECT CARDS ═════════════════════════════════════════ */
+        .project-card {
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            height: 100%;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        .project-img {
+            height: 260px;
+            overflow: hidden;
+        }
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
+        }
+        .project-content {
+            padding: 25px;
+        }
+        .project-category {
+            display: inline-block;
+            background: var(--orange-pale);
+            color: var(--orange);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+        .project-content h4 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+        .project-content p {
+            color: var(--gray-mid);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+        .project-link {
+            color: var(--orange);
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .project-link:hover {
+            color: var(--navy-dark);
+            gap: 12px;
+        }
+
+        /* ══ TEAM CARDS ════════════════════════════════════════════ */
+        .team-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+        .team-img {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+        }
+        .team-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .team-card:hover .team-img img {
+            transform: scale(1.05);
+        }
+        .team-info {
+            padding: 20px;
+        }
+        .team-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        .team-info p {
+            color: var(--orange);
+            font-weight: 500;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+        }
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+        .team-social a {
+            width: 34px;
+            height: 34px;
+            background: var(--off-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--navy-mid);
+            transition: var(--transition);
+        }
+        .team-social a:hover {
+            background: var(--orange);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        /* ══ TESTIMONIALS ══════════════════════════════════════════ */
+        .testimonial-section {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-mid) 100%);
+            position: relative;
+        }
+        .testimonial-section .section-title {
+            color: var(--white);
+        }
+        .testimonial-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 35px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: var(--transition);
+        }
+        .testimonial-card:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-5px);
+        }
+        .testimonial-card i {
+            font-size: 2rem;
+            color: var(--orange);
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+        .testimonial-card p {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-author h5 {
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: 3px;
+        }
+        .testimonial-author span {
+            color: var(--orange);
+            font-size: 0.75rem;
+        }
+
+        /* ══ CTA SECTION ═══════════════════════════════════════════ */
+        .cta-section {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-lt) 100%);
+            padding: 60px 0;
+            text-align: center;
+        }
+        .cta-section h2 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .cta-section p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+        .btn-cta {
+            background: var(--white);
+            color: var(--orange);
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+        .btn-cta:hover {
+            background: var(--navy-dark);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* ══ FOOTER ════════════════════════════════════════════════ */
+        .footer {
+            background: var(--navy-dark);
+            padding: 60px 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 56px;
+            border-bottom: 1px solid rgba(255,255,255,.07);
+        }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+            margin-bottom: 1.1rem;
+        }
+        .footer-logo-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--orange);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer-logo-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+        .footer-logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+        }
+        .footer-logo-text span {
+            display: block;
+            font-size: .68rem;
+            font-weight: 500;
+            color: rgba(255,255,255,.4);
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+        .footer-desc {
+            color: rgba(255,255,255,.5);
+            font-size: .88rem;
+            line-height: 1.8;
+            margin-bottom: 1.6rem;
+        }
+        .footer-social {
+            display: flex;
+            gap: .55rem;
+        }
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.08);
+            border: 1px solid rgba(255,255,255,.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,.55);
+            transition: var(--transition);
+        }
+        .footer-social a:hover {
+            background: var(--orange);
+            border-color: var(--orange);
+            color: var(--white);
+        }
+        .footer-col-title {
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 1.4rem;
+            padding-bottom: .7rem;
+            border-bottom: 2px solid var(--orange);
+            display: inline-block;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-links li {
+            margin-bottom: .7rem;
+        }
+        .footer-links a {
+            color: rgba(255,255,255,.5);
+            font-size: .88rem;
+            transition: var(--transition);
+        }
+        .footer-links a:hover {
+            color: var(--orange);
+            padding-left: 3px;
+        }
+        .footer-contact-item {
+            display: flex;
+            gap: .85rem;
+            margin-bottom: 1rem;
+        }
+        .footer-contact-icon {
+            width: 34px;
+            height: 34px;
+            background: rgba(232,104,26,.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--orange);
+            flex-shrink: 0;
+        }
+        .footer-contact-label {
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.4);
+            margin-bottom: .1rem;
+        }
+        .footer-contact-value {
+            font-size: .88rem;
+            color: rgba(255,255,255,.7);
+        }
+        .footer-bottom {
+            padding: 1.4rem 0;
+        }
+        .footer-bottom-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-copy {
+            font-size: .8rem;
+            color: rgba(255,255,255,.3);
+        }
+        .footer-copy span {
+            color: var(--orange);
+        }
+
+        /* ══ SCROLL TOP ════════════════════════════════════════════ */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            background: var(--orange);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            border: none;
+        }
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .scroll-top:hover {
+            background: var(--navy-dark);
+            transform: translateY(-3px);
+        }
+
+        /* ══ RESPONSIVE ════════════════════════════════════════════ */
+        @media (max-width: 992px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 50px 0;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="preloader">
+    <div class="sk-circle">
+        <div class="sk-circle1 sk-child"></div><div class="sk-circle2 sk-child"></div><div class="sk-circle3 sk-child"></div><div class="sk-circle4 sk-child"></div><div class="sk-circle5 sk-child"></div><div class="sk-circle6 sk-child"></div><div class="sk-circle7 sk-child"></div><div class="sk-circle8 sk-child"></div><div class="sk-circle9 sk-child"></div><div class="sk-circle10 sk-child"></div><div class="sk-circle11 sk-child"></div><div class="sk-circle12 sk-child"></div>
+    </div>
+</div>
+
+<div id="navbar-placeholder"></div>
+
+<!-- ══ HERO SECTION ═══════════════════════════════════════════════ -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center min-vh-75 py-5">
+            <div class="col-lg-7 hero-content">
+                <h1>Innovative <span>Civil Solutions</span><br>for a Modern World</h1>
+                <p>Providing top-tier consultancy, structural design, and project management with over 35 years of industry trust and engineering excellence across East Africa.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="services.html" class="btn-orange">Explore Our Services <i class="fas fa-arrow-right"></i></a>
+                    <a href="contact.html" class="btn-outline-light">Request a Quote</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>35+</h3>
+                        <p>Years of Excellence</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>98%</h3>
+                        <p>Client Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ WELCOME / ABOUT SECTION ════════════════════════════════════ -->
+<section class="section-padding bg-white">
+    <div class="container">
+        <h2 class="section-title">Welcome to <span>Civil Consultancy</span></h2>
+        <p class="section-subtitle">Engineering Excellence Since 1989 — Building Tomorrow's Infrastructure Today</p>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="about-card">
+                    <div class="about-icon"><i class="fas fa-trophy"></i></div>
+                    <h3>35 Years of Excellence</h3>
+                    <p>We specialize in turning complex engineering challenges into sustainable infrastructure. Our commitment to quality and safety is unmatched in the industry.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="about-card">
+                    <div class="about-icon"><i class="fas fa-city"></i></div>
+                    <h3>Infrastructure Development</h3>
+                    <p>Strategic planning and execution of large-scale civil projects that transform communities and drive economic growth across the region.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="about-card">
+                    <div class="about-icon"><i class="fas fa-drafting-compass"></i></div>
+                    <h3>Structural Design</h3>
+                    <p>Designing iconic structures that define modern skylines and stand the test of time with precision engineering and innovative materials.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ PROJECT HIGHLIGHTS ════════════════════════════════════════ -->
+<section class="section-padding bg-light-custom">
+    <div class="container">
+        <h2 class="section-title">Featured <span>Projects</span></h2>
+        <p class="section-subtitle">Showcasing our commitment to excellence and innovation</p>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://placehold.co/600x400/0a3d73/white?text=Urban+Tower+Project" alt="Urban Tower">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">High-Rise Construction</span>
+                        <h4>Nairobi Central Tower</h4>
+                        <p>42-story commercial tower featuring advanced seismic design and sustainable energy systems.</p>
+                        <a href="project-details.html" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://placehold.co/600x400/ff7e00/white?text=Bridge+Infrastructure" alt="Bridge Project">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Transport Infrastructure</span>
+                        <h4>Mombasa Gateway Bridge</h4>
+                        <p>Landmark cable-stayed bridge connecting key economic zones with innovative engineering.</p>
+                        <a href="project-details.html" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://placehold.co/600x400/001a38/white?text=Industrial+Complex" alt="Industrial Project">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Industrial Development</span>
+                        <h4>Special Economic Zone</h4>
+                        <p>Master-planned industrial hub with integrated logistics and sustainable utilities.</p>
+                        <a href="project-details.html" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5">
+            <a href="project.html" class="btn-orange" style="background: transparent; border: 2px solid var(--orange); color: var(--orange);">View All Projects <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- ══ EXPERT TEAM SECTION ════════════════════════════════════════ -->
+<section class="section-padding bg-white">
+    <div class="container">
+        <h2 class="section-title">Expert <span>Consultants</span></h2>
+        <p class="section-subtitle">Leading the industry with professional integrity and innovation</p>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="assets/images/team/alex.png" alt="Scott Briggs">
+                    </div>
+                    <div class="team-info">
+                        <h4>Scott Briggs</h4>
+                        <p>Founder & Lead Engineer</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="assets/images/team/sarah senkins.png" alt="Jane Doe">
+                    </div>
+                    <div class="team-info">
+                        <h4>Jane Doe</h4>
+                        <p>Project Manager</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="assets/images/team/alex.png" alt="Mike Johnson">
+                    </div>
+                    <div class="team-info">
+                        <h4>Mike Johnson</h4>
+                        <p>Senior Architect</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="assets/images/team/sarah senkins.png" alt="Sarah Chen">
+                    </div>
+                    <div class="team-info">
+                        <h4>Sarah Chen</h4>
+                        <p>Technical Director</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ TESTIMONIALS SECTION ═══════════════════════════════════════ -->
+<section class="section-padding testimonial-section">
+    <div class="container">
+        <h2 class="section-title">Client <span>Testimonials</span></h2>
+        <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">What our clients say about working with us</p>
+        
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"Civil Consultancy transformed our infrastructure project. Their attention to detail and engineering prowess are second to none. The team's dedication to excellence is truly commendable."</p>
+                    <div class="testimonial-author">
+                        <h5>John Smith</h5>
+                        <span>Chief Engineer, BuildCorp</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"Working with Civil Consultancy was a game-changer for our urban development. Their innovative approach to sustainable design saved us both time and resources while exceeding quality standards."</p>
+                    <div class="testimonial-author">
+                        <h5>Sarah Johnson</h5>
+                        <span>Director, Urban Developers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ LATEST INSIGHTS / BLOG ═════════════════════════════════════ -->
+<section class="section-padding bg-white">
+    <div class="container">
+        <h2 class="section-title">Latest <span>Insights</span></h2>
+        <p class="section-subtitle">Stay updated with industry trends and innovations</p>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://placehold.co/600x400/0a3d73/white?text=Sustainable+Infrastructure" alt="Blog">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">March 4, 2026</span>
+                        <h4>Sustainable Infrastructure Trends</h4>
+                        <p>Exploring new ways to build eco-friendly cities for a better and more sustainable world.</p>
+                        <a href="blog-detail.html" class="project-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://placehold.co/600x400/ff7e00/white?text=Smart+City+Innovation" alt="Blog">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">February 28, 2026</span>
+                        <h4>Smart City Innovation</h4>
+                        <p>How technology is reshaping urban infrastructure design and making cities smarter and more efficient.</p>
+                        <a href="blog-detail.html" class="project-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://placehold.co/600x400/001a38/white?text=Bridge+Engineering" alt="Blog">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">February 20, 2026</span>
+                        <h4>Bridge Engineering Evolution</h4>
+                        <p>Modern approaches to designing resilient and innovative bridges for the future of transportation.</p>
+                        <a href="blog-detail.html" class="project-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CTA SECTION ═══════════════════════════════════════════════ -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Ready to Start Your Next Project?</h2>
+        <p>Let's discuss how our expertise can bring your vision to life.</p>
+        <a href="contact.html" class="btn-cta">Get in Touch <i class="fas fa-arrow-right"></i></a>
+    </div>
+</section>
+
+<!-- ══ FOOTER ═══════════════════════════════════════════════════ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <div class="footer-logo-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18v-2H3v2zm0-4h18v-2H3v2zm2-4h14v-2H5v2zM3 9l9-6 9 6v2H3V9z"/></svg></div>
+                    <div class="footer-logo-text">Civil Consultancy<span>Engineering Excellence</span></div>
+                </div>
+                <p class="footer-desc">East Africa's premier civil engineering consultancy. Delivering sustainable infrastructure since 1989.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div>
+                <div class="footer-col-title">Quick Links</div>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-col-title">Resources</div>
+                <ul class="footer-links">
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="career.html">Careers</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-col-title">Contact</div>
+                <div class="footer-contact-item">
+                    <div class="footer-contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div><div class="footer-contact-label">Address</div><div class="footer-contact-value">Upper Hill, Nairobi 00100</div></div>
+                </div>
+                <div class="footer-contact-item">
+                    <div class="footer-contact-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div><div class="footer-contact-label">Phone</div><div class="footer-contact-value">+254 712 345 678</div></div>
+                </div>
+                <div class="footer-contact-item">
+                    <div class="footer-contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div><div class="footer-contact-label">Email</div><div class="footer-contact-value">info@civilconsultancy.co.ke</div></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-inner">
+                <p class="footer-copy">&copy; 2025 <span>Civil Consultancy Ltd.</span> All rights reserved.</p>
+                <div class="d-flex gap-3">
+                    <a href="#" style="color: rgba(255,255,255,0.3); font-size: 0.8rem;">Privacy Policy</a>
+                    <a href="#" style="color: rgba(255,255,255,0.3); font-size: 0.8rem;">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></button>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(window).on('load', function() {
+        $('#preloader').fadeOut('slow');
+    });
+
+    $(function(){
+        $("#navbar-placeholder").load("navbar.html", function(response, status, xhr) {
+            if(status == "error") {
+                $("#navbar-placeholder").html(`
+                    <nav class="navbar navbar-expand-lg sticky-top">
+                        <div class="container">
+                            <a class="navbar-brand fw-bold" href="index.html"><i class="fas fa-drafting-compass"></i> CIVIL MASTER</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon" style="filter: invert(1);"></span></button>
+                            <div class="collapse navbar-collapse" id="mainNav">
+                                <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="project.html">Projects</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div style="height: 72px;"></div>
+                `);
+            } else {
+                $('body').css('padding-top', '0px');
+            }
+        });
+    });
+
+    // Scroll Top Button
+    const scrollBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+        if (scrollBtn) {
+            scrollBtn.classList.toggle('show', window.scrollY > 400);
+        }
+    });
+    if (scrollBtn) {
+        scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+</script>
+
+
+</body>
+</html>

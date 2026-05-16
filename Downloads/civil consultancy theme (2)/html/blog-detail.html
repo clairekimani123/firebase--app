@@ -1,0 +1,717 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog Detail | Civil Consultancy | Structural Engineering Insights</title>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="#">
+    <!-- Fonts + Bootstrap 5 + Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* ---------- MASTER COLOR SYSTEM: NAVY + ORANGE (given palette) ---------- */
+        :root {
+            --navy-dark: #001a38;
+            --navy-mid: #0a3d73;
+            --orange: #ff7e00;
+            --orange-lt: #ff9a30;
+            --orange-pale: #fff4e6;
+            --white: #ffffff;
+            --off-white: #f8f7f4;
+            --gray-light: #ebebeb;
+            --gray-mid: #8a9ab5;
+            --text: #1a2340;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.03), 0 2px 6px rgba(0,0,0,0.05);
+            --shadow-md: 0 15px 30px -12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 25px 35px -15px rgba(0,0,0,0.15);
+            --transition: all 0.25s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--text);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--navy-dark);
+        }
+
+        a {
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--navy-dark);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s;
+        }
+        .sk-circle {
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+        .sk-circle .sk-child {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            animation: sk-circle 1.2s infinite ease-in-out;
+            background: var(--orange);
+            border-radius: 50%;
+        }
+        @keyframes sk-circle {
+            0%, 100% { transform: scale(0); opacity: 0.5; }
+            50% { transform: scale(1); opacity: 1; }
+        }
+        .sk-circle1 { transform: rotate(0deg); animation-delay: -1.1s; }
+        .sk-circle2 { transform: rotate(30deg); animation-delay: -1s; }
+        .sk-circle3 { transform: rotate(60deg); animation-delay: -0.9s; }
+        .sk-circle4 { transform: rotate(90deg); animation-delay: -0.8s; }
+        .sk-circle5 { transform: rotate(120deg); animation-delay: -0.7s; }
+        .sk-circle6 { transform: rotate(150deg); animation-delay: -0.6s; }
+        .sk-circle7 { transform: rotate(180deg); animation-delay: -0.5s; }
+        .sk-circle8 { transform: rotate(210deg); animation-delay: -0.4s; }
+        .sk-circle9 { transform: rotate(240deg); animation-delay: -0.3s; }
+        .sk-circle10 { transform: rotate(270deg); animation-delay: -0.2s; }
+        .sk-circle11 { transform: rotate(300deg); animation-delay: -0.1s; }
+        .sk-circle12 { transform: rotate(330deg); animation-delay: 0s; }
+
+        /* Navbar */
+        /* .navbar {
+            background: var(--navy-dark) !important;
+            box-shadow: var(--shadow-sm);
+            padding: 0.9rem 1rem;
+        }
+        .navbar .nav-link, .navbar-brand {
+            color: var(--white) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .navbar .nav-link:hover {
+            color: var(--orange) !important;
+        }
+        .navbar-brand i {
+            color: var(--orange);
+            margin-right: 8px;
+        } */
+
+        /* Hero Section */
+        .inner-intro {
+            background: linear-gradient(115deg, var(--navy-dark) 0%, var(--navy-mid) 100%);
+            padding: 90px 0;
+            text-align: center;
+            position: relative;
+        }
+        .inner-intro:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: linear-gradient(to top, var(--off-white), transparent);
+        }
+        .inner-intro h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+        .inner-intro h1 span {
+            color: var(--orange);
+            border-bottom: 3px solid var(--orange);
+            padding-bottom: 5px;
+        }
+        .page-breadcrumb {
+            color: rgba(255,255,255,0.85);
+        }
+        .page-breadcrumb a, .page-breadcrumb span {
+            color: var(--white);
+        }
+        .page-breadcrumb a:hover {
+            color: var(--orange);
+        }
+
+        /* Blog Detail Styling */
+        .blog-post {
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .post-meta {
+            padding: 10px 0 5px;
+            font-size: 0.8rem;
+            color: var(--gray-mid);
+            border-bottom: 1px solid var(--gray-light);
+            margin-bottom: 15px;
+        }
+        .post-meta a {
+            color: var(--gray-mid);
+        }
+        .post-meta a:hover {
+            color: var(--orange);
+        }
+        .post-header h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--navy-dark);
+        }
+        .post-media {
+            position: relative;
+            margin: 20px 0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .post-media img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        .blog-date {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--orange);
+            color: var(--white);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .blog-date span {
+            font-size: 0.7rem;
+            display: block;
+            font-weight: 500;
+        }
+        .post-entry .lead {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--navy-mid);
+            border-left: 4px solid var(--orange);
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+        blockquote {
+            background: var(--orange-pale);
+            border-left: 5px solid var(--orange);
+            padding: 25px 30px;
+            border-radius: 20px;
+            font-style: italic;
+            font-weight: 500;
+            color: var(--navy-dark);
+            margin: 25px 0;
+            font-size: 1.1rem;
+        }
+        .lead-point {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .lead-point li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .lead-point li i {
+            color: var(--orange);
+            font-size: 1.2rem;
+        }
+
+        /* Author Box */
+        .post-author {
+            display: flex;
+            gap: 20px;
+            background: var(--off-white);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 30px 0;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .post-author-img img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--orange);
+        }
+        .post-author-details h6 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--navy-dark);
+        }
+        .post-author-details p {
+            color: var(--gray-mid);
+            margin: 0;
+        }
+
+        /* Comments */
+        .comment-list {
+            list-style: none;
+            padding: 0;
+        }
+        .comment-list li {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        .comment-avatar img {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .comment-detail h6 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        .comment-detail .post-meta {
+            padding: 0;
+            border: none;
+            margin-bottom: 8px;
+        }
+        .comment-reply-btn {
+            color: var(--orange);
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .comment-reply-btn:hover {
+            color: var(--navy-dark);
+        }
+
+        /* Comment Form Styling */
+        .comment-form {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-light);
+            margin-top: 20px;
+        }
+        .form-control-custom {
+            width: 100%;
+            padding: 12px 18px;
+            border: 1px solid var(--gray-light);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            background: var(--white);
+        }
+        .form-control-custom:focus {
+            outline: none;
+            border-color: var(--orange);
+            box-shadow: 0 0 0 3px rgba(255,126,0,0.1);
+        }
+        textarea.form-control-custom {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .btn-orange {
+            background: var(--orange);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            transition: var(--transition);
+        }
+        .btn-orange:hover {
+            background: var(--navy-dark);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Sidebar Widgets */
+        .sidebar-widget {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 24px 20px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-light);
+        }
+        .sidebar-widget h5 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--navy-dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        .sidebar-widget h5:after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--orange);
+            border-radius: 3px;
+        }
+        .widget-search {
+            position: relative;
+        }
+        .widget-search input {
+            width: 100%;
+            padding: 12px 18px;
+            border: 1px solid var(--gray-light);
+            border-radius: 60px;
+            font-size: 0.9rem;
+        }
+        .widget-search input:focus {
+            outline: none;
+            border-color: var(--orange);
+        }
+        .categories {
+            list-style: none;
+            padding: 0;
+        }
+        .categories li {
+            margin-bottom: 12px;
+        }
+        .categories li a {
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        .categories li a:before {
+            content: "▹";
+            color: var(--orange);
+        }
+        .categories li a:hover {
+            color: var(--orange);
+            padding-left: 5px;
+        }
+
+        /* Footer */
+        .main_footer__block {
+            background: var(--navy-dark);
+            color: #b9c7d9;
+            padding: 50px 0 30px;
+            margin-top: 40px;
+        }
+        .footer_box__block h4 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .footer_box__block ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer_box__block ul li {
+            margin-bottom: 12px;
+        }
+        .footer_box__block ul li a {
+            color: #b9c7d9;
+        }
+        .footer_box__block ul li a:hover {
+            color: var(--orange);
+        }
+        .copyriight_block {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .inner-intro h1 { font-size: 2rem; }
+            .post-header h2 { font-size: 1.4rem; }
+            .post-author { flex-direction: column; text-align: center; }
+            .comment-list li { flex-direction: column; align-items: center; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="preloader">
+    <div class="sk-circle">
+        <div class="sk-circle1 sk-child"></div><div class="sk-circle2 sk-child"></div><div class="sk-circle3 sk-child"></div><div class="sk-circle4 sk-child"></div><div class="sk-circle5 sk-child"></div><div class="sk-circle6 sk-child"></div><div class="sk-circle7 sk-child"></div><div class="sk-circle8 sk-child"></div><div class="sk-circle9 sk-child"></div><div class="sk-circle10 sk-child"></div><div class="sk-circle11 sk-child"></div><div class="sk-circle12 sk-child"></div>
+    </div>
+</div>
+
+<div id="navbar-placeholder"></div>
+
+<!-- Hero Section -->
+<section class="inner-intro">
+    <div class="container">
+        <div class="row title">
+            <div class="title_row">
+                <h1 data-title="Article Detail"><span>Article Detail</span></h1>
+                <div class="page-breadcrumb"><a href="#">Home</a> / <a href="#">Blog</a> / <span>Structural Resilience</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Detail Content -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-5">
+            <!-- Main Content Column -->
+            <div class="col-lg-9">
+                <div class="blog-post">
+                    <div class="post-meta d-flex justify-content-between align-items-center flex-wrap">
+                        <span><i class="far fa-user me-1"></i> by <a href="#">Lead Consultant</a> &nbsp;|&nbsp; <i class="far fa-comment"></i> <a href="#">12 Comments</a> &nbsp;|&nbsp; <i class="far fa-heart"></i> <a href="#">84 Likes</a></span>
+                        <div class="social-share-icons">
+                            <a href="#" class="me-2 text-muted"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="me-2 text-muted"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-muted"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="post-header">
+                        <h2>The Evolution of Structural Resilience in Modern Skyscrapers</h2>
+                    </div>
+                    <div class="post-media">
+                        <img src="https://placehold.co/1200x600/0a3d73/white?text=Modern+Skyscraper+Engineering" alt="Skyscraper Detail">
+                        <span class="blog-date">12 <span>May</span></span>
+                    </div>
+                    <div class="post-entry">
+                        <p class="lead">As urban centers grow vertically, the demand for structural resilience has never been higher. Modern consultancy now integrates AI-driven stress testing and sustainable materials as standard practice.</p>
+                        
+                        <blockquote>
+                            <i class="fas fa-quote-left me-2" style="color: var(--orange);"></i> 
+                            "Engineering isn't just about standing tall; it's about withstanding the unforeseen through meticulous planning."
+                        </blockquote>
+
+                        <h3 class="mt-30">Core Innovations in Site Safety</h3>
+                        <p>We have observed a significant shift toward modular construction techniques which drastically reduce on-site waste and improve timeline accuracy. Our team has pioneered several methodologies that are now industry benchmarks.</p>
+                        
+                        <ul class="lead-point">
+                            <li><i class="fas fa-check-circle"></i> Real-time seismic activity monitoring with IoT sensors</li>
+                            <li><i class="fas fa-check-circle"></i> High-performance recycled steel composites</li>
+                            <li><i class="fas fa-check-circle"></i> Automated site survey drones for terrain analysis</li>
+                            <li><i class="fas fa-check-circle"></i> Digital twin simulation for wind load optimization</li>
+                        </ul>
+                        
+                        <p>These innovations not only increase safety margins but also reduce lifecycle costs by up to 30%, making them essential for modern urban development.</p>
+                    </div>
+                </div>
+
+                <!-- Author Box -->
+                <div class="post-author">
+                    <div class="post-author-img">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Author David Sterling">
+                    </div>
+                    <div class="post-author-details">
+                        <h6>David Sterling</h6>
+                        <p>David is a senior structural consultant with over 15 years of experience in metropolitan infrastructure development across North America and Europe. He leads our innovation lab focusing on resilient building technologies.</p>
+                    </div>
+                </div>
+
+                <!-- Comments Section -->
+                <div class="mt-4">
+                    <h4>Discussion <span class="text-muted" style="font-size: 1rem;">(1 Comment)</span></h4>
+                    <ul class="comment-list mt-3">
+                        <li>
+                            <div class="comment-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah Senkins">
+                            </div>
+                            <div class="comment-detail">
+                                <h6>Sarah Senkins</h6>
+                                <div class="post-meta">May 10, 2026 | <a href="#" class="comment-reply-btn"><i class="fas fa-reply"></i> Reply</a></div>
+                                <p>Excellent points regarding modular construction. Are there specific software tools you recommend for the initial simulation phase? We're currently evaluating options for an upcoming high-rise project.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Comment Form (fixed and styled) -->
+                <div class="comment-form">
+                    <h4 class="mb-3">Leave a Comment</h4>
+                    <form id="blogCommentForm">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control-custom" placeholder="Your Name *" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="email" class="form-control-custom" placeholder="Email Address *" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control-custom" placeholder="Website (optional)">
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control-custom" placeholder="Write your message here..." required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn-orange"><i class="fas fa-paper-plane me-2"></i>Post Comment</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-3">
+                <div class="sidebar-widget">
+                    <h5>Search Blog</h5>
+                    <div class="widget-search">
+                        <input type="text" placeholder="Search articles...">
+                    </div>
+                </div>
+                <div class="sidebar-widget">
+                    <h5>Categories</h5>
+                    <ul class="categories">
+                        <li><a href="#">Structural Analysis</a></li>
+                        <li><a href="#">Green Building</a></li>
+                        <li><a href="#">Industrial Safety</a></li>
+                        <li><a href="#">Seismic Design</a></li>
+                        <li><a href="#">Urban Planning</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-widget">
+                    <h5>Recent Posts</h5>
+                    <ul class="categories">
+                        <li><a href="#">Modular Building Trends 2026</a></li>
+                        <li><a href="#">Bridge Safety Analysis Methods</a></li>
+                        <li><a href="#">Carbon-Neutral Construction</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-widget" style="background: var(--orange-pale);">
+                    <h5 style="color: var(--navy-dark);">Newsletter</h5>
+                    <p class="small">Get the latest engineering insights delivered to your inbox.</p>
+                    <input type="email" class="form-control-custom mb-2" placeholder="Your email">
+                    <button class="btn-orange w-100" style="background: var(--orange);">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="main_footer__block pb-0 pt-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="footer_box__block">
+                    <h4><i class="fas fa-hard-hat me-2" style="color: var(--orange);"></i> Civil Consultancy</h4>
+                    <p>Providing expert engineering solutions for large-scale infrastructure and urban planning projects worldwide since 2012.</p>
+                </div>
+            </div>
+            <div class="col-lg-2 mb-4">
+                <div class="footer_box__block">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-4">
+                <div class="footer_box__block">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt me-2" style="color: var(--orange);"></i> 123 Engineering Way, Washington, DC</li>
+                        <li><i class="fas fa-phone-alt me-2" style="color: var(--orange);"></i> +1 (800) 456-7890</li>
+                        <li><i class="fas fa-envelope me-2" style="color: var(--orange);"></i> consultancy@civiceng.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-4">
+                <div class="footer_box__block">
+                    <h4>Follow Us</h4>
+                    <div class="d-flex gap-3 mt-2">
+                        <a href="#"><i class="fab fa-linkedin-in fa-lg" style="color: var(--gray-mid);"></i></a>
+                        <a href="#"><i class="fab fa-twitter fa-lg" style="color: var(--gray-mid);"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f fa-lg" style="color: var(--gray-mid);"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyriight_block">
+            <p class="mb-0">© 2026 Civil Consultancy. All Rights Reserved. Built with <i class="fas fa-heart" style="color: var(--orange);"></i> for engineering excellence.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(window).on('load', function() {
+        $('#preloader').fadeOut('slow');
+    });
+
+    $(function(){
+        // Load navbar from external or fallback
+        $("#navbar-placeholder").load("navbar.html", function(response, status, xhr) {
+            if(status == "error") {
+                $("#navbar-placeholder").html(`
+                    <nav class="navbar navbar-expand-lg sticky-top">
+                        <div class="container">
+                            <a class="navbar-brand fw-bold" href="#"><i class="fas fa-drafting-compass"></i> CIVIL MASTER</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon" style="filter: invert(1);"></span></button>
+                            <div class="collapse navbar-collapse" id="mainNav">
+                                <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Projects</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                                    <li class="nav-item"><a class="nav-link active" href="#">Blog</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div style="height: 72px;"></div>
+                `);
+            } else {
+                $('body').css('padding-top', '0px');
+            }
+        });
+
+        // Handle comment form submission with simple alert (no backend)
+        $('#blogCommentForm').on('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your comment! Our team will review it shortly.');
+            this.reset();
+        });
+        
+        // Reply button handler
+        $('.comment-reply-btn').on('click', function() {
+            $('html, body').animate({
+                scrollTop: $('.comment-form').offset().top - 100
+            }, 500);
+            $('.comment-form textarea').focus();
+        });
+    });
+</script>
+
+
+</body>
+</html>

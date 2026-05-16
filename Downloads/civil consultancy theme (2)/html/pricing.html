@@ -1,0 +1,867 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pricing Plans | Civil Consultancy</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/ionicons.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* PRICING PAGE STYLING */
+        :root {
+            --navy: #1B2B6B;
+            --navy-dark: #111d4a;
+            --orange: #D4621A;
+            --orange-light: #e8752e;
+            --white: #FFFFFF;
+            --off-white: #f8f7f5;
+            --light-gray: #e8e8e8;
+            --dark-gray: #333333;
+        }
+
+        body { 
+            background: var(--off-white); 
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .page-header h1 span { color: var(--orange); }
+
+        .breadcrumb-nav {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .breadcrumb-nav a { color: var(--orange); text-decoration: none; }
+
+        /* SECTION TITLE */
+        .sec-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .sec-title h2 { 
+            color: var(--navy); 
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .sec-title h2 span { color: var(--orange); }
+
+        .sec-title .divider {
+            width: 60px;
+            height: 3px;
+            background: var(--orange);
+            margin: 15px auto;
+        }
+
+        /* PRICING SECTION */
+        .pricing-section {
+            padding: 60px 0;
+        }
+
+        /* PRICING CARDS */
+        .pricing-card {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 30px;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(27,43,107,0.15);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--orange);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+
+        /* PRICING HEADER */
+        .pricing-header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+            color: var(--white);
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .pricing-card.featured .pricing-header {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .plan-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .pricing-card.featured .plan-badge {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .price-amount {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin: 15px 0;
+        }
+
+        .price-currency {
+            font-size: 1.5rem;
+            vertical-align: super;
+        }
+
+        .price-period {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .price-description {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin-top: 10px;
+        }
+
+        /* FEATURES LIST */
+        .features-list {
+            flex: 1;
+            padding: 30px 20px;
+            list-style: none;
+            margin: 0;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--light-gray);
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: var(--orange);
+            font-weight: 700;
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+
+        .feature-highlight {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        /* CTA BUTTON */
+        .pricing-btn {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .btn-pricing {
+            display: inline-block;
+            padding: 14px 40px;
+            background: var(--navy);
+            color: var(--white);
+            border: 2px solid var(--navy);
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 90%;
+            text-align: center;
+        }
+
+        .btn-pricing:hover {
+            background: transparent;
+            color: var(--navy);
+        }
+
+        .pricing-card.featured .btn-pricing {
+            background: var(--orange);
+            border-color: var(--orange);
+        }
+
+        .pricing-card.featured .btn-pricing:hover {
+            background: transparent;
+            color: var(--orange);
+        }
+
+        /* COMPARISON TABLE */
+        .comparison-section {
+            background: var(--white);
+            padding: 60px 0;
+            margin-top: 60px;
+            border-radius: 12px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .comparison-table th {
+            background: var(--navy);
+            color: var(--white);
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 600;
+            color: var(--navy);
+            background: var(--off-white);
+        }
+
+        .comparison-table td {
+            text-align: center;
+        }
+
+        .check-icon {
+            color: var(--orange);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .cross-icon {
+            color: #ccc;
+            font-size: 1.2rem;
+        }
+
+        /* FAQ SECTION */
+        .faq-section {
+            padding: 60px 0;
+            background: var(--off-white);
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            padding: 20px;
+            background: var(--navy);
+            color: var(--white);
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--navy-dark);
+        }
+
+        .faq-arrow {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 20px;
+            color: var(--dark-gray);
+            line-height: 1.6;
+            display: none;
+            background: var(--off-white);
+        }
+
+        .faq-answer.show {
+            display: block;
+        }
+
+        .faq-arrow.open {
+            transform: rotate(180deg);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.75);
+            padding: 40px 0;
+        }
+
+        .top-footer-info {
+            background: var(--navy-dark);
+            padding: 20px 0;
+        }
+
+        .footer-info-block {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-info-block i {
+            color: var(--orange);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-box h4 {
+            color: var(--orange);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-box a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-box a:hover {
+            color: var(--orange);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            
+            .sec-title h2 { font-size: 1.8rem; }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-8px);
+            }
+
+            .price-amount { font-size: 2.5rem; }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+  
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="sk-circle">
+            <div class="sk-circle1 sk-child"></div><div class="sk-circle2 sk-child"></div>
+            <div class="sk-circle3 sk-child"></div><div class="sk-circle4 sk-child"></div>
+            <div class="sk-circle5 sk-child"></div><div class="sk-circle6 sk-child"></div>
+            <div class="sk-circle7 sk-child"></div><div class="sk-circle8 sk-child"></div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+
+   <div id="navbar-placeholder"></div>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Service <span>Pricing Plans</span></h1>
+            <div class="breadcrumb-nav">
+                <a href="index.html">Home</a> / <span>Pricing</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="sec-title">
+                <h2>Transparent <span>Pricing</span></h2>
+                <div class="divider"></div>
+                <p style="color: #666; font-size: 1.1rem; margin-top: 15px;">
+                    Choose the perfect plan for your project needs
+                </p>
+            </div>
+
+            <div class="row">
+                <!-- STARTER PLAN -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <div class="plan-badge">STARTER</div>
+                            <h3 class="plan-name">Starter</h3>
+                            <div class="price-amount">
+                                <span class="price-currency">$</span>149
+                            </div>
+                            <div class="price-period">per month</div>
+                            <div class="price-description">Perfect for small projects</div>
+                        </div>
+                        <ul class="features-list">
+                            <li>Initial Site Assessment</li>
+                            <li><span class="feature-highlight">Basic Structural Report</span></li>
+                            <li>Standard Compliance Check</li>
+                            <li><span class="feature-highlight">Email Support</span></li>
+                            <li>Up to 5 Site Visits</li>
+                            <li><span class="feature-highlight">Monthly Reports</span></li>
+                        </ul>
+                        <div class="pricing-btn">
+                            <a href="checkout.html" class="btn-pricing">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADVANCED PLAN -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <div class="plan-badge">ADVANCED</div>
+                            <h3 class="plan-name">Advanced</h3>
+                            <div class="price-amount">
+                                <span class="price-currency">$</span>249
+                            </div>
+                            <div class="price-period">per month</div>
+                            <div class="price-description">For growing businesses</div>
+                        </div>
+                        <ul class="features-list">
+                            <li>Full Site Inspection</li>
+                            <li><span class="feature-highlight">Detailed CAD Layouts</span></li>
+                            <li>Safety Regulation Filings</li>
+                            <li><span class="feature-highlight">Priority Email Support</span></li>
+                            <li>Unlimited Site Visits</li>
+                            <li><span class="feature-highlight">Weekly Updates</span></li>
+                        </ul>
+                        <div class="pricing-btn">
+                            <a href="checkout.html" class="btn-pricing">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BUSINESS PLAN (FEATURED) -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="pricing-card featured">
+                        <div class="pricing-header">
+                            <div class="plan-badge">MOST POPULAR</div>
+                            <h3 class="plan-name">Business</h3>
+                            <div class="price-amount">
+                                <span class="price-currency">$</span>299
+                            </div>
+                            <div class="price-period">per month</div>
+                            <div class="price-description">For enterprises</div>
+                        </div>
+                        <ul class="features-list">
+                            <li>Dedicated Site Manager</li>
+                            <li><span class="feature-highlight">Environmental Impact Study</span></li>
+                            <li>Infrastructure Strategy</li>
+                            <li><span class="feature-highlight">24/7 Phone Support</span></li>
+                            <li>Dedicated Project Team</li>
+                            <li><span class="feature-highlight">Real-time Collaboration</span></li>
+                        </ul>
+                        <div class="pricing-btn">
+                            <a href="checkout.html" class="btn-pricing">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRO PLAN -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <div class="plan-badge">PREMIUM</div>
+                            <h3 class="plan-name">Pro</h3>
+                            <div class="price-amount">
+                                <span class="price-currency">$</span>349
+                            </div>
+                            <div class="price-period">per month</div>
+                            <div class="price-description">Ultimate solution</div>
+                        </div>
+                        <ul class="features-list">
+                            <li>Unlimited Site Visits</li>
+                            <li><span class="feature-highlight">Custom Project Mapping</span></li>
+                            <li>Legal & Risk Documentation</li>
+                            <li><span class="feature-highlight">Full Team Access</span></li>
+                            <li>Advanced Analytics Dashboard</li>
+                            <li><span class="feature-highlight">Priority Updates & Support</span></li>
+                        </ul>
+                        <div class="pricing-btn">
+                            <a href="checkout.html" class="btn-pricing">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARISON TABLE -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="sec-title">
+                <h2>Feature <span>Comparison</span></h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Features</th>
+                            <th>Starter</th>
+                            <th>Advanced</th>
+                            <th>Business</th>
+                            <th>Pro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Site Assessment</td>
+                            <td><span class="check-icon">✓</span></td>
+                            <td><span class="check-icon">✓</span></td>
+                            <td><span class="check-icon">✓</span></td>
+                            <td><span class="check-icon">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Structural Reports</td>
+                            <td>Basic</td>
+                            <td><span class="check-icon">✓ Full</span></td>
+                            <td><span class="check-icon">✓ Full</span></td>
+                            <td><span class="check-icon">✓ Full</span></td>
+                        </tr>
+                        <tr>
+                            <td>CAD Layouts</td>
+                            <td><span class="cross-icon">✕</span></td>
+                            <td><span class="check-icon">✓</span></td>
+                            <td><span class="check-icon">✓</span></td>
+                            <td><span class="check-icon">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Site Visits</td>
+                            <td>Up to 5</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Support</td>
+                            <td>Email</td>
+                            <td>Priority Email</td>
+                            <td><span class="check-icon">✓ 24/7 Phone</span></td>
+                            <td><span class="check-icon">✓ 24/7 Premium</span></td>
+                        </tr>
+                        <tr>
+                            <td>Dedicated Manager</td>
+                            <td><span class="cross-icon">✕</span></td>
+                            <td><span class="cross-icon">✕</span></td>
+                            <td><span class="check-icon">✓</span></td>
+                            <td><span class="check-icon">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Environmental Study</td>
+                            <td><span class="cross-icon">✕</span></td>
+                            <td><span class="cross-icon">✕</span></td>
+                            <td><span class="check-icon">✓</span></td>
+                            <td><span class="check-icon">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Custom Analytics</td>
+                            <td><span class="cross-icon">✕</span></td>
+                            <td><span class="cross-icon">✕</span></td>
+                            <td><span class="cross-icon">✕</span></td>
+                            <td><span class="check-icon">✓ Advanced</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="sec-title">
+                <h2>Frequently Asked <span>Questions</span></h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Can I change plans at any time?</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes, absolutely! You can upgrade or downgrade your plan at any time. Changes take effect immediately with prorated billing adjustments.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Is there a contract or long-term commitment?</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            No long-term contracts required. You can cancel anytime with 30 days notice. We believe in earning your business every month.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Do you offer custom or enterprise plans?</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes! For large-scale projects or special requirements, we offer custom enterprise plans. Contact our sales team for details.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>What payment methods do you accept?</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            We accept all major credit cards, bank transfers, and PayPal. Invoicing is available for enterprise plans.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Is there a free trial available?</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            We offer a 14-day free trial of the Advanced plan with full access to all features. No credit card required to get started.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section style="background: linear-gradient(135deg, #1B2B6B 0%, #111d4a 100%); padding: 60px 0; color: white;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 style="color: white; margin-bottom: 15px;">Ready to Get Started?</h2>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem;">
+                        Choose the perfect plan for your project and start optimizing your infrastructure today.
+                    </p>
+                </div>
+                <div class="col-lg-6 text-right">
+                    <a href="checkout.html" style="display: inline-block; background: #D4621A; color: white; padding: 14px 40px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                        Select a Plan Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <!-- <div class="top-footer-info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 footer-info-block">
+                        <i class="fa fa-phone"></i>
+                        <h4>+1 (234) 567-890</h4>
+                        <p>Monday-Friday, 8am-6pm</p>
+                    </div>
+                    <div class="col-md-4 footer-info-block">
+                        <i class="fa fa-envelope-o"></i>
+                        <h4>info@civilconsultancy.com</h4>
+                        <p>Online Support 24/7</p>
+                    </div>
+                    <div class="col-md-4 footer-info-block">
+                        <i class="fa fa-bullhorn"></i>
+                        <h4>Request a Quote</h4>
+                        <p>Personalized Estimates</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div style="padding: 40px 0;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="footer-box">
+                            <h4>About Us</h4>
+                            <p>Civil Consultancy provides expert engineering and structural services for urban and industrial development projects worldwide.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="footer-box">
+                            <h4>Services</h4>
+                            <ul>
+                                <li><a href="services.html">Infrastructure Planning</a></li>
+                                <li><a href="services.html">Project Management</a></li>
+                                <li><a href="services.html">Engineering Design</a></li>
+                                <li><a href="services.html">Structural Analysis</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="footer-box">
+                            <h4>Quick Links</h4>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="pricing.html">Pricing</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="footer-box">
+                            <h4>Contact Info</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li><i class="fa fa-phone" style="color: #D4621A;"></i> +1 (234) 567-890</li>
+                                <li><i class="fa fa-envelope-o" style="color: #D4621A;"></i> info@civilconsultancy.com</li>
+                                <li><i class="fa fa-map-marker" style="color: #D4621A;"></i> 123 Engineering Plaza, DC 20001</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; text-align: center;">
+                    <p>© 2026 Civil Consultancy. All Rights Reserved. Engineering Excellence Since 2009.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <script>
+        // Hide preloader on load
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    preloader.style.display = 'none';
+                }, 500);
+            }
+        });
+
+        // FAQ Toggle Function
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const arrow = element.querySelector('.faq-arrow');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove('show');
+                }
+            });
+            
+            document.querySelectorAll('.faq-arrow').forEach(item => {
+                if (item !== arrow) {
+                    item.classList.remove('open');
+                }
+            });
+            
+            // Toggle current FAQ
+            answer.classList.toggle('show');
+            arrow.classList.toggle('open');
+        }
+    </script>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+<script>
+    $(window).on('load', function() {
+        $('#preloader').fadeOut('slow');
+    });
+
+    $(function(){
+        $("#navbar-placeholder").load("navbar.html", function(response, status, xhr) {
+            if(status == "error") {
+                $("#navbar-placeholder").html(`
+                    <nav class="navbar navbar-expand-lg fixed-top">
+                        <div class="container">
+                            <a class="navbar-brand fw-bold" href="index.html"><i class="fas fa-hard-hat me-2"></i>CIVIL MASTER</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="mainNav">
+                                <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="project.html">Projects</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div style="height: 76px;"></div>
+                `);
+            }
+            $('body').css('padding-top', '0px');
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* ═══════════════════════════════════════════════════════════════
+           NAVBAR STYLES - MUST MATCH YOUR PAGE THEME
+        ═══════════════════════════════════════════════════════════════ */
+        
+        /* Use the same color variables as your pages */
+        :root {
+            --primary-deep-blue: #0A2647;
+            --secondary-blue: #1B4A7A;
+            --accent-orange: #E97C2B;
+            --accent-orange-dark: #C95A0E;
+            --white: #ffffff;
+            --gray-soft: #F1F4F9;
+            --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Styles */
+        .header {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        /* Top Bar */
+        .top-bar-section {
+            background: var(--primary-deep-blue);
+            padding: 8px 0;
+            font-size: 0.8rem;
+        }
+        .top-bar-section a {
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .top-bar-section a:hover {
+            color: var(--accent-orange) !important;
+        }
+        .text-white-50 {
+            color: rgba(255,255,255,0.4);
+        }
+        
+        /* Main Nav Wrapper */
+        .nav-wrap {
+            background: var(--white);
+            padding: 12px 0;
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        /* Logo */
+        .logo {
+            flex-shrink: 0;
+        }
+        .logo img {
+            height: 52px;
+            transition: all 0.3s ease;
+        }
+        
+        /* Navigation Menu */
+        .navigation {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        /* Nav Items */
+        .nav-item {
+            position: relative;
+        }
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 16px;
+            color: var(--primary-deep-blue);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+        .nav-link i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-orange);
+            background: #FFF4E6;
+        }
+        
+        /* DROPDOWN MENU - WORKING VERSION */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            padding: 10px 0;
+            list-style: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid var(--gray-soft);
+        }
+        
+        /* Show dropdown on hover - THIS IS KEY */
+        .nav-item.dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        /* Rotate chevron on hover */
+        .nav-item.dropdown:hover .dropdown-toggle i {
+            transform: rotate(180deg);
+        }
+        
+        /* Dropdown items */
+        .dropdown-menu li {
+            margin: 0;
+            padding: 0;
+        }
+        .dropdown-menu li a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--primary-deep-blue);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+        .dropdown-menu li a:hover {
+            background: #FFF4E6;
+            color: var(--accent-orange);
+            padding-left: 26px;
+        }
+        
+        /* Mobile Toggle Button */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+        .mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--primary-deep-blue);
+            transition: all 0.3s ease;
+        }
+        
+        /* Mobile Overlay */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
+        .nav-overlay.active {
+            display: block;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Flex Utilities */
+        .d-flex { display: flex; }
+        .justify-content-between { justify-content: space-between; }
+        .align-items-center { align-items: center; }
+        .text-white { color: white; }
+        .me-3 { margin-right: 1rem; }
+        .px-2 { padding: 0 0.5rem; }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .mobile-toggle {
+                display: flex;
+            }
+            .navigation {
+                position: fixed;
+                top: 0;
+                left: -280px;
+                width: 280px;
+                height: 100vh;
+                background: var(--white);
+                box-shadow: var(--shadow-md);
+                transition: left 0.3s ease;
+                z-index: 1001;
+                padding: 80px 20px 30px;
+                overflow-y: auto;
+            }
+            .navigation.active {
+                left: 0;
+            }
+            .nav-menu {
+                flex-direction: column;
+                gap: 0;
+                width: 100%;
+            }
+            .nav-link {
+                padding: 12px 16px;
+                justify-content: space-between;
+            }
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                padding-left: 20px;
+                display: none;
+                border: none;
+            }
+            .dropdown.active .dropdown-menu {
+                display: block;
+            }
+            .nav-item.dropdown:hover .dropdown-menu {
+                transform: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.2rem;
+            }
+        }
+
+        /* Force dropdown styles - override any page conflicts */
+.nav-item.dropdown {
+    position: relative !important;
+}
+.dropdown-menu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.3s ease !important;
+    display: block !important;
+}
+.nav-item.dropdown:hover .dropdown-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <!-- Top Bar -->
+    <div class="top-bar-section">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="top-contact">
+                    <a href="tel:+254712345678" class="text-white me-3"><i class="fas fa-phone-alt"></i> +254 712 345 678</a>
+                    <a href="mailto:info@civilconsultancy.co.ke" class="text-white"><i class="fas fa-envelope"></i> info@civilconsultancy.co.ke</a>
+                </div>
+                <div class="top-links">
+                    <a href="login.html" class="text-white px-2">Login</a>
+                    <span class="text-white-50">|</span>
+                    <a href="register.html" class="text-white px-2">Register</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <div class="nav-wrap">
+        <div class="container">
+            <div class="nav-inner">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/images/logo.png" alt="Civil Consultancy" onerror="this.src='https://placehold.co/200x60/0A2647/white?text=CIVIL'">
+                    </a>
+                </div>
+
+                <!-- Navigation Menu -->
+                <nav class="navigation">
+                    <ul class="nav-menu">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        
+                        <!-- Company Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">Company <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="career.html">Careers</a></li>
+                                <li><a href="faq.html">FAQ</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Services Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="services.html">All Services</a></li>
+                                <li><a href="services-details.html">Service Details</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Projects Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">Projects <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="project.html">Our Projects</a></li>
+                                <li><a href="project-details.html">Project Details</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Insights Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">Insights <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="blog-detail.html">Blog Detail</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Shop Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">Shop <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="shop.html">All Products</a></li>
+                                <li><a href="cart.html">Cart</a></li>
+                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="pricing.html">Pricing</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Mobile Toggle Button -->
+                <button class="mobile-toggle" id="mobileToggle">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Font Awesome (required for icons) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<script>
+    // Mobile Menu Toggle Script
+    (function() {
+        function init() {
+            const toggleBtn = document.getElementById('mobileToggle');
+            const navigation = document.querySelector('.navigation');
+            
+            if (!toggleBtn || !navigation) return;
+            
+            // Create overlay
+            let overlay = document.querySelector('.nav-overlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.className = 'nav-overlay';
+                document.body.appendChild(overlay);
+            }
+            
+            function closeMenu() {
+                navigation.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            function openMenu() {
+                navigation.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            toggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (navigation.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+            
+            overlay.addEventListener('click', closeMenu);
+            
+            // Handle dropdown toggles on mobile
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 992) {
+                        e.preventDefault();
+                        const parent = this.closest('.dropdown');
+                        if (parent) {
+                            parent.classList.toggle('active');
+                        }
+                    }
+                });
+            });
+            
+            // Close menu when clicking a link (on mobile)
+            const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 992) {
+                        closeMenu();
+                    }
+                });
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 992 && navigation.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    })();
+</script>
+
+</body>
+</html>

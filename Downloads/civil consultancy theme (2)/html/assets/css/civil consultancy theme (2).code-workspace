@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../careerserve(1)"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "careerserve(1)"
+	}
+}

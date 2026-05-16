@@ -1,0 +1,1182 @@
+﻿/* =================================================
+ * MASTER STYLE - CAREER SERVE (Ultimate Edition)
+ ================================================= */
+
+:root {
+    --blue: #002e5b;
+    --orange: #ff8a00;
+    --light-gray: #f8f9fa;
+    --text: #444;
+    --border: #ececec;
+}
+
+/* 1. CORE RESET */
+body { font-family: 'Poppins', sans-serif; color: var(--text); line-height: 1.6; margin: 0; }
+h1, h2, h3, h4 { color: var(--blue); font-weight: 700; }
+img { max-width: 100%; height: auto; display: block; }
+.padding { padding: 60px 0; }
+.bg-light { background-color: var(--light-gray); }
+
+/* 2. LAYOUT GRID (Fixes Blog & Shop stacking) */
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+.row { display: flex; flex-wrap: wrap; margin: 0 -15px; }
+.col-md-8 { flex: 0 0 66.66%; padding: 0 15px; box-sizing: border-box; }
+.col-md-4 { flex: 0 0 33.33%; padding: 0 15px; box-sizing: border-box; }
+.col-md-3 { flex: 0 0 25%; padding: 0 15px; box-sizing: border-box; }
+
+@media (max-width: 768px) {
+    .col-md-8, .col-md-4, .col-md-3 { flex: 0 0 100%; }
+    .row { flex-direction: column; }
+}
+
+/* 3. INNER BANNER */
+.inner-intro { background: var(--blue); padding: 80px 0; color: #fff; text-align: center; }
+.inner-intro h1 { color: #fff; margin: 0; font-size: 32px; text-transform: uppercase; }
+
+/* 4. BLOG STYLING */
+.blog-post { margin-bottom: 50px; background: #fff; border-bottom: 1px solid var(--border); padding-bottom: 30px; }
+.post-meta { font-size: 13px; color: #888; margin: 15px 0; }
+.post-meta span { margin-right: 15px; }
+.blog-post h2 { font-size: 24px; margin-top: 10px; }
+.blog-post h2 a { color: var(--blue); text-decoration: none; }
+.blog-post h2 a:hover { color: var(--orange); }
+
+/* 5. SIDEBAR STYLING (The "Search/Categories" Fix) */
+.sidebar-widget { margin-bottom: 40px; padding: 20px; background: var(--light-gray); border-radius: 5px; }
+.sidebar-widget h4 { border-bottom: 2px solid var(--orange); display: inline-block; margin-bottom: 20px; padding-bottom: 5px; }
+.sidebar-widget ul { list-style: none; padding: 0; }
+.sidebar-widget ul li { padding: 8px 0; border-bottom: 1px solid #ddd; }
+.sidebar-widget ul li a { color: var(--text); text-decoration: none; font-size: 14px; }
+.sidebar-widget ul li a:hover { color: var(--orange); padding-left: 5px; transition: 0.3s; }
+
+/* 6. SHOP GRID */
+.product-item { background: #fff; border: 1px solid var(--border); padding: 15px; margin-bottom: 30px; text-align: center; transition: 0.3s; }
+.product-item:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+.product-item h4 { font-size: 16px; margin: 15px 0 5px; }
+.price { color: var(--orange); font-weight: 700; display: block; margin-bottom: 15px; }
+
+/* 7. FOOTER (Temporary Fix for your screenshot) */
+.main_footer__block { background: #1a1a1a; color: #ccc; padding: 60px 0 20px; font-size: 14px; }
+.main_footer__block h4 { color: #fff; margin-bottom: 20px; }
+.main_footer__block ul { list-style: none; padding: 0; }
+.main_footer__block ul li { margin-bottom: 10px; }
+.main_footer__block a { color: #ccc; text-decoration: none; }
+
+
+
+/* Project Details Sidebar */
+.dark-gray-bg { background: #333 !important; color: #fff !important; }
+.padding-30 { padding: 30px; }
+.project-info-list { padding: 0; margin-top: 20px; }
+.project-info-list li { 
+    border-bottom: 1px solid rgba(255,255,255,0.1); 
+    padding: 10px 0; 
+    list-style: none;
+    font-size: 14px;
+}
+.project-info-list li strong { color: var(--orange); display: inline-block; width: 100px; }
+
+/* Responsive Project Detail Image */
+.img-responsive { width: 100%; border-radius: 8px; margin-bottom: 20px; }
+
+/* History Timeline Enhancements (Fixed Stacking) */
+.history-timeline { list-style: none; position: relative; padding-left: 30px; }
+.history-timeline:before { 
+    content: ''; position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: #eee; 
+}
+.icon-dot { 
+    position: absolute; left: -6px; top: 5px; width: 14px; height: 14px; 
+    background: var(--orange); border-radius: 50%; border: 3px solid #fff; 
+}
+
+/* Portfolio Hover Effects (Zoom & Link) */
+.item-box { position: relative; overflow: hidden; }
+.link-zoom {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 46, 91, 0.85); /* Brand Blue */
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: 0.4s;
+}
+.item-box:hover .link-zoom { opacity: 1; }
+.project_links, .fancylight { 
+    color: #fff; font-size: 20px; margin: 0 10px; border: 1px solid #fff;
+    width: 45px; height: 45px; line-height: 45px; text-align: center; border-radius: 50%; 
+}
+.project_links:hover, .fancylight:hover { background: var(--orange); border-color: var(--orange); }
+
+/* Team Social Icons Fix */
+.small-divider { width: 40px; border-top: 2px solid var(--orange); margin: 10px auto; }
+.shadow-sm { box-shadow: 0 2px 15px rgba(0,0,0,0.08); }
+
+/* 1. BLOG POST LAYOUT */
+.blog-post {
+    position: relative;
+    background: #fff;
+    margin-bottom: 50px;
+}
+
+.post-media {
+    position: relative;
+    margin-bottom: 25px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* The Date Badge over images */
+.blog-date {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: var(--orange);
+    color: #fff;
+    padding: 10px 15px;
+    text-align: center;
+    font-weight: 700;
+    line-height: 1;
+    border-radius: 4px;
+}
+
+.blog-date span {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+/* 2. POST META & CONTENT */
+.post-meta {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.post-meta span { margin-right: 15px; }
+.post-meta i { color: var(--orange); margin-right: 5px; }
+
+.post-header h2 { font-size: 28px; margin-bottom: 20px; }
+.post-header h2 a { color: var(--blue); }
+.post-header h2 a:hover { color: var(--orange); }
+
+.dark-bg {
+    background: var(--blue);
+    color: #fff;
+    padding: 30px;
+    border-left: 5px solid var(--orange);
+    font-style: italic;
+    font-size: 18px;
+    margin: 30px 0;
+}
+
+/* 3. SIDEBAR WIDGETS */
+.sidebar-widget {
+    margin-bottom: 40px;
+}
+
+.sidebar-widget h5 {
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.sidebar-widget h5:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--orange);
+}
+
+.widget-search { position: relative; }
+#wid-s-sub {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    background: var(--blue) url('https://cdn-icons-png.flaticon.com/512/622/622669.png') no-repeat center;
+    background-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+ul.categories { list-style: none; padding: 0; }
+ul.categories li { border-bottom: 1px solid #eee; padding: 10px 0; }
+ul.categories li a { color: #555; transition: 0.3s; display: block; }
+ul.categories li a:hover { color: var(--orange); padding-left: 8px; }
+
+/* 4. RECENT POSTS WIDGET */
+.widget-post { list-style: none; padding: 0; }
+.widget-post li { display: flex; margin-bottom: 20px; }
+.widget-post-media img { width: 70px; height: 70px; object-fit: cover; border-radius: 4px; margin-right: 15px; }
+.widget-post-info h6 { margin: 0; font-size: 14px; }
+
+/* 5. COMMENTS & AUTHOR */
+.post-author {
+    display: flex;
+    background: #f9f9f9;
+    padding: 30px;
+    margin: 40px 0;
+    align-items: center;
+}
+
+.post-author-img img { width: 100px; height: 100px; border-radius: 50%; margin-right: 20px; }
+
+.comment-list { list-style: none; padding: 0; }
+.comment-list li { display: flex; margin-bottom: 30px; }
+.comment-avatar img { width: 60px; height: 60px; border-radius: 50%; margin-right: 20px; }
+.comment-detail { flex: 1; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+
+/* 6. FORM FIELDS */
+.form-full {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.form-full:focus { border-color: var(--orange); outline: none; }
+
+iframe {
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+
+/* 1. CAREERS - SIDEBAR TABS */
+.tab-title ul {
+    list-style: none;
+    padding: 0;
+    border: 1px solid #eee;
+}
+.tab-title ul li {
+    border-bottom: 1px solid #eee;
+}
+.tab-title ul li a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--blue);
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+    background: #fff;
+}
+.tab-title ul li a.active, 
+.tab-title ul li a:hover {
+    background: var(--blue);
+    color: #fff;
+}
+
+/* 2. CAREERS - ACCORDION (Join Our Team) */
+.creer_page .card {
+    border: none;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.card-header {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 0;
+}
+.panel-title a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--blue);
+    font-weight: 700;
+    text-decoration: none;
+    position: relative;
+}
+.collape-plus {
+    float: right;
+    font-size: 14px;
+    margin-top: 4px;
+    color: var(--orange);
+}
+.bg-custom {
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    border-top: none;
+}
+.card-block { padding: 20px; }
+
+/* 3. SHOPPING CART TABLE */
+.cart_table_wraper table thead {
+    background: var(--blue);
+    color: #fff;
+}
+.cart_table_wraper th {
+    padding: 15px !important;
+    border: none;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.padding_all {
+    vertical-align: middle !important;
+    padding: 20px !important;
+}
+.img-rounded { border-radius: 4px; border: 1px solid #eee; }
+
+/* 4. QUANTITY REGULATOR (Cart Buttons) */
+.product-regulator {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    width: fit-content;
+    border-radius: 4px;
+}
+.product-regulator button {
+    background: #f8f9fa;
+    border: none;
+    padding: 5px 12px;
+    cursor: pointer;
+}
+.product-regulator .output {
+    padding: 0 15px;
+    font-weight: 700;
+    min-width: 30px;
+    text-align: center;
+}
+
+/* 5. CART TOTALS BOX */
+.cart_totals_area {
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+.cart_totals_area ul {
+    list-style: none;
+    padding: 0;
+}
+.cart_totals_area ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+.cart_totals_area ul li span {
+    font-weight: 700;
+    color: var(--blue);
+}
+
+/* 6. UTILITY CLASSES */
+.secondary_bg { background: #333 !important; color: #fff !important; }
+.btn-text {
+    display: inline-block;
+    padding: 10px 25px;
+    background: var(--orange);
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.btn-text:hover { background: var(--blue); color: #fff; }
+
+/* =================================================
+ * CONTACT & FAQ STYLING
+ ================================================= */
+
+/* 1. CONTACT PAGE - INFO CARDS */
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    background: #f8f9fa;
+    color: var(--blue);
+    border-radius: 50%;
+    font-size: 30px;
+    display: inline-block;
+    transition: 0.3s;
+    border: 1px solid #eee;
+}
+
+.contact-info-card:hover .icon-circle {
+    background: var(--orange);
+    color: #fff;
+    transform: translateY(-5px);
+}
+
+/* 2. CONTACT PAGE - FLOATING FORM */
+.contact-form-wrapper {
+    background: #fff;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    margin-top: -100px; /* Pulls form up over the map */
+    position: relative;
+    z-index: 10;
+}
+
+#map { 
+    height: 450px; 
+    width: 100%; 
+    background-color: #e5e3df; /* Fallback if map API fails */
+}
+
+/* 3. FAQ ACCORDION (Reuse & Refine) */
+.faq h3 {
+    font-size: 22px;
+    color: var(--blue);
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.faq .card {
+    border: 1px solid #eee;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.faq .card-header {
+    background: #fff;
+    padding: 0;
+}
+
+.faq .panel-title a {
+    display: block;
+    padding: 15px 20px;
+    font-weight: 600;
+    color: var(--blue);
+    text-decoration: none;
+}
+
+.faq .panel-title a.collapsed {
+    color: #555;
+}
+
+.faq .panel-title a:hover {
+    color: var(--orange);
+}
+
+/* 4. FAQ SIDE TEXT (Service Policies) */
+.panel-body {
+    padding: 0 0 25px 0;
+}
+
+.panel-body .panel-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 10px;
+}
+
+.italic {
+    font-style: italic;
+    color: #888;
+}
+
+/* 5. FORM REFINEMENT (Global) */
+.form-field input, 
+.form-field textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-field input:focus, 
+.form-field textarea:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 5px rgba(255, 126, 0, 0.1);
+}
+
+.btn-submit {
+    background: var(--blue);
+    color: #fff;
+    padding: 12px 35px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background: var(--orange);
+    transform: translateY(-2px);
+}
+
+/* =================================================
+ * CONTACT & FAQ STYLING
+ ================================================= */
+
+/* 1. CONTACT PAGE - INFO CARDS */
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    background: #f8f9fa;
+    color: var(--blue);
+    border-radius: 50%;
+    font-size: 30px;
+    display: inline-block;
+    transition: 0.3s;
+    border: 1px solid #eee;
+}
+
+.contact-info-card:hover .icon-circle {
+    background: var(--orange);
+    color: #fff;
+    transform: translateY(-5px);
+}
+
+/* 2. CONTACT PAGE - FLOATING FORM */
+.contact-form-wrapper {
+    background: #fff;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    margin-top: -100px; /* Pulls form up over the map */
+    position: relative;
+    z-index: 10;
+}
+
+#map { 
+    height: 450px; 
+    width: 100%; 
+    background-color: #e5e3df; /* Fallback if map API fails */
+}
+
+/* 3. FAQ ACCORDION (Reuse & Refine) */
+.faq h3 {
+    font-size: 22px;
+    color: var(--blue);
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.faq .card {
+    border: 1px solid #eee;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.faq .card-header {
+    background: #fff;
+    padding: 0;
+}
+
+.faq .panel-title a {
+    display: block;
+    padding: 15px 20px;
+    font-weight: 600;
+    color: var(--blue);
+    text-decoration: none;
+}
+
+.faq .panel-title a.collapsed {
+    color: #555;
+}
+
+.faq .panel-title a:hover {
+    color: var(--orange);
+}
+
+/* 4. FAQ SIDE TEXT (Service Policies) */
+.panel-body {
+    padding: 0 0 25px 0;
+}
+
+.panel-body .panel-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 10px;
+}
+
+.italic {
+    font-style: italic;
+    color: #888;
+}
+
+/* 5. FORM REFINEMENT (Global) */
+.form-field input, 
+.form-field textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-field input:focus, 
+.form-field textarea:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 5px rgba(255, 126, 0, 0.1);
+}
+
+.btn-submit {
+    background: var(--blue);
+    color: #fff;
+    padding: 12px 35px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background: var(--orange);
+    transform: translateY(-2px);
+}
+
+/* =================================================
+ * PRICING PLANS STYLING
+ ================================================= */
+
+/* 1. PRICING STYLE 1 (Boxed Version) */
+.pricing-wrap {
+    background: #fff;
+    padding: 40px 20px;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    position: relative;
+}
+
+.price-title h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--blue);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.price-header {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.price-value {
+    font-size: 48px;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+}
+
+.price-value sup {
+    font-size: 20px;
+    top: -15px;
+}
+
+.past-price {
+    text-decoration: line-through;
+    color: #bbb;
+    font-size: 14px;
+}
+
+.features ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.features ul li {
+    padding: 10px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.features .plancolor { background: #fcfcfc; }
+
+/* Featured "Business" Plan Variant */
+.skinonebg {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
+}
+.skinonebg .price-title h3, 
+.skinonebg .price-header h5,
+.skinonebg .price-header p { color: #fff; }
+.featuredcolor { color: var(--orange); }
+.skinonefeatures ul li { color: rgba(255,255,255,0.8); }
+.skinoneplancolor { background: rgba(255,255,255,0.05); }
+
+/* 2. PRICING STYLE 2 (Creative Version) */
+.pricing_table {
+    background: #fff;
+    padding: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.pricing_table.shadow {
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    transform: scale(1.05);
+    z-index: 2;
+}
+
+.pricing-top {
+    padding: 15px;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.bg-color { background: #555; }
+.bg-color3 { background: #777; }
+.secondary_bg { background: var(--orange); }
+
+.package-price {
+    padding: 30px 0;
+    background: #fdfdfd;
+}
+
+.package-price .price { font-size: 40px; font-weight: 700; color: var(--blue); }
+
+.price_feature {
+    list-style: none;
+    padding: 20px 0;
+}
+
+.price_feature li {
+    padding: 12px 0;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.price_btn { padding: 30px 0; }
+
+.xplus-btn.pricing {
+    background: var(--blue);
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+.xplus-btn.pricing:hover {
+    background: var(--orange);
+    color: #fff;
+}
+
+/* 3. HEADING BOXES */
+.heading-box h2 {
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.b-line {
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--orange);
+    margin: 0 auto;
+}
+
+/* =================================================
+ * PROJECT DETAILS, TEAM & TIMELINE STYLING
+ ================================================= */
+
+/* 1. PROJECT INFO SIDEBAR */
+.project-info-list {
+    padding: 0;
+    margin: 0;
+}
+.project-info-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 14px;
+}
+.project-info-list li strong {
+    display: block;
+    color: var(--orange);
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+.dark-gray-bg {
+    background: #333;
+    border-radius: 4px;
+}
+
+/* 2. HISTORY TIMELINE */
+.history-timeline__block {
+    position: relative;
+    padding: 40px 0;
+}
+.history-timeline {
+    list-style: none;
+    padding: 0;
+}
+.icon-dot {
+    width: 20px;
+    height: 20px;
+    background: var(--orange);
+    border: 4px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--orange);
+    margin: 0 auto 15px;
+}
+.abt-block__wrap {
+    display: flex;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.abt-block__left {
+    flex: 1;
+    padding: 40px;
+}
+.abt-block__right {
+    flex: 1;
+    min-height: 300px;
+}
+
+/* 3. TEAM EXPERTS */
+.box-hover {
+    position: relative;
+    overflow: hidden;
+    background: var(--blue);
+}
+.team-block {
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+.team-block strong {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.team-block span {
+    color: var(--orange);
+    font-size: 13px;
+    font-weight: 600;
+}
+.social-icons {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+.social-icons li {
+    display: inline-block;
+    margin: 0 10px;
+}
+.social-icons li a {
+    color: #fff;
+    font-size: 16px;
+    transition: 0.3s;
+}
+.social-icons li a:hover { color: var(--orange); }
+
+/* 4. CLIENT TESTIMONIALS */
+.about-block {
+    position: relative;
+    border-radius: 8px;
+}
+.client-avtar {
+    width: 70px;
+    height: 70px;
+    float: left;
+    margin-right: 20px;
+}
+.client-avtar img {
+    border-radius: 50%;
+    border: 3px solid #eee;
+}
+.text-box {
+    overflow: hidden;
+}
+.text-content p {
+    font-style: italic;
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+}
+.box-title h4 span {
+    color: var(--orange);
+    font-size: 14px;
+}
+
+/* 5. UTILITY STYLES */
+.shadow-sm { box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+.border-top { border-top: 1px solid #eee; }
+
+/* =================================================
+ * MASTER PORTFOLIO & SERVICE DETAILS STYLING
+ ================================================= */
+
+/* 1. PORTFOLIO FILTER (Isotope) */
+.categories-filter {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+}
+.categories-filter li {
+    display: inline-block;
+    margin: 0 5px;
+}
+.categories-filter li a {
+    padding: 8px 20px;
+    border: 1px solid #eee;
+    border-radius: 30px;
+    color: #555;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.categories-filter li a.active, 
+.categories-filter li a:hover {
+    background: var(--orange);
+    color: #fff;
+    border-color: var(--orange);
+    text-decoration: none;
+}
+
+/* 2. PORTFOLIO ITEM BOXES */
+.nf-item { margin-bottom: 30px; }
+.item-box {
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 8px;
+}
+.item-container {
+    width: 100%;
+    transition: 0.5s;
+}
+.item-box:hover .item-container { transform: scale(1.1); }
+
+.link-zoom {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: 0.3s;
+}
+.item-box:hover .link-zoom { opacity: 1; }
+
+.link-zoom a {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: var(--orange);
+    color: #fff;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.gallery-heading { padding: 20px; text-align: center; }
+.gallery-heading h4 { margin: 0; font-size: 18px; }
+.gallery-heading p { color: var(--orange); font-size: 13px; margin: 5px 0 0; }
+
+/* 3. SERVICE SIDEBAR (Sticky) */
+.service-sidebar {
+    position: sticky;
+    top: 100px;
+}
+.service-list {
+    list-style: none;
+    padding: 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.service-list li a {
+    display: block;
+    padding: 15px 20px;
+    color: #444;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    transition: 0.3s;
+    font-weight: 600;
+}
+.service-list li a:hover, 
+.service-list li a.active {
+    background: var(--blue);
+    color: #fff;
+    text-decoration: none;
+    padding-left: 30px;
+}
+
+/* 4. BROCHURE & DOWNLOADS */
+.brochure-box {
+    background: var(--blue);
+    color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+.btn-download {
+    display: block;
+    padding: 12px;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border-radius: 4px;
+    margin-top: 10px;
+    text-align: center;
+}
+.btn-download:hover { background: var(--orange); color: #fff; }
+
+/* 5. TESTIMONIALS VARIANTS */
+.about-block.gray-bg { background: #f9f9f9; }
+.about-block.dark-gray-bg { background: #333; color: #fff; }
+.about-block.dark-gray-bg .text-content p { color: #ccc; }
+.about-block.dark-gray-bg .member_say span { color: var(--orange); }
+
+/* 6. HISTORY TIMELINE FOUNDATION */
+.history-timeline {
+    position: relative;
+    padding: 40px 0;
+}
+.icon-dot {
+    width: 20px;
+    height: 20px;
+    background: var(--orange);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    border: 4px solid #fff;
+    box-shadow: 0 0 0 2px var(--orange);
+}
+
+/* =================================================
+ * SHOP UI & SIDEBAR EXTRAS
+ ================================================= */
+
+/* Poll Widget Styling */
+.widget_shop ul.poll-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.widget_shop .checkbox, .widget_shop .radio {
+    margin-bottom: 10px;
+}
+
+.widget_shop .checkbox label, .widget_shop .radio label {
+    font-size: 14px;
+    color: #666;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+/* Recommended Carousel (Owl) */
+.widget_shop .owl-carousel img {
+    border-radius: 4px;
+    border: 1px solid #eee;
+}
+
+/* Shop Grid Items (Specific to Main Shop Page) */
+.bg-light .product-item {
+    background: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.bg-light .product-item:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    border-color: var(--orange);
+}
+
+.bg-light .product-item img {
+    max-width: 100%;
+    margin-bottom: 15px;
+}
+
+.bg-light .product-item h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.bg-light .product-item .price {
+    display: block;
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* --- Price Slider Fix --- */
+.nstSlider.range {
+    width: 100%;
+    height: 8px;
+    background: #e1e1e1;
+    border-radius: 5px;
+    position: relative;
+    margin: 40px 0 20px;
+}
+
+.nstSlider .bar {
+    height: 8px;
+    background: #ff9800; /* Your orange accent */
+    border-radius: 5px;
+    position: absolute;
+}
+
+.nstSlider .leftGrip, .nstSlider .rightGrip {
+    width: 20px;
+    height: 20px;
+    background: #002d5b; /* Your primary blue */
+    border-radius: 50%;
+    position: absolute;
+    top: -6px;
+    cursor: pointer;
+}
+
+.nstSlider .drag {
+    position: absolute;
+    top: -30px;
+    left: -10px;
+    background: #002d5b;
+    color: #fff;
+    padding: 2px 8px;
+    font-size: 11px;
+    border-radius: 3px;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* --- Category List Sidebar --- */
+.category-list-sidebar ul { list-style: none; padding: 0; }
+.category-list-sidebar li {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+.category-list-sidebar li a {
+    color: #444;
+    display: flex;
+    justify-content: space-between;
+    transition: 0.3s;
+}
+.category-list-sidebar li a:hover { color: #ff9800; padding-left: 5px; }
+
+/* --- Poll Radio Buttons --- */
+.custom-radio {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+.custom-radio input[type="radio"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+.custom-radio label {
+    font-size: 14px;
+    margin: 0;
+    cursor: pointer;
+    color: #666;
+}
+
+
+

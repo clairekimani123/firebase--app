@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../../civil consultancy theme (3)"
+		},
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../CAREER-SERVER"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501,
+		"liveServer.settings.multiRootWorkspaceName": "civil consultancy theme (2)"
+	}
+}
