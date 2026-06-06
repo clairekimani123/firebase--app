@@ -1,0 +1,222 @@
+/*Contact section*/
+.bottom-section{
+	    background:#1bbce8;
+}
+.contact_block-text{
+	    padding-top: 32px;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+.contact_block-text{
+	padding-top: 0px;
+}
+}
+ @media (max-width: 767px) {
+ 	.contact_block-text{
+	padding-top: 0px;
+}
+ }
+.contact_block-text strong{
+	text-transform: uppercase;
+    font-size:28px;
+    letter-spacing: 0;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    display: block;
+    padding-bottom: 10px;
+}
+.contact_block-text p{
+	font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    font-size: 35px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+		.contact_block-text strong{
+		font-size: 25px;
+	}
+.contact_block-text p{
+	    font-size: 28px
+}
+}
+@media (max-width: 767px){
+	.contact_block-text strong{
+		font-size: 20px;
+	}
+.contact_block-text p{
+	    font-size: 19px
+}
+}
+.bottom-section .input-sm{
+	height: 42px;
+}
+.bottom-section textarea{
+	resize: none;
+	height: 60px;
+	margin-bottom: 0;
+	display:block;
+}
+.bottom-section .btn-text{
+	margin: 0px;
+	border:none;
+	background: #0c1f38;
+	max-width: 160px;
+	width:100%;
+	margin-top: 0px;
+	
+}
+
+.light-gray{
+	  background: #f9f9f9;
+}
+.top-padding{
+	padding-top:86px;
+}
+@media (min-width: 991px) and (max-width: 1199px){
+.top-padding{
+	padding-top:50px;
+}
+}
+@media (max-width: 991px){
+.top-padding{
+	padding-top:0;
+}
+.contact_block-text strong{
+	font-size: 26px;
+}
+.contact_block-text p{
+	font-size: 29px;
+}
+}
+@media (max-width: 767px){
+
+.contact_block-text strong{
+	font-size: 26px;
+	line-height: 1.3;
+}
+.contact_block-text p{
+	font-size:20px;
+}
+}
+/*==========Footer section style=========*/
+footer ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+footer ul li {
+    display: inline-block;
+    position: relative;
+}
+.top_footer_info__block {
+    background: #222;
+    color: #ffffff;
+}
+.single_info__block h4 span {
+    display: block;
+    font-size: 80%;
+    font-weight: normal;
+}
+.single_info__block i.fa {
+    font-size: 28px;
+    height: 80px;
+    line-height: 80px;
+    margin-top: -40px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 50px;
+}
+.single_info__block {
+    position: relative;
+}
+.single_info__block > h4 {
+    margin-left: 55px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 23px;
+}
+
+.main_footer__block{
+    background-image: url(../images/footer__bg-block.jpg);
+    background-size: cover;
+    background-position:top center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+    color: #fff;
+}
+.main_footer__block::before {
+  background: #222;
+  content: "";
+  height: 100%;
+  left: 0;
+  opacity: 0.9;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.footer_box__block h4{
+	color: #fff;
+	margin-bottom: 15px;
+}
+.footer_box__block li {
+    border-bottom: 1px solid #222;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+.footer_box__block li::after {
+    content: "\f105";
+    font-family: fontawesome;
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+.footer_box__block li a {
+    color: #ffffff;
+}
+
+.footer_box__block.address-box li {
+    border: 0 none;
+    margin: 0;
+}
+.footer_box__block.address-box li::after {
+    display: none;
+}
+.address-box li i.fa {
+    font-size: 18px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    width: 20px;
+}
+.footer_box__block.address-box p {
+    margin-left: 25px;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+
+.copyriight_block {
+    border-top: 1px solid #ffffff;
+}
+.footer__block-logo{
+	max-width:170px;
+    display: block;
+}
+
+@media (max-width: 767px){
+    .copyriight_block img {
+      display: block;
+      margin: 0 auto 15px;
+    }
+    .copyriight_block p{
+        text-align: center
+    }
+    .padding{
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .hero-wrapper__block .container {
+      padding: 0;
+    }
+}

@@ -1,0 +1,587 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Career Serve — Our HR Services | Premier HR Outsourcing</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/owl.carousel.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/ionicons.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/flaticon.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/jquery-ui.min.css" type="text/css" rel="stylesheet">
+    <link href="assets/css/jquery.fancybox.css" rel="stylesheet" type="text/css">
+    <!--Main Slider-->
+    <link href="assets/css/settings.css" type="text/css" rel="stylesheet" media="screen">
+    <link href="assets/css/layers.css" type="text/css" rel="stylesheet" media="screen">
+    <link href="assets/css/style.css" type="text/css" rel="stylesheet">
+    <link href="assets/css/index.css" type="text/css" rel="stylesheet">
+    <link href="assets/css/header.css" type="text/css" rel="stylesheet">
+    <link href="assets/css/footer.css" type="text/css" rel="stylesheet">
+    <link href="assets/css/theme-color/default.css" rel="stylesheet" type="text/css" id="theme-color" />
+    
+    <style>
+        /* ===== Additional styles for service features (preserving original theme colors) ===== */
+        .service-features {
+            margin-top: 1.5rem;
+        }
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .feature-item:last-child { border-bottom: none; }
+        .feature-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(199,162,82,0.12);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+            color: #c7a252;
+        }
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #4a5568;
+            line-height: 1.5;
+            margin: 0;
+        }
+        .service-detail {
+            padding: 50px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .service-detail:last-child { border-bottom: none; }
+        .service-detail-inner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .service-icon-panel {
+            flex: 1;
+            min-width: 250px;
+        }
+        .service-big-icon-box {
+            background: #0a2b3e;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        .service-big-icon-box .big-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+        .service-big-icon-box h3 { font-size: 1.3rem; margin-bottom: 0.5rem; font-weight: 600; }
+        .service-big-icon-box p { font-size: 0.85rem; color: rgba(255,255,255,0.75); }
+        .service-detail-content {
+            flex: 2;
+            min-width: 280px;
+        }
+        .service-detail-content h2 {
+            font-size: 1.8rem;
+            color: #0a2b3e;
+            margin-bottom: 0.75rem;
+        }
+        .service-detail-content .lead {
+            font-size: 0.95rem;
+            color: #4a5568;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+        .process-step {
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+            padding: 1.5rem;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .step-num {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #c7a252;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+        .process-step h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #0a2b3e;
+        }
+        .process-step p {
+            font-size: 0.85rem;
+            color: #6c757d;
+            line-height: 1.5;
+        }
+        .process-bg {
+            background: #0a2b3e;
+            border-radius: 20px;
+            margin-top: 2rem;
+        }
+        .process-bg .process-step {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(5px);
+        }
+        .process-bg .process-step h4 { color: #fff; }
+        .process-bg .process-step p { color: rgba(255,255,255,0.7); }
+        @media (max-width: 768px) {
+            .service-detail-inner { flex-direction: column; }
+            .process-steps { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!--loader-->
+    <div id="preloader">
+        <div class="sk-circle">
+            <div class="sk-circle1 sk-child"></div>
+            <div class="sk-circle2 sk-child"></div>
+            <div class="sk-circle3 sk-child"></div>
+            <div class="sk-circle4 sk-child"></div>
+            <div class="sk-circle5 sk-child"></div>
+            <div class="sk-circle6 sk-child"></div>
+            <div class="sk-circle7 sk-child"></div>
+            <div class="sk-circle8 sk-child"></div>
+            <div class="sk-circle9 sk-child"></div>
+            <div class="sk-circle10 sk-child"></div>
+            <div class="sk-circle11 sk-child"></div>
+            <div class="sk-circle12 sk-child"></div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header id="header" class="header header-1">
+        <div id="top-bar" class="top-bar-section top-bar-bg-color">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12"> 
+                        <div class="top-contact link-hover-black hidden-sm-down"> 
+                            <a href="tel:+254721312348"><i class="fa fa-phone"></i> (+254) 721 312348</a>
+                            <a href="mailto:info@careerserve.co.ke"><i class="fa fa-envelope"></i> info@careerserve.co.ke</a>
+                        </div>
+                        <div class="top-social-icon icons-hover-black">
+                            <ul>
+                                <li><a href="#" data-toggle="modal" data-target=".join-now-form"><i class="ion-clipboard"></i> Quick Enquiry</a></li>
+                                <li><a href="login.html"><i class="ion-power"></i> Login</a> / <a href="register.html"> Sign up</a></li>
+                                <li><a href="#" data-toggle="modal" data-target=".emergency-call"><i class="ion-ios-bell"></i> Emergency</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 d-flex align-items-center">
+                        <div class="logo"><a href="index.html"><img src="assets/images/Career Serve Logo.png" alt="Career Serve"></a></div>
+                        <button id="menu" class="menu hidden-md-up"></button>
+                    </div>
+                    <div class="col-md-9 nav-bg">
+                        <nav class="navigation">
+                            <ul>
+                                <li><a href="#!">Home</a><i class="ion-ios-plus-empty hidden-md-up"></i>
+                                    <ul class="sub-nav"><li><a href="index.html">Home</a></li></ul>
+                                </li>
+                                <li><a href="#!">About us</a><i class="ion-ios-plus-empty hidden-md-up"></i>
+                                    <ul class="sub-nav">
+                                        <li><a href="about.html">About</a></li>
+                                        <!-- <li><a href="history.html">History</a></li>
+                                        <li><a href="career.html">Career</a></li>
+                                        <li><a href="partnerships.html">Partnerships</a></li>
+                                        <li><a href="leadership.html">Leadership</a></li> -->
+                                    </ul>
+                                </li>
+                                <li><a href="javascript:void(0);">Services</a><i class="ion-ios-plus-empty hidden-md-up"></i>
+                                    <ul class="sub-nav"><li><a href="services.html">All Services</a></li></ul>
+                                </li>
+                                <li><a href="javascript:void(0);">Portfolio</a><i class="ion-ios-plus-empty hidden-md-up"></i>
+                                    <ul class="sub-nav"><li><a href="portfolio.html">Portfolio</a></li></ul>
+                                </li>
+                                <li><a href="javascript:void(0);">CSR</a><i class="ion-ios-plus-empty hidden-md-up"></i>
+                                    <ul class="sub-nav"><li><a href="csr.html">CSR Initiatives</a></li></ul>
+                                </li>
+                                
+                                <li><a href="#!">Contact us</a><i class="ion-ios-plus-empty hidden-md-up"></i>
+                                    <ul class="sub-nav"><li><a href="contact.html">contact</a></li></ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- END HEADER -->
+
+    <!-- Intro Section -->
+    <section class="inner-intro bg-img light-color overlay-before parallax-background">
+        <div class="container">
+            <div class="row title">
+                <div class="title_row">
+                    <h1 data-title="Services"><span>Our</span> HR Services</h1>
+                    <div class="page-breadcrumb">
+                        <a>Home</a>/ <span>Services</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Intro Section End -->
+
+    <!-- Services Introduction Text -->
+    <section class="padding pt-xs-40" style="padding-bottom: 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p style="font-size:1rem; color:#4a5568; max-width:800px; margin:0 auto;">Comprehensive, tailored HR solutions designed to drive efficiency and unlock the full potential of your people — from talent acquisition to workforce optimization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 1: TALENT ACQUISITION -->
+    <section class="service-detail" id="talent">
+        <div class="container">
+            <div class="service-detail-inner">
+                <div class="service-icon-panel">
+                    <div class="service-big-icon-box">
+                        <div class="big-icon">🎯</div>
+                        <h3>Talent Acquisition &amp; Placements</h3>
+                        <p>End-to-end recruitment tailored to your culture and needs</p>
+                    </div>
+                </div>
+                <div class="service-detail-content">
+                    <h2>Talent Acquisition &amp; Placements</h2>
+                    <p class="lead">Our comprehensive recruitment solutions go far beyond CV screening. We align our hiring process with your organizational culture and specific requirements — ensuring every placement is the right fit, professionally and culturally.</p>
+                    <div class="service-features">
+                        <div class="feature-item"><div class="feature-icon">📋</div><p>Comprehensive recruitment solutions from job posting to final placement</p></div>
+                        <div class="feature-item"><div class="feature-icon">🔍</div><p>Specialized approaches including headhunting and executive search services</p></div>
+                        <div class="feature-item"><div class="feature-icon">🧪</div><p>Thorough vetting process including psychometric testing and reference checks</p></div>
+                        <div class="feature-item"><div class="feature-icon">✅</div><p>Hiring process crafted to align with client-specific requirements, ensuring cultural and professional fit</p></div>
+                        <div class="feature-item"><div class="feature-icon">🌐</div><p>Local and international talent sourcing for diverse organizational needs</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 2: TRAINING & CAPACITY BUILDING -->
+    <section class="service-detail" id="training" style="background:#f9fafb;">
+        <div class="container">
+            <div class="service-detail-inner">
+                <div class="service-detail-content">
+                    <h2>Training &amp; Capacity Building</h2>
+                    <p class="lead">We believe that organizations thrive when their people grow. Our customized training programs are designed to sharpen existing skills, develop new ones, and build the leadership pipeline your organization needs to succeed long-term.</p>
+                    <div class="service-features">
+                        <div class="feature-item"><div class="feature-icon">🎓</div><p>Customized training programs designed to enhance both technical and soft skills</p></div>
+                        <div class="feature-item"><div class="feature-icon">👑</div><p>Leadership development initiatives to identify and nurture future leaders</p></div>
+                        <div class="feature-item"><div class="feature-icon">🔄</div><p>Focus on building sustainable capacity for long-term organizational resilience</p></div>
+                        <div class="feature-item"><div class="feature-icon">📊</div><p>Progress assessment and reporting to track skill development outcomes</p></div>
+                    </div>
+                </div>
+                <div class="service-icon-panel">
+                    <div class="service-big-icon-box">
+                        <div class="big-icon">📚</div>
+                        <h3>Training &amp; Capacity Building</h3>
+                        <p>Grow your people, grow your organization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 3: CUSTOMER SUPPORT -->
+    <section class="service-detail" id="support">
+        <div class="container">
+            <div class="service-detail-inner">
+                <div class="service-icon-panel">
+                    <div class="service-big-icon-box">
+                        <div class="big-icon">🎧</div>
+                        <h3>Customer Support</h3>
+                        <p>24/7 excellence in every customer interaction</p>
+                    </div>
+                </div>
+                <div class="service-detail-content">
+                    <h2>Customer Support</h2>
+                    <p class="lead">Delivering exceptional customer experiences requires the right people, the right training, and the right systems. We provide fully managed customer support teams equipped to represent your brand with professionalism and care.</p>
+                    <div class="service-features">
+                        <div class="feature-item"><div class="feature-icon">🕐</div><p>24/7 support services to ensure client and employee satisfaction at all times</p></div>
+                        <div class="feature-item"><div class="feature-icon">🏋️</div><p>Training and development of support staff to handle diverse and complex customer needs</p></div>
+                        <div class="feature-item"><div class="feature-icon">📞</div><p>Multi-channel support including phone, email, and digital platforms</p></div>
+                        <div class="feature-item"><div class="feature-icon">📈</div><p>Performance monitoring and quality assurance for consistent service delivery</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 4: PAYROLL MANAGEMENT -->
+    <section class="service-detail" id="payroll" style="background:#f9fafb;">
+        <div class="container">
+            <div class="service-detail-inner">
+                <div class="service-detail-content">
+                    <h2>Payroll Management</h2>
+                    <p class="lead">Payroll complexity shouldn't be a distraction. We handle the intricacies of payroll processing — ensuring accuracy, compliance, and timeliness — so your team can focus on what matters most.</p>
+                    <div class="service-features">
+                        <div class="feature-item"><div class="feature-icon">📑</div><p>Efficient payroll handling with full compliance with local and international tax laws and regulations</p></div>
+                        <div class="feature-item"><div class="feature-icon">💻</div><p>Integration of technology for seamless, error-free payroll operations</p></div>
+                        <div class="feature-item"><div class="feature-icon">🔒</div><p>Secure and confidential handling of all employee financial information</p></div>
+                        <div class="feature-item"><div class="feature-icon">📆</div><p>Timely reporting and statutory deductions management (PAYE, NHIF, NSSF)</p></div>
+                    </div>
+                </div>
+                <div class="service-icon-panel">
+                    <div class="service-big-icon-box">
+                        <div class="big-icon">💰</div>
+                        <h3>Payroll Management</h3>
+                        <p>Accurate, compliant, seamless payroll every time</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 5: WORKFORCE MANAGEMENT -->
+    <section class="service-detail" id="workforce">
+        <div class="container">
+            <div class="service-detail-inner">
+                <div class="service-icon-panel">
+                    <div class="service-big-icon-box">
+                        <div class="big-icon">📊</div>
+                        <h3>Workforce Management</h3>
+                        <p>Optimize your workforce for peak performance</p>
+                    </div>
+                </div>
+                <div class="service-detail-content">
+                    <h2>Workforce Management</h2>
+                    <p class="lead">A well-managed workforce is a competitive advantage. We deploy smart strategies and modern tools to help you optimize staffing levels, reduce operational inefficiencies, and keep your teams performing at their best.</p>
+                    <div class="service-features">
+                        <div class="feature-item"><div class="feature-icon">🗂️</div><p>Strategic workforce planning and staffing optimization for operational efficiency</p></div>
+                        <div class="feature-item"><div class="feature-icon">🛠️</div><p>Use of the latest digital tools for real-time workforce monitoring and management</p></div>
+                        <div class="feature-item"><div class="feature-icon">📉</div><p>Turnover reduction strategies and employee retention program design</p></div>
+                        <div class="feature-item"><div class="feature-icon">🤝</div><p>Outsourced HR management for businesses that need full-service support</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 6: HR AUDIT -->
+    <section class="service-detail" id="audit" style="background:#f9fafb;">
+        <div class="container">
+            <div class="service-detail-inner">
+                <div class="service-detail-content">
+                    <h2>HR Audit</h2>
+                    <p class="lead">Is your HR function truly working for your organization? Our comprehensive HR audits assess the effectiveness and compliance of your HR practices — giving you clarity, confidence, and a roadmap for improvement.</p>
+                    <div class="service-features">
+                        <div class="feature-item"><div class="feature-icon">🔍</div><p>Comprehensive audits to ensure HR practices comply with all legal and regulatory standards</p></div>
+                        <div class="feature-item"><div class="feature-icon">🎯</div><p>Alignment review to ensure HR strategies support and reinforce broader business goals</p></div>
+                        <div class="feature-item"><div class="feature-icon">📋</div><p>Detailed audit reports with actionable recommendations for improvement</p></div>
+                        <div class="feature-item"><div class="feature-icon">🛡️</div><p>Risk identification and mitigation strategy to protect your organization</p></div>
+                    </div>
+                </div>
+                <div class="service-icon-panel">
+                    <div class="service-big-icon-box">
+                        <div class="big-icon">🔍</div>
+                        <h3>HR Audit</h3>
+                        <p>Clarity, compliance, and a path to excellence</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="padding ptb-xs-40 process-bg" style="margin: 30px 0;">
+        <div class="container">
+            <div class="row pb-30">
+                <div class="col-md-12">
+                    <div class="sec-title text-center">
+                        <h2 style="color:#fff;"><span>Our</span> Service Process</h2>
+                        <p style="color:rgba(255,255,255,0.7);">How We Work</p>
+                    </div>
+                </div>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-num">01</div>
+                    <h4>Consultation</h4>
+                    <p>We begin with a deep-dive consultation to understand your organization's needs, culture, and goals.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">02</div>
+                    <h4>Tailored Strategy</h4>
+                    <p>We craft a bespoke HR solution — no generic templates, just what works for you specifically.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">03</div>
+                    <h4>Execution</h4>
+                    <p>Our expert team executes the strategy with precision, transparency, and consistent communication.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">04</div>
+                    <h4>Review &amp; Optimize</h4>
+                    <p>We continuously measure outcomes and refine our approach to ensure lasting, sustainable results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="padding ptb-xs-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="sec-title text-center">
+                        <h2><span>Ready</span> to Elevate Your HR Function?</h2>
+                    </div>
+                    <p style="margin-bottom: 1.5rem; color:#4a5568;">Contact us today to discuss how our tailored HR services can transform your organization's people management.</p>
+                    <a href="contact.html" class="btn btn-text">Request a Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="top_footer_info__block ptb-20">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="single_info__block">
+                            <i class="fa fa-phone"></i>
+                            <h4>(+254) 721 312348 <span>Mon-Fri, 8am-7pm</span></h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="single_info__block">
+                            <i class="fa fa-envelope-o"></i>
+                            <h4>info@careerserve.co.ke <span>24/7 Support</span></h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="single_info__block">
+                            <i class="fa fa-bullhorn"></i>
+                            <h4>Request a quote <span>Tailored HR solutions</span></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_footer__block pb-0 pt-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="footer_box__block">
+                            <h4>Career Serve</h4>
+                            <p>A premier HR outsourcing firm established in 2015, delivering innovative and strategic HR solutions across Kenya and global markets.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 mt-sm-30 mt-xs-30">
+                        <div class="footer_box__block">
+                            <h4>Navigation</h4>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="services.html">Services</a></li>
+                                <li><a href="portfolio.html">Portfolio</a></li>
+                                <li><a href="csr.html">CSR</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 mt-xs-30 mt-sm-30">
+                        <div class="footer_box__block">
+                            <h4>Our Services</h4>
+                            <ul>
+                                <li><a href="#talent">Talent Acquisition</a></li>
+                                <li><a href="#training">Training & Capacity</a></li>
+                                <li><a href="#support">Customer Support</a></li>
+                                <li><a href="#payroll">Payroll Management</a></li>
+                                <li><a href="#workforce">Workforce Management</a></li>
+                                <li><a href="#audit">HR Audit</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 mt-sm-30 mt-xs-30">
+                        <div class="footer_box__block address-box">
+                            <h4>Contact info</h4>
+                            <ul>
+                                <li><i class="fa fa-map-marker"></i><p>Victoria Towers – Ground Floor, Kilimanjaro Road, Upperhill, Nairobi, Kenya</p></li>
+                                <li><i class="fa fa-envelope-o"></i><p><a href="mailto:info@careerserve.co.ke">info@careerserve.co.ke</a></p></li>
+                                <li><i class="fa fa-globe"></i><p>www.careerserve.co.ke</p></li>
+                                <li><i class="fa fa-clock-o"></i><p>Monday-Friday, 9am-6pm</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyriight_block ptb-20 mt-20">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <a href="#" class="footer__block-logo"><img src="assets/images/Career Serve Logo.png" alt="Career Serve"></a>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <p>© 2025 Career Serve Limited. All rights reserved. Integrity · Innovation · Excellence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- END FOOTER -->
+
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-ui.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="assets/js/tether.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/owl.carousel.js"></script>
+    <script src="assets/js/jquery.mousewheel-3.0.6.pack.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.fancybox.pack.js" type="text/javascript"></script>
+    <script src="assets/js/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <script src="assets/js/isotope.pkgd.min.js" type="text/javascript"></script>
+    <script src="assets/js/masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.appear.js" type="text/javascript"></script>
+    <script type="text/javascript" src="assets/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="assets/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="assets/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="assets/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="assets/extensions/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.revolution.js"></script>
+    <script src="assets/js/validation.js" type="text/javascript"></script>
+    <script src="assets/js/custom.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function() {
+            $('#preloader').fadeOut('slow');
+        });
+    </script>
+</body>
+</html>
